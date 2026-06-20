@@ -1,0 +1,1546 @@
+---
+// Building a PowerPoint template and brand kit - interactive guide ported into the site as a scoped Astro component.
+// The site shell (BaseLayout) owns the header, footer, search, fonts and theme;
+// this component ships only the guide body, its scoped styles and its behaviour.
+---
+<div class="cgp-root">
+
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav">
+  <div class="cgp-container">
+    <a href="#top" class="nav-brand"><span class="nav-logo">.POTX</span> Follow-Along Guide</a>
+    <ul class="nav-links">
+      <li><a href="#foundations">Foundations</a></li>
+      <li><a href="#before">Before You Build</a></li>
+      <li><a href="#build">Build</a></li>
+      <li><a href="#copilot">Copilot</a></li>
+      <li><a href="#govern">Validate &amp; Govern</a></li>
+      <li><a href="#glossary">Glossary</a></li>
+    </ul>
+    <div class="nav-actions">
+      
+    </div>
+  </div>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<header class="cgp-hero" id="top">
+  <div class="cgp-container">
+    <p class="cgp-hero-stamp fade-in">Follow-Along Guide · PowerPoint · Microsoft 365 Copilot</p>
+    <h1 class="fade-in">Building a PowerPoint<br><span class="accent">Template &amp; Brand Kit</span></h1>
+    <p class="cgp-hero-tagline fade-in">A do-it-with-me handbook: short steps you expand one at a time, with the exact menu clicks and a picture for every move — so you build a governed, Copilot-ready <code>.potx</code> without feeling buried in text.</p>
+    <p class="hero-sub fade-in">Designed for visual learners · expand a step, do it, collapse it, move on.</p>
+    <div class="cgp-hero-ctas fade-in">
+      <a href="#overview" class="cgp-btn cgp-btn-primary">Start the guide →</a>
+      <a href="#before" class="cgp-btn cgp-btn-ghost">Jump to intake worksheet</a>
+    </div>
+    <div class="hero-meta fade-in">
+      <span>📐 16:9 widescreen</span>
+      <span>🎨 12-slot theme</span>
+      <span>🧩 12+ sample slides</span>
+      <span>♿ WCAG AA</span>
+    </div>
+  </div>
+</header>
+<!-- ════════ HOW TO USE ════════ -->
+<section id="howtouse" style="padding-bottom:2rem;">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Read me first</p>
+    <h2 class="section-title fade-in">How to use this guide</h2>
+    <p class="section-intro fade-in">This is a <strong>follow-along</strong> asset, not a wall of text. Each instruction is a collapsed step. Open one, do that one thing in PowerPoint, then collapse it and move to the next. Nothing is lost — it's just hidden until you need it.</p>
+    <div class="howto fade-in">
+      <div class="hc"><h5>🔽 Expand one step at a time</h5><p>Click a step to reveal its details, menu clicks, and screenshot. Click again to collapse and keep the page tidy.</p></div>
+      <div class="hc"><h5>🧭 Follow the click-path</h5><p>Every action step shows the exact ribbon path, e.g. <span class="pill">Design ▸ Slide Size</span>, so you never hunt for a button.</p></div>
+      <div class="hc"><h5>🖼️ Watch for the picture</h5><p>Each step has a screenshot or an "image needed" card describing exactly what you'll see on screen.</p></div>
+      <div class="hc"><h5>✅ Track your progress</h5><p>The QA checklist and worksheet save to your browser — close the tab and your progress is still here.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OVERVIEW ════════ -->
+<section id="overview">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Start here</p>
+    <h2 class="section-title fade-in">If you only do five things</h2>
+    <p class="section-intro fade-in">This guide takes you from a blank PowerPoint file to a finished, governed, reusable template (a <code>.potx</code>) that produces beautiful, on-brand slides — whether a person builds the deck or Microsoft&nbsp;365 Copilot generates it. A complete novice can follow along; experienced designers get the precise numbers.</p>
+    <div class="grid grid-3 fade-in">
+      <div class="card"><h4><span class="card-num">1</span> Decide size</h4><p>Choose <strong>16:9</strong> before you design anything. Changing aspect ratio later distorts every layout.</p></div>
+      <div class="card"><h4><span class="card-num">2</span> Brand the Theme</h4><p>Put your brand into the <strong>Theme</strong> (colors + fonts), not into individual objects.</p></div>
+      <div class="card"><h4><span class="card-num">3</span> Use placeholders</h4><p>Use <strong>real placeholders</strong>, never loose text boxes, for editable content.</p></div>
+      <div class="card"><h4><span class="card-num">4</span> Add sample slides</h4><p>Populate the template with <strong>12+ complete sample slides</strong> at three content densities.</p></div>
+      <div class="card"><h4><span class="card-num">5</span> Save &amp; test</h4><p>Save as <strong>.potx</strong>, test with real Copilot prompts, and version it.</p></div>
+      <div class="card" style="background:var(--accent-subtle);border-color:var(--callout-key-border);"><h4><span class="card-icon">🎯</span> The payoff</h4><p>One template that re-skins in minutes and keeps every human <em>and</em> AI-generated deck on brand.</p></div>
+    </div>
+    <div class="callout callout-note fade-in narrow" style="margin-top:2rem;">
+      <div class="callout-title">📘 NOTE · How the callout boxes work</div>
+      <p style="margin-bottom:0.4rem;"><strong style="color:#B45309;">KEY RULE</strong> — a foundational rule that prevents the most damaging mistakes. &nbsp;<strong style="color:#059669;">TIP</strong> — a shortcut or best practice. &nbsp;<strong style="color:#DC2626;">AVOID</strong> — a specific mistake that breaks templates or Copilot output. &nbsp;<strong style="color:#2563EB;">NOTE</strong> — clarification, context, or an authoritative source.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOUNDATIONS ════════ -->
+<section id="foundations">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Part I · Foundations</p>
+    <h2 class="section-title fade-in">The mental model</h2>
+    <p class="section-intro fade-in">Four words get used loosely and constantly confused. Getting them straight is the single most valuable thing in this guide — every later step depends on knowing which layer you are editing.</p>
+
+    <div class="glance fade-in">
+      <span class="g-pill">🎨 <b>Theme</b> = colors + fonts</span>
+      <span class="g-pill">🧱 <b>Master</b> = global blueprint</span>
+      <span class="g-pill">🧩 <b>Layouts</b> = per-slide blueprints</span>
+      <span class="g-pill">📦 <b>Template</b> = the saved .potx</span>
+    </div>
+
+    <h3 class="block-title fade-in">The four layers</h3>
+    <p class="fade-in narrow" style="margin-left:auto;margin-right:auto;text-align:center;">In one sentence: a <strong>template</strong> = a <strong>theme</strong> + a configured <strong>slide master</strong> + a curated set of <strong>layouts</strong> + (for Copilot) finished <strong>sample slides</strong>, all saved as a <code>.potx</code>.</p>
+    <div class="layer-stack fade-in">
+      <div class="layer"><span class="layer-badge">🎨</span><h4>Theme <span class="file-tag">.thmx</span></h4><p>A coordinated scheme of colors, fonts, and effects (plus background). The palette and typefaces every object inherits automatically. Portable across Word, Excel &amp; PowerPoint.</p></div>
+      <div class="layer"><span class="layer-badge">🧱</span><h4>Slide Master <span class="file-tag">View → Slide Master</span></h4><p>The top-level blueprint slide; parent of all layouts. Holds anything that must be identical everywhere: title styling, logo, footer system, background, default bullet styles.</p></div>
+      <div class="layer"><span class="layer-badge">🧩</span><h4>Layouts <span class="file-tag">thumbnails under the master</span></h4><p>Child blueprints — one per slide type. The arrangement of placeholders for a kind of slide (title, two-column, chart, quote…).</p></div>
+      <div class="layer"><span class="layer-badge">📦</span><h4>Template <span class="file-tag">.potx</span></h4><p>The saved, reusable package of theme + master + layouts (+ sample slides). The thing users and Copilot actually start from.</p></div>
+    </div>
+
+    <figure class="shot fade-in">
+      <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/cover-light-dark.png" alt="Microsoft brand template title slide showing the Warm White and Blue Black theme palette" onclick="openImg('/images/guides/powerpoint-template-brand-kit/cover-light-dark.png','A finished title slide from the Microsoft brand template — the theme + master produce this consistent, on-brand result.')" loading="lazy">
+      <figcaption>A finished title slide from the Microsoft brand template (light + dark palette). The <strong>theme</strong> supplies the colors/fonts and the <strong>master</strong> locks the logo, footer, and title position. <em>Tip: to see the structure itself, open </em><code>View → Slide Master</code><em>.</em></figcaption>
+    </figure>
+
+    <h3 class="block-title fade-in">The two ideas everything depends on</h3>
+    <p class="fade-in">Two short concepts unlock the rest of the guide. Expand each one.</p>
+    <div class="steps fade-in">
+      <details class="step" open>
+        <summary>
+          <span class="step-badge">A</span>
+          <div class="step-head"><h4>Inheritance flows downward</h4><div class="step-sum">Edit the parent once; every child updates. This is why you build on the master, not on slides.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>There is a strict parent–child relationship. Properties flow <strong>downward</strong> and can be refined at each level:</p>
+          <ul class="clean">
+            <li><strong>Slide Master (parent)</strong> — stores the theme and default placeholder sizes/positions. Edit it once and every layout and slide updates.</li>
+            <li><strong>Layouts (children)</strong> — inherit the master, but each can add its own design and placeholders for a specific slide type.</li>
+            <li><strong>Individual slides</strong> — use the blueprint from their assigned layout. Users can override locally, but should rarely need to.</li>
+          </ul>
+          <div class="callout callout-key">
+            <div class="callout-title">🟡 KEY RULE · The #1 rule of templates</div>
+            <p>Set anything that must be identical everywhere on the <strong>MASTER</strong>. Set things that vary by slide type on the <strong>LAYOUTS</strong>. Never bake design directly onto front-facing (Normal-view) slides — it's the single biggest consistency killer and it destroys your ability to re-skin later.</p>
+          </div>
+        </div>
+      </details>
+      <details class="step">
+        <summary>
+          <span class="step-badge">B</span>
+          <div class="step-head"><h4>You are building for people <em>and</em> Copilot</h4><div class="step-sum">Copilot learns from your slides' structure — not the words inside placeholders.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>A traditional template is built for humans to pick layouts from. A Copilot-ready template must serve both humans <em>and</em> a generative system that learns from your template and generates slides into it. Copilot can turn a Word doc into a deck, build from a prompt or outline, condense an existing deck, and reformat slides with natural language — so your template has to survive automated generation, not just careful manual authoring.</p>
+          <div class="grid grid-3">
+            <div class="card"><h4>🖼️ Sample slides</h4><p>The finished example slides in your template — Copilot's <strong>primary</strong> signal.</p></div>
+            <div class="card"><h4>🧱 Objects</h4><p>The text, shapes, images, placeholders, and data visualizations on those slides.</p></div>
+            <div class="card"><h4>⌨️ Your prompt</h4><p>The specific instructions you type when generating or editing.</p></div>
+          </div>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · Copilot reads structure, not prose</div>
+            <p>It learns from layout structure, placeholder types, content density, visual hierarchy, and object relationships. It does <strong>not</strong> rely on the wording inside a placeholder to understand intent — intent must come from <strong>design, placeholder type, position, and size</strong>.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+<!-- ════════ BEFORE YOU BUILD ════════ -->
+<section id="before">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Part II · Before You Open PowerPoint</p>
+    <h2 class="section-title fade-in">Gather inputs &amp; decide first</h2>
+    <p class="section-intro fade-in">Building with half your brand inputs guarantees rework. Gather everything below before you touch PowerPoint — these values become your single source of truth. Fill in the worksheet; it saves to your browser automatically.</p>
+
+    <h3 class="block-title fade-in">Brand Inputs Intake Worksheet</h3>
+    <div class="worksheet fade-in">
+      <div class="ws-row"><div class="ws-label"><strong>Logo files</strong><span>Primary, reversed (dark bg), icon/mark. SVG or high-res PNG. Note clear-space rules.</span></div><input data-key="logo" placeholder="e.g. logo-primary.svg, logo-reversed.svg, logo-mark.svg"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Primary brand color</strong><span>The hero color (HEX). Becomes Accent 1 and the default for shapes &amp; charts.</span></div><input data-key="primary" placeholder="#RRGGBB"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Secondary / accent colors</strong><span>2–5 supporting colors, in usage-frequency order.</span></div><input data-key="accents" placeholder="#…, #…, #…"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Neutral / text colors</strong><span>Primary text, secondary text, light bg, dark bg.</span></div><input data-key="neutrals" placeholder="text / muted / light / dark"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Data-viz colors</strong><span>Exact chart series colors, in order (Accents 1–6).</span></div><input data-key="dataviz" placeholder="series 1 → 6"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Heading font</strong><span>For titles/headings. Confirm licensing &amp; availability.</span></div><input data-key="headfont" placeholder="e.g. Aptos Display"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Body font</strong><span>Prefer a system-safe or org-deployed font.</span></div><input data-key="bodyfont" placeholder="e.g. Aptos / Segoe UI / Arial"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Photography style</strong><span>Composition, treatment (duotone? full-bleed?), approved sources.</span></div><input data-key="photo" placeholder="e.g. full-bleed, warm, people-first"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Icon style</strong><span>Line vs. filled, weight, color rules.</span></div><input data-key="icons" placeholder="e.g. 2px line, single accent"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Footer policy</strong><span>What appears (confidentiality, dept, legal) and on which slide types.</span></div><input data-key="footer" placeholder="e.g. Confidential | Company | page #"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Confidentiality / classification</strong><span>Required labels and where they must appear.</span></div><input data-key="classification" placeholder="e.g. Internal Use Only"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Aspect ratio</strong><span>16:9 default unless a delivery context requires otherwise.</span></div><input data-key="aspect" placeholder="16:9"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Brand voice</strong><span>Tone, preferred terminology, do/don't word list (for the Brand Kit).</span></div><input data-key="voice" placeholder="e.g. confident, plain-spoken; avoid jargon"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Audience(s)</strong><span>Executive, sales, training, internal, client-facing — drives which layouts you need.</span></div><input data-key="audience" placeholder="e.g. exec + sales + client"></div>
+      <div class="ws-row"><div class="ws-label"><strong>Deployment method</strong><span>Brand Kit, Organization Asset Library, shared drive, or all.</span></div><input data-key="deploy" placeholder="e.g. Brand Kit + OAL"></div>
+      <div class="ws-actions">
+        <button class="cgp-btn cgp-btn-primary" onclick="saveWorksheet()">Save inputs</button>
+        <button class="cgp-btn cgp-btn-ghost" onclick="clearWorksheet()">Clear</button>
+      </div>
+    </div>
+    <div class="callout callout-tip fade-in">
+      <div class="callout-title">🟢 TIP · Seed from a brand-guidelines PDF</div>
+      <p>If a brand guidelines PDF exists, keep it open. In the Brand Kit you can even seed colors, fonts, photography styles, layout structures, and voice by uploading that PDF and letting AI extract them — then a brand manager reviews before publishing.</p>
+    </div>
+
+    <h3 class="block-title fade-in">Three setup decisions to make first</h3>
+    <p class="fade-in">These are cheap to make now and expensive to change later. Expand each.</p>
+    <div class="steps fade-in">
+      <details class="step" open>
+        <summary>
+          <span class="step-badge">📐</span>
+          <div class="step-head"><h4>5.1 · Choose your slide size</h4><div class="step-sum">16:9 widescreen (13.333″ × 7.5″) — the modern default.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Design</span><span class="cp-arrow">▸</span><span class="cp-chip">Slide Size</span><span class="cp-arrow">▸</span><span class="cp-chip">Custom Slide Size</span></div>
+          <p>Choose <strong>16:9 widescreen (13.333″ × 7.5″)</strong>. Use 4:3 only for legacy displays, and treat it as a separate template.</p>
+          <div class="callout callout-key">
+            <div class="callout-title">🟡 KEY RULE · Set slide size BEFORE you design</div>
+            <p>Changing aspect ratio after layouts are built forces PowerPoint to rescale — <em>Maximize</em> (risking overflow) or <em>Ensure Fit</em> (shrinking everything). Either way, positions and background shapes get distorted. Decide once, up front.</p>
+          </div>
+        </div>
+      </details>
+      <details class="step">
+        <summary>
+          <span class="step-badge">🧱</span>
+          <div class="step-head"><h4>5.2 · One master, few layouts</h4><div class="step-sum">Use a single primary Slide Master; add a second only for a truly distinct system.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>Use a <strong>single primary Slide Master</strong>. Add a second only for a genuinely distinct visual system (light vs. dark). Multiple masters fragment design and make Copilot's layout selection less predictable.</p>
+        </div>
+      </details>
+      <details class="step">
+        <summary>
+          <span class="step-badge">💻</span>
+          <div class="step-head"><h4>5.3 · Author on the desktop</h4><div class="step-sum">Create masters, layouts &amp; placeholders only in PowerPoint for Windows or Mac.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>Create and edit masters, layouts, and placeholders only in <strong>PowerPoint for Windows or Mac</strong>. Any platform can <em>consume</em> a template — but desktop is the authoring headquarters.</p>
+          <div class="callout callout-avoid">
+            <div class="callout-title">🔴 AVOID · Authoring in PowerPoint for the web</div>
+            <p>You cannot create a template or edit masters/layouts in PowerPoint for the web. Author on desktop; consume anywhere.</p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+<!-- ════════ BUILD THE TEMPLATE ════════ -->
+<section id="build">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Part III · Building the Template</p>
+    <h2 class="section-title fade-in">Build the template</h2>
+    <p class="section-intro fade-in">Build <strong>structure first, examples second, real content last</strong>. Below is your roadmap; every numbered step under it expands with the exact clicks and a screenshot. Do one, collapse it, move on.</p>
+
+    <h3 class="block-title fade-in" style="text-align:center;">The 10-step roadmap</h3>
+    <div class="roadmap fade-in">
+      <div class="roadmap-step"><div><strong>Set the slide size</strong><span>16:9 — before anything else.</span></div></div>
+      <div class="roadmap-step"><div><strong>Define the Theme</strong><span>Colors, fonts, effects.</span></div></div>
+      <div class="roadmap-step"><div><strong>Open View → Slide Master</strong><span>Enter the authoring environment.</span></div></div>
+      <div class="roadmap-step"><div><strong>Configure the Slide Master</strong><span>Background, title/body styles, logo, footer system, grid.</span></div></div>
+      <div class="roadmap-step"><div><strong>Create &amp; rename only the layouts you need</strong><span>Semantic names.</span></div></div>
+      <div class="roadmap-step"><div><strong>Add placeholders to each layout</strong><span>Correctly typed, positioned, sized.</span></div></div>
+      <div class="roadmap-step"><div><strong>Set typography &amp; paragraph spacing</strong><span>One context-aware scale.</span></div></div>
+      <div class="roadmap-step"><div><strong>Add footers, numbers, dates, logos</strong><span>Low-profile, consistent.</span></div></div>
+      <div class="roadmap-step"><div><strong>Bake in accessibility</strong><span>Titles, contrast, reading order.</span></div></div>
+      <div class="roadmap-step"><div><strong>Build sample slides, save as .potx, version it</strong><span>Covered in Parts IV–V.</span></div></div>
+    </div>
+
+    <h3 class="block-title fade-in" style="text-align:center;">Follow the steps</h3>
+    <p class="fade-in narrow" style="text-align:center;margin-left:auto;margin-right:auto;">Open a step to see the menu clicks, the detail, and a picture of what you should see.</p>
+    <div class="steps-control fade-in"><button onclick="toggleAllSteps('build-steps')">Expand / collapse all</button></div>
+    <div class="steps fade-in" id="build-steps">
+
+      <!-- STEP 7 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">7</span>
+          <div class="step-head"><h4>Build the Theme</h4><div class="step-sum">Encode your brand once — 12 colors + a heading/body font pair + effects.</div><span class="step-time">~20 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>A theme is three coordinated pieces: <strong>theme colors</strong> (a 12-slot system), <strong>theme fonts</strong> (a heading/body pair), and <strong>theme effects</strong>. Encoding your brand here — not on individual objects — is what makes the system re-skin automatically and gives Copilot reliable design handles.</p>
+
+          <h4 class="sub-title">7.1 · Theme colors — the 12-slot system</h4>
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Slide Master</span><span class="cp-arrow">▸</span><span class="cp-chip">Colors</span><span class="cp-arrow">▸</span><span class="cp-chip">Customize Colors</span></div>
+          <p>A theme color set contains 12 coordinated colors. The gallery shows only 8 — the first pair (text/background) and last pair (hyperlinks) are hidden. Map your brand like this:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Slot</th><th>Role</th><th>Typical brand mapping</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Dark 1 / Light 1</strong></td><td>Primary text &amp; primary background</td><td>Usually black &amp; white</td></tr>
+                <tr><td><strong>Dark 2 / Light 2</strong></td><td>Secondary text &amp; secondary background</td><td>Dark gray / light gray</td></tr>
+                <tr><td><strong>Accent 1</strong></td><td>Primary brand color — default for shapes &amp; charts</td><td>Your hero brand color</td></tr>
+                <tr><td><strong>Accent 2–6</strong></td><td>Supporting colors, in usage-frequency order</td><td>Secondary palette + data-viz colors</td></tr>
+                <tr><td><strong>Hyperlink / Followed</strong></td><td>Link states</td><td>Often Accent 1 + a muted variant</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ol class="actions">
+            <li>Open <strong>Customize Colors</strong> from the path above.</li>
+            <li>Set <strong>all 12 slots</strong> from your worksheet (Accents 1–6 drive default chart-series colors in order).</li>
+            <li><strong>Name the set</strong> (e.g. "Light Mode") and click <strong>Save</strong>.</li>
+            <li>Record HEX/RGB (and CMYK/PANTONE if you print).</li>
+          </ol>
+          <figure class="shot">
+            <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/theme-colors-dialog.png" alt="The Create New Theme Colors dialog showing all 12 theme slots" onclick="openImg('/images/guides/powerpoint-template-brand-kit/theme-colors-dialog.png','The Create New Theme Colors dialog — all 12 slots mapped and saved as a named set.')" loading="lazy">
+            <figcaption>The <strong>Create New Theme Colors</strong> dialog with all 12 slots mapped — Text/Background (×4), Accent 1–6, and Hyperlink (×2). <span class="pill">Microsoft brand template</span></figcaption>
+          </figure>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The “Colors” dropdown open on the Slide Master ribbon</h5>
+            <p>A tight screenshot showing <em>where</em> to click before the dialog appears — so a first-timer can find the button.</p>
+            <ul class="spec-callouts">
+              <li>Slide Master tab active on the ribbon, <b>Colors</b> dropdown button expanded.</li>
+              <li>Highlight (red box/arrow) on <b>“Customize Colors…”</b> at the bottom of the dropdown.</li>
+              <li>Show 2–3 built-in color sets above it so the list context is clear.</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/theme-colors-menu.png</b></span><span>Aspect: <b>4:3 or square crop</b></span><span>Source: <b>PowerPoint desktop</b></span></div>
+          </div>
+          <div class="callout callout-key">
+            <div class="callout-title">🟡 KEY RULE · Theme color vs. fixed color</div>
+            <p>Picking from the <strong>THEME</strong> palette stores a <em>reference</em>, so every object re-skins automatically. Picking "Standard Colors" or "More Colors" stores a <strong>fixed hex</strong> that never updates — the cause of patchwork decks. Always color from theme swatches; for Copilot, never hard-code custom RGB.</p>
+          </div>
+
+          <h4 class="sub-title">7.2 · Theme fonts — the heading/body pair</h4>
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Slide Master</span><span class="cp-arrow">▸</span><span class="cp-chip">Fonts</span><span class="cp-arrow">▸</span><span class="cp-chip">Customize Fonts</span></div>
+          <ul class="clean">
+            <li>Set one <strong>heading</strong> and one <strong>body</strong> font. All text inherits them; changing the pair updates the whole deck.</li>
+            <li>Use installed / system-safe fonts (Aptos, Segoe UI, Arial) to avoid substitution. If you use a brand font, <strong>embed it</strong> (<em>File → Options → Save → Embed fonts</em>) or deploy the files to users.</li>
+            <li>Avoid stylized display fonts for body text. Keep the hierarchy simple: title, subtitle, section heading, body, caption, footer, metric.</li>
+          </ul>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · Embedding: "used" vs. "all characters"</div>
+            <p>"Embed only the characters used" keeps the file smaller but blocks recipients from editing with that font. For a template others will build on, choose <strong>"Embed all characters."</strong></p>
+          </div>
+
+          <h4 class="sub-title">7.3 · Theme effects &amp; 7.4 · Save the theme</h4>
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Design</span><span class="cp-arrow">▸</span><span class="cp-chip">Themes</span><span class="cp-arrow">▸</span><span class="cp-chip">Save Current Theme</span></div>
+          <p>Theme effects are the preset look for shape fills, outlines, and shadows. You can pick a built-in set but cannot create a custom one — choose one restrained style (heavy bevels/glows/3-D read as dated). Then save the whole scheme to produce a reusable <code>.thmx</code>.</p>
+          <div class="takeaway"><span class="tk-icon">⭐</span><div><strong>Step 7 done when:</strong> all 12 color slots are set &amp; named, a heading/body font pair is applied, and the theme is saved as a .thmx.</div></div>
+        </div>
+      </details>
+
+      <!-- STEP 8 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">8</span>
+          <div class="step-head"><h4>Build the Slide Master</h4><div class="step-sum">Put only the truly-global elements here — they repeat on every layout and slide.</div><span class="step-time">~25 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">View</span><span class="cp-arrow">▸</span><span class="cp-chip">Slide Master</span><span class="cp-arrow">▸</span><span class="cp-chip">select the top (master) thumbnail</span></div>
+          <p>Everything global lives on the master — and <em>only</em> genuinely universal elements belong here, because anything on the master repeats everywhere. Configure:</p>
+          <div class="grid grid-2">
+            <div class="card"><h4>🎨 Background</h4><p>Default fill and master color scheme. Keep it simple: solid fills or very subtle gradients. Avoid image backgrounds as the default.</p></div>
+            <div class="card"><h4>🔤 Title placeholder</h4><p>Position, theme heading font, size, color, alignment. Cascades to all layouts.</p></div>
+            <div class="card"><h4>📝 Body / content placeholder</h4><p>Bullet styles, indent levels, sizes, colors, paragraph spacing.</p></div>
+            <div class="card"><h4>🏷️ Logo</h4><p>Insert once on the master so it appears everywhere; override on a layout only when needed (e.g. reversed logo on dark dividers).</p></div>
+            <div class="card"><h4>📄 Footer / date / number</h4><p>Enable and style the three master footer placeholders (Step 13).</p></div>
+            <div class="card"><h4>📐 Grid &amp; guides</h4><p>Establish safe margins and column structure (Step 12).</p></div>
+          </div>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The Slide Master view, master thumbnail selected</h5>
+            <p>The single most useful orientation shot in the whole guide — it shows the authoring environment a beginner has never seen.</p>
+            <ul class="spec-callouts">
+              <li>Left rail: the larger <b>master thumbnail</b> at top with its smaller <b>layout children</b> indented beneath it.</li>
+              <li>Center: the master slide with its <b>title</b> and <b>body</b> placeholders visible.</li>
+              <li>Ribbon: the orange <b>Slide Master</b> contextual tab open.</li>
+              <li>Callout arrow pointing from master → layouts to illustrate “parent vs. children.”</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/slide-master-view.png</b></span><span>Aspect: <b>16:9</b></span><span>Source: <b>PowerPoint desktop</b></span></div>
+          </div>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · Master vs. layout decision rule</div>
+            <p>Repeats almost everywhere and must not drift → <strong>MASTER</strong>. Belongs only to a particular slide type (a quote mark, agenda rail, divider graphic) → <strong>that LAYOUT</strong>. Truly one-off content → the individual slide, not the template.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 9 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">9</span>
+          <div class="step-head"><h4>Build the Layouts</h4><div class="step-sum">Curate ~8–14 core layouts (18–30 for a rich Copilot library) and name them semantically.</div><span class="step-time">~40 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Rename a layout</span><span class="cp-chip">Right-click layout thumbnail</span><span class="cp-arrow">▸</span><span class="cp-chip">Rename Layout</span></div>
+          <p>Layouts are the child blueprints — one per slide type. Curate them; don't accept PowerPoint's defaults wholesale. A practical enterprise template needs roughly <strong>8–14 core layouts</strong>; a richer Copilot-ready library is typically <strong>18–30</strong>.</p>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · Layouts vs. sample slides — don't confuse these</div>
+            <p><strong>Layouts</strong> live inside the Slide Master and define placeholder arrangements (build them here). <strong>Sample slides</strong> are finished example slides saved in the .potx in Normal view — Copilot learns primarily from these (build them in Part IV).</p>
+          </div>
+          <h4 class="sub-title">9.2 · The core layout set (keep these)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Layout</th><th>Why it exists</th><th>Default guidance</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Title Slide</strong></td><td>Opens the deck</td><td>Minimal content; optional subtitle; no page number</td></tr>
+                <tr><td><strong>Section Header / Divider</strong></td><td>Resets attention between chapters</td><td>Big title, little else; strong brand background</td></tr>
+                <tr><td><strong>Title and Content</strong></td><td>The workhorse</td><td>One flexible content region; most common default</td></tr>
+                <tr><td><strong>Two Content</strong></td><td>Paired ideas / two visuals</td><td>Two equal blocks</td></tr>
+                <tr><td><strong>Comparison</strong></td><td>Side-by-side with column headings</td><td>Better than Two Content when each column needs a title</td></tr>
+                <tr><td><strong>Title Only</strong></td><td>Modular base for custom designs</td><td>Title plus open canvas</td></tr>
+                <tr><td><strong>Blank</strong></td><td>Escape hatch for experts</td><td>Still inherits the theme; keep but de-emphasize</td></tr>
+                <tr><td><strong>Content with Caption</strong></td><td>Framed media plus explanation</td><td>More structured than a freehand box + image</td></tr>
+                <tr><td><strong>Picture with Caption</strong></td><td>Image-led evidence / hero</td><td>Consistent crop/size behavior</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 class="sub-title">9.3 · The Copilot-ready business library (add as needed)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Group</th><th>Representative layouts</th></tr></thead>
+              <tbody>
+                <tr><td><strong>A. Foundational</strong></td><td>Title Slide, Section Divider, Agenda, Title and Content, Two Content, Comparison, Executive Summary, Closing / Thank You, Blank</td></tr>
+                <tr><td><strong>B. Business narrative</strong></td><td>Problem / Opportunity, Recommendation, Before / After, Current State / Future State, Key Takeaways, Roadmap, Process, Risks and Mitigations, Call to Action</td></tr>
+                <tr><td><strong>C. Data &amp; evidence</strong></td><td>Chart Focus, Chart + Commentary, Table Focus, Metric Highlight, Three Metrics, Evidence / Source</td></tr>
+                <tr><td><strong>D. Visual storytelling</strong></td><td>Hero Image + Statement, Image Left / Text Right, Text Left / Image Right, Full-Bleed Image with Overlay, Quote, Team / People</td></tr>
+                <tr><td><strong>E. Optional advanced</strong></td><td>Case Study, Product Overview, Customer Story, Competitive Comparison, Workshop Exercise, Compliance / Disclaimer, Appendix Divider, Appendix Content, FAQ</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-key">
+            <div class="callout-title">🟡 KEY RULE · Name layouts semantically</div>
+            <p>Use names a human understands and a generation system can reason about: "Executive Summary," "Risks and Mitigations," "Three Metrics," "Section Divider." Never leave "Layout 1," "Blue Variant," or "Content Alt Copy 7."</p>
+          </div>
+          <figure class="shot">
+            <div class="shot-grid">
+              <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/layouts-light-titles.png" alt="Light mode title page options" onclick="openImg('/images/guides/powerpoint-template-brand-kit/layouts-light-titles.png','Light mode: title page options — gradient, illustration, and photo variants, each a named layout.')" loading="lazy">
+              <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/layouts-dark-titles.png" alt="Dark mode title page options" onclick="openImg('/images/guides/powerpoint-template-brand-kit/layouts-dark-titles.png','Dark mode: title page options — the same system rendered for dark backgrounds.')" loading="lazy">
+            </div>
+            <figcaption>"Layouts at a glance" — a curated, semantically named set in both light and dark modes. <span class="pill">Microsoft brand template</span></figcaption>
+          </figure>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The right-click “Rename Layout” action</h5>
+            <p>Shows beginners exactly how to give a layout a meaningful name.</p>
+            <ul class="spec-callouts">
+              <li>A layout thumbnail in the left rail right-clicked, context menu open.</li>
+              <li>Highlight <b>“Rename Layout”</b> in the menu.</li>
+              <li>Optionally a second inset showing the rename dialog with a semantic name typed in (e.g. <b>“Three Metrics”</b>).</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/rename-layout.png</b></span><span>Aspect: <b>4:3</b></span><span>Source: <b>PowerPoint desktop</b></span></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 10 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">10</span>
+          <div class="step-head"><h4>Add placeholders — the heart of a usable template</h4><div class="step-sum">Use real, correctly-typed placeholders — never loose text boxes.</div><span class="step-time">~30 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Slide Master</span><span class="cp-arrow">▸</span><span class="cp-chip">Insert Placeholder</span><span class="cp-arrow">▸</span><span class="cp-chip">choose type</span></div>
+          <p>Placeholders are the pre-formatted content containers (title, body, content, picture, chart, table, media) that separate a real template from a pretty background. For Copilot they're the safest way to signal "this is the title," "an image goes here," "a chart goes here."</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Placeholder</th><th>Use it when</th><th>Authoring guidance</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Title</strong></td><td>Almost every informational layout</td><td>Keep exactly one; accessibility &amp; features depend on it</td></tr>
+                <tr><td><strong>Subtitle</strong></td><td>Title slides</td><td>Speaker, date, client, or one-line descriptor</td></tr>
+                <tr><td><strong>Body / Text</strong></td><td>Narrative copy, bullets, detail</td><td>Attach to the layout; supports reset &amp; consistent styles</td></tr>
+                <tr><td><strong>Content (generic)</strong></td><td>Mixed content — text, chart, table, media, image</td><td>Flexible single slot; quick but less prescribed</td></tr>
+                <tr><td><strong>Picture</strong></td><td>Recurring image/hero slides</td><td>Consistent crop/size; safer than ad-hoc imports</td></tr>
+                <tr><td><strong>Chart / Table</strong></td><td>Repeated data slides</td><td>Sets author expectations for density &amp; proportion</td></tr>
+                <tr><td><strong>Footer / Date / Number</strong></td><td>Where governance text is desired</td><td>Enable per layout; keep low-profile</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="dd-grid">
+            <div class="dd-col dd-do"><h4>✅ Placeholder rules</h4><ul>
+              <li>Add placeholders only in Slide Master view (Insert Placeholder on a layout).</li>
+              <li>Size generously; keep positions consistent across related layouts.</li>
+              <li>Keep objects non-overlapping with clean negative space.</li>
+              <li>Set text-box internal margin to 0 when aligning text precisely to a line or icon.</li>
+              <li>Customize prompt text to guide humans: "Add one-sentence executive headline."</li>
+            </ul></div>
+            <div class="dd-col dd-dont"><h4>🚫 Placeholder mistakes</h4><ul>
+              <li>Don't substitute plain text boxes for placeholders — they carry no structural signal.</li>
+              <li>Never delete a placeholder from a built-in layout; duplicate the layout and edit the copy.</li>
+              <li>Don't overlap objects or stack decoration on text/image areas.</li>
+              <li>Don't encode meaning only in prompt wording — Copilot reads type, position, and size.</li>
+            </ul></div>
+          </div>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The “Insert Placeholder” dropdown expanded</h5>
+            <p>Shows the menu of placeholder types so users pick the right one instead of drawing a text box.</p>
+            <ul class="spec-callouts">
+              <li>Slide Master tab, <b>Insert Placeholder</b> button clicked, dropdown open.</li>
+              <li>List of types visible: <b>Content, Text, Picture, Chart, Table, SmartArt, Media, Online Image</b>.</li>
+              <li>A layout in the canvas showing one placeholder already drawn with its prompt text.</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/insert-placeholder.png</b></span><span>Aspect: <b>4:3</b></span><span>Source: <b>PowerPoint desktop</b></span></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 11 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">11</span>
+          <div class="step-head"><h4>Set the typography system</h4><div class="step-sum">Choose sizes once at theme/master/layout level; anchor to WCAG (≥18 pt body).</div><span class="step-time">~20 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>Choose sizes once and apply them everywhere. This context-aware scale is anchored to accessibility guidance (WCAG defines "large text" as ≥18 pt, or ≥14 pt bold).</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Text role</th><th>On-screen / Copilot</th><th>Projected / a11y</th><th>Dense appendix</th><th>Weight</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Cover (title-slide) title</strong></td><td>40–54 pt</td><td>44–60 pt</td><td>—</td><td>Bold</td></tr>
+                <tr><td><strong>Section / divider title</strong></td><td>32–40 pt</td><td>36–48 pt</td><td>—</td><td>Bold</td></tr>
+                <tr><td><strong>Standard slide title</strong></td><td>28–32 pt</td><td>28–36 pt</td><td>24–28 pt</td><td>Semibold / Bold</td></tr>
+                <tr><td><strong>Body text</strong></td><td>18–22 pt</td><td>24–28 pt</td><td>14–16 pt</td><td>Regular</td></tr>
+                <tr><td><strong>Caption</strong></td><td>10–12 pt</td><td>12–14 pt</td><td>10–11 pt</td><td>Regular, muted</td></tr>
+                <tr><td><strong>Footer / source</strong></td><td>9–11 pt</td><td>10–12 pt</td><td>8–9 pt</td><td>Regular, muted</td></tr>
+                <tr><td><strong>Metric / big number</strong></td><td>44–72 pt</td><td>48–80 pt</td><td>36–48 pt</td><td>Bold</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="clean">
+            <li>Left-align most business body content; center only titles where the design calls for it.</li>
+            <li>Restrain bullet levels: two levels cover most needs; more than three usually means the slide should be split.</li>
+            <li>Target body text ≥ 18 pt for on-screen/Copilot decks; only drop to 14–16 pt for dense appendix/table slides — and verify contrast when you do.</li>
+          </ul>
+          <figure class="shot">
+            <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/typography-basics.png" alt="Typesetting basics guidance slide" onclick="openImg('/images/guides/powerpoint-template-brand-kit/typography-basics.png','Typesetting basics — the Segoe family, line spacing, and a defined type-size scale.')" loading="lazy">
+            <figcaption>One heading/body family, single line spacing, and a limited size scale for clear hierarchy. <span class="pill">Microsoft brand template</span></figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <!-- STEP 12 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">12</span>
+          <div class="step-head"><h4>Spacing, grids, alignment &amp; brand zones</h4><div class="step-sum">A template is a spatial system — consistent gaps create a premium feel.</div><span class="step-time">~20 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Turn on guides</span><span class="cp-chip">View</span><span class="cp-arrow">▸</span><span class="cp-chip">Guides</span><span class="cp-arrow">▸</span><span class="cp-chip">Gridlines</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Element</th><th>Suggested value (16:9)</th></tr></thead>
+              <tbody>
+                <tr><td>Outer safe margin</td><td>0.4–0.6 in</td></tr>
+                <tr><td>Micro spacing (within dense lists)</td><td>0.08–0.12 in</td></tr>
+                <tr><td>Component spacing (between blocks)</td><td>0.18–0.25 in</td></tr>
+                <tr><td>Section spacing (between groups)</td><td>0.35–0.50 in</td></tr>
+                <tr><td>Column gutter</td><td>0.20–0.35 in</td></tr>
+                <tr><td>Title-to-content gap</td><td>0.20–0.35 in</td></tr>
+                <tr><td>Footer margin</td><td>0.20–0.30 in</td></tr>
+                <tr><td>Card internal padding</td><td>0.12–0.25 in</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="clean">
+            <li>Keep a minimum <strong>0.5″ outer safe margin</strong> on every edge — except intentional full-bleed background images.</li>
+            <li>A <strong>12-column grid</strong> on widescreen makes halves, thirds, quarters, and sixths easy.</li>
+            <li>For lists, control paragraph spacing (~12 pt before/after) rather than typing blank lines.</li>
+            <li>Build background shapes on the layout/master, never on front slides; color them with theme swatches.</li>
+          </ul>
+          <figure class="shot">
+            <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/layout-specifications.png" alt="Title slide layout with gridlines and placeholder specifications" onclick="openImg('/images/guides/powerpoint-template-brand-kit/layout-specifications.png','Title slide layout with specifications — gridlines, safe margins, and exact placeholder positions/sizes.')" loading="lazy">
+            <figcaption>"Layout with specifications": gridlines and guides, a 13.33″ × 7.5″ frame, logo at 0.64″ from the corner, placeholder margins set to 0. <span class="pill">Microsoft brand template</span></figcaption>
+          </figure>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · The CRAP principles + white space</div>
+            <p><strong>C</strong>ontrast, <strong>R</strong>epetition, <strong>A</strong>lignment, <strong>P</strong>roximity — plus <strong>white space</strong> as the fifth. Let slides breathe.</p>
+          </div>
+          <div class="callout callout-avoid">
+            <div class="callout-title">🔴 AVOID · Common "AI-slop" &amp; clutter tells</div>
+            <p>Thin accent lines under titles; gratuitous colored stripes; flattened PNG backgrounds or text baked into images; decorative shapes colliding with placeholders; native gradient shape fills (use a gradient image background instead).</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 13 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">13</span>
+          <div class="step-head"><h4>Footers, slide numbers, dates &amp; logos</h4><div class="step-sum">Enable the three footer placeholders; keep them low-profile and consistent.</div><span class="step-time">~15 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">Insert</span><span class="cp-arrow">▸</span><span class="cp-chip">Header &amp; Footer</span></div>
+          <p>The master provides Date, Footer (text), and Slide Number placeholders, plus your logo. PowerPoint supports footers, date/time, and slide numbers on slides — but <strong>not headers</strong> (those belong to Notes &amp; Handouts).</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Element</th><th>Recommendation</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Slide number</strong></td><td>Include on most content layouts; bottom corner, 10–12 pt, muted. Hide on the title slide.</td></tr>
+                <tr><td><strong>Footer text</strong></td><td>Confidentiality label, document title, department, or company name. Keep subtle.</td></tr>
+                <tr><td><strong>Date</strong></td><td>Set fixed for evergreen templates; auto-update only if every deck is genuinely dated.</td></tr>
+                <tr><td><strong>Logo</strong></td><td>Set on the master, same corner/size on every layout; inside a safe zone.</td></tr>
+                <tr><td><strong>Source note</strong></td><td>Provide a separate small placeholder on data/evidence layouts.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The “Header and Footer” dialog</h5>
+            <p>So users can match the exact checkboxes when enabling footer elements.</p>
+            <ul class="spec-callouts">
+              <li>The dialog open on the <b>Slide</b> tab.</li>
+              <li>Checkboxes visible: <b>Date and time</b>, <b>Slide number</b>, <b>Footer</b>, and <b>“Don’t show on title slide.”</b></li>
+              <li>Highlight the <b>Apply to All</b> button.</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/header-footer-dialog.png</b></span><span>Aspect: <b>4:3</b></span><span>Source: <b>PowerPoint desktop</b></span></div>
+          </div>
+          <div class="callout callout-tip">
+            <div class="callout-title">🟢 TIP · Footer variants instead of one overstuffed strip</div>
+            <p>Don't cram logo + confidentiality + date + page number + legal onto every slide. Create footer variants by layout: Standard, No footer (title/section), Confidential, Source-note, Client-facing, Internal-only.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 14 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">14</span>
+          <div class="step-head"><h4>Bake in accessibility</h4><div class="step-sum">Structural, not cosmetic — and doubly important when Copilot multiplies every flaw.</div><span class="step-time">~20 min</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Run the checker</span><span class="cp-chip">Review</span><span class="cp-arrow">▸</span><span class="cp-chip">Check Accessibility</span></div>
+          <ul class="clean">
+            <li><strong>A title on every layout.</strong> Unique, descriptive, for screen-reader navigation. Hide via the Selection Pane rather than deleting.</li>
+            <li><strong>Logical reading order.</strong> Add placeholders in intended reading sequence — screen readers follow add-order. Verify in the Selection Pane.</li>
+            <li><strong>Color contrast (WCAG AA).</strong> At least <strong>4.5:1</strong> for normal text, <strong>3:1</strong> for large text (≥18 pt, or ≥14 pt bold).</li>
+            <li><strong>Never rely on color alone</strong> — pair color with text/labels, especially in charts.</li>
+            <li><strong>Real tables for data</strong> — simple, with a header row, no merged/split cells.</li>
+            <li><strong>Alt text, captions, link text.</strong> Mark decorative objects as decorative; use descriptive hyperlink text.</li>
+            <li>Run the <strong>Accessibility Checker</strong> and set the document language before finalizing.</li>
+          </ul>
+          <figure class="shot">
+            <img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/accessibility-guidance.png" alt="Creating accessible content guidance slide" onclick="openImg('/images/guides/powerpoint-template-brand-kit/accessibility-guidance.png','Creating accessible content — contrast ≥ 4.5:1, shape + color, alt text, built-in layouts, and the Accessibility Checker.')" loading="lazy">
+            <figcaption>Accessibility essentials: 4.5:1 contrast, shape + color (not color alone), alt text, built-in layouts for reading order, and the Accessibility Checker. <span class="pill">Microsoft brand template</span></figcaption>
+          </figure>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · The checker is necessary but not sufficient</div>
+            <p>It doesn't catch every issue — thin fonts, small caps on photos, and color-on-gradient type can pass the math yet fail under projection. Always do a manual visual review.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+<!-- ════════ COPILOT OPTIMIZATION ════════ -->
+<section id="copilot">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Part IV · Optimizing for Microsoft 365 Copilot</p>
+    <h2 class="section-title fade-in">Make it Copilot-ready</h2>
+    <p class="section-intro fade-in">Copilot learns <strong>primarily from your sample slides</strong>, secondarily from structure and layouts, and falls back to the bare Slide Master when there aren't enough samples. This part gives Copilot enough to learn from — and governs the result.</p>
+
+    <div class="callout callout-key fade-in narrow">
+      <div class="callout-title">🟡 KEY RULE · The most important Copilot fact in this guide</div>
+      <p>Copilot primarily learns from your <strong>SAMPLE SLIDES</strong>. If your template lacks enough, Copilot falls back to the bare Slide Master — producing generic, off-brand output. <strong>A beautiful master alone is NOT enough.</strong></p>
+    </div>
+
+    <div class="steps-control fade-in"><button onclick="toggleAllSteps('copilot-steps')">Expand / collapse all</button></div>
+    <div class="steps fade-in" id="copilot-steps">
+
+      <!-- STEP 15 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">15</span>
+          <div class="step-head"><h4>Know which template Copilot uses</h4><div class="step-sum">Brand Kit first, then OAL, then Microsoft defaults.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>When generating, Copilot looks for a template in this order:</p>
+          <div class="roadmap" style="max-width:680px;">
+            <div class="roadmap-step"><div><strong>Brand Kit templates</strong><span>Used first for generation.</span></div></div>
+            <div class="roadmap-step"><div><strong>Organization Asset Library (OAL)</strong><span>Used as backup.</span></div></div>
+            <div class="roadmap-step"><div><strong>Microsoft default templates</strong><span>Used last.</span></div></div>
+          </div>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · How the pieces fit together</div>
+            <p><strong>Templates</strong> teach Copilot how your slides look. The <strong>Brand Kit</strong> governs the rules. The <strong>OAL</strong> distributes assets. <strong>Brand Checker</strong> enforces compliance on generated decks.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 16 -->
+      <details class="step" open>
+        <summary>
+          <span class="step-badge">16</span>
+          <div class="step-head"><h4>Build sample slides — the highest-leverage work</h4><div class="step-sum">Aim for 12+ finished example slides across light, medium &amp; heavy density.</div><span class="step-time">~2–3 hrs</span></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <p>This is the step most teams skip and the one that most determines Copilot quality. Sample slides are complete, finished example slides saved in the template (Normal view) that show Copilot how your organization actually presents content.</p>
+          <h4 class="sub-title">16.1 · What signals each sample slide must carry</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Signal Copilot reads</th><th>How you encode it</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Layout structure</strong></td><td>Real placeholders positioned and sized as intended</td></tr>
+                <tr><td><strong>Visual hierarchy</strong></td><td>Theme-driven title vs. subhead vs. body sizing; one dominant focal element</td></tr>
+                <tr><td><strong>Object relationships</strong></td><td>Image-to-caption, stat-to-label groupings kept tight and non-overlapping</td></tr>
+                <tr><td><strong>Content density</strong></td><td>A light, a medium, and a heavy example of your common slide types</td></tr>
+                <tr><td><strong>Color application</strong></td><td>Theme colors on shapes and chart series; never fixed custom hex</td></tr>
+                <tr><td><strong>Imagery treatment</strong></td><td>Full-bleed title images, inset content images — shown, not described</td></tr>
+                <tr><td><strong>Data style</strong></td><td>Branded chart / table / timeline / stat-callout examples, fully built</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 class="sub-title">16.2 · The recommended sample-slide set</h4>
+          <div class="grid grid-3">
+            <div class="card"><h4>📋 Structure</h4><p>Title; Agenda; Section Header / Divider</p></div>
+            <div class="card"><h4>📝 Content variants</h4><p>Text, bullets, icons, focus areas, image layouts</p></div>
+            <div class="card"><h4>📊 Data visualization</h4><p>Tables, charts, statistics, dashboards</p></div>
+            <div class="card"><h4>🗓️ Timelines &amp; process</h4><p>Timelines; process diagrams / flow charts</p></div>
+            <div class="card"><h4>💬 Voice</h4><p>Quotes / statements / testimonials; Q&amp;A</p></div>
+            <div class="card"><h4>🎯 Closing</h4><p>Summary / key takeaways; Thank you / next steps</p></div>
+          </div>
+
+          <h4 class="sub-title">16.3 · Demonstrate all three content densities</h4>
+          <div class="tabs" data-tabgroup="density">
+            <button class="tab active" onclick="switchTab('density','dens-light',this)">Light</button>
+            <button class="tab" onclick="switchTab('density','dens-medium',this)">Medium</button>
+            <button class="tab" onclick="switchTab('density','dens-heavy',this)">Heavy</button>
+          </div>
+          <div id="dens-light" class="tab-panel active" data-tabpanel="density">
+            <div class="grid grid-2">
+              <div class="card"><h4>💡 Light · intended use</h4><p>Big idea, quote, single metric, visual slide.</p></div>
+              <div class="card"><h4>🎨 Design guidance</h4><p>Large type, generous whitespace, minimal placeholders.</p></div>
+            </div>
+            <figure class="shot"><img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/sample-light-headline.png" alt="Light-density Big headline sample slide" onclick="openImg('/images/guides/powerpoint-template-brand-kit/sample-light-headline.png','Light density — a big headline with minimal supporting text and generous whitespace.')"><figcaption>Light density — "Big headline": large type, generous whitespace. <span class="pill">Microsoft brand template</span></figcaption></figure>
+          </div>
+          <div id="dens-medium" class="tab-panel" data-tabpanel="density">
+            <div class="grid grid-2">
+              <div class="card"><h4>💡 Medium · intended use</h4><p>Normal business slide.</p></div>
+              <div class="card"><h4>🎨 Design guidance</h4><p>Title + 2–4 content blocks; balanced (text one side, image the other).</p></div>
+            </div>
+            <figure class="shot"><img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/sample-medium-team.png" alt="Medium-density Our team sample slide" onclick="openImg('/images/guides/powerpoint-template-brand-kit/sample-medium-team.png','Medium density — a balanced Our team layout: five photo placeholders with name, role, and bio.')"><figcaption>Medium density — "Our team": title + repeated photo/name/role/bio blocks. <span class="pill">Microsoft brand template</span></figcaption></figure>
+          </div>
+          <div id="dens-heavy" class="tab-panel" data-tabpanel="density">
+            <div class="grid grid-2">
+              <div class="card"><h4>💡 Heavy · intended use</h4><p>Tables, risks, roadmap, appendix.</p></div>
+              <div class="card"><h4>🎨 Design guidance</h4><p>Smaller type, structured multi-column grid, still readable.</p></div>
+            </div>
+            <figure class="shot"><img class="shot-img" src="/images/guides/powerpoint-template-brand-kit/sample-heavy-timeline.png" alt="Heavy-density Timeline sample slide" onclick="openImg('/images/guides/powerpoint-template-brand-kit/sample-heavy-timeline.png','Heavy density — a Timeline with eight milestone nodes, each with a date and description.')"><figcaption>Heavy density — "Timeline": structured multi-node layout, smaller type. <span class="pill">Microsoft brand template</span></figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 17 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">17</span>
+          <div class="step-head"><h4>Configure the Brand Kit &amp; Brand Checker</h4><div class="step-sum">Upload the .potx, set the rule layer, and validate generated decks.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Upload path</span><span class="cp-chip">Copilot app</span><span class="cp-arrow">▸</span><span class="cp-chip">Create</span><span class="cp-arrow">▸</span><span class="cp-chip">More</span><span class="cp-arrow">▸</span><span class="cp-chip">Brand kits</span><span class="cp-arrow">▸</span><span class="cp-chip">Templates</span><span class="cp-arrow">▸</span><span class="cp-chip">Upload</span></div>
+          <p>The template teaches Copilot how slides look; the <strong>Brand Kit</strong> is the rule layer governing colors, voice, and imagery. Author the optimized template on desktop, then upload the <code>.potx</code>. Add it to your OAL too if users should find it under File → New.</p>
+          <div class="grid grid-3">
+            <div class="card"><h4>🏷️ Logos</h4><p>Primary, secondary, dark/light, and icon versions.</p></div>
+            <div class="card"><h4>🎨 Colors</h4><p>Brand hex values.</p></div>
+            <div class="card"><h4>🔤 Fonts</h4><p>Heading and body, including custom font uploads.</p></div>
+            <div class="card"><h4>🖼️ Imagery</h4><p>Approved images &amp; icons and photography rules.</p></div>
+            <div class="card"><h4>🗣️ Brand voice</h4><p>Tone, preferred terminology, and a do/don't list.</p></div>
+            <div class="card"><h4>📄 Seed from PDF</h4><p>Optionally extract colors, fonts, styles, and voice from a brand-guidelines PDF.</p></div>
+          </div>
+          <div class="img-spec">
+            <div class="spec-head"><span class="dot"></span>Image needed · NEW</div>
+            <h5>The Brand Kit “Templates → Upload” screen</h5>
+            <p>So users recognize the destination after the long click-path above.</p>
+            <ul class="spec-callouts">
+              <li>The Brand kits area in the Copilot app, <b>Templates</b> tab selected.</li>
+              <li>The <b>Upload</b> button highlighted, with one template thumbnail already present.</li>
+              <li>If possible, the breadcrumb showing <b>Create ▸ Brand kits</b> at the top.</li>
+            </ul>
+            <div class="spec-meta"><span>File: <b>images/brandkit-upload.png</b></span><span>Aspect: <b>16:9</b></span><span>Source: <b>Microsoft 365 Copilot app</b></span></div>
+          </div>
+          <div class="callout callout-tip">
+            <div class="callout-title">🟢 TIP · Validate with Brand Checker</div>
+            <p>Generate test decks and run <strong>Brand Checker</strong>. It flags and one-click-fixes incorrect colors/fonts, misplaced logos, off-brand imagery, and layout/spacing issues. (PowerPoint-only — no Excel equivalent.)</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 18 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">18</span>
+          <div class="step-head"><h4>Copilot MUST-DO / NEVER-DO quick reference</h4><div class="step-sum">The highest-impact dos and the cardinal don'ts, side by side.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="dd-grid">
+            <div class="dd-col dd-do"><h4>✅ The highest-impact must-dos</h4><ul>
+              <li>Populate with 12+ complete, single-purpose sample slides.</li>
+              <li>Show light / medium / heavy density.</li>
+              <li>Use real placeholders — correctly typed, positioned, sized.</li>
+              <li>Drive all styling from Theme definitions, not manual formatting.</li>
+              <li>Keep objects non-overlapping with clean negative space.</li>
+              <li>Fully brand the Slide Master as the fallback floor.</li>
+              <li>Author on desktop; back it with a Brand Kit; enforce with Brand Checker.</li>
+              <li>Test generation (create + edit) before declaring done.</li>
+            </ul></div>
+            <div class="dd-col dd-dont"><h4>🚫 The cardinal never-dos</h4><ul>
+              <li>Never rely on the Slide Master alone (no sample slides).</li>
+              <li>Never use icon/chart libraries instead of finished slides.</li>
+              <li>Never put how-to / instructional slides inside the template.</li>
+              <li>Never substitute text boxes for placeholders.</li>
+              <li>Never overlap objects or stack decoration on text/image areas.</li>
+              <li>Never hand-format instead of defining theme styles.</li>
+              <li>Never encode meaning only in placeholder wording.</li>
+              <li>Never author the template in PowerPoint for the web.</li>
+            </ul></div>
+          </div>
+          <div class="callout callout-note" style="margin-top:1.5rem;">
+            <div class="callout-title">🔵 NOTE · Worked example — the Microsoft brand template</div>
+            <p>The official <em>Microsoft brand template</em> aligns with nearly all of this guidance: a full <strong>12-slot theme</strong>, one <strong>Segoe UI</strong> heading/body pair, <strong>16:9</strong> at 13.33″ × 7.5″, ~0.64″ safe margins, built-in titled layouts, and a <strong>4.5:1</strong> contrast rule.</p>
+            <p style="margin-bottom:0;">Two things to adapt for a Copilot-ready build: (1) it keeps guideline pages up front labeled <em>"Delete this section before publishing"</em> — do exactly that; and (2) its default body text is <strong>16 pt</strong>, whereas this guide recommends <strong>≥ 18 pt</strong>. Bump body sizes up before you ship.</p>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+<!-- ════════ VALIDATE & GOVERN ════════ -->
+<section id="govern">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Part V · Validate, Save, Deploy &amp; Govern</p>
+    <h2 class="section-title fade-in">Validate &amp; govern</h2>
+    <p class="section-intro fade-in">Test against real Copilot workflows, deploy through an Organization Asset Library, version it like a product, and run the final QA checklist before you ship.</p>
+
+    <div class="steps-control fade-in"><button onclick="toggleAllSteps('govern-steps')">Expand / collapse all</button></div>
+    <div class="steps fade-in" id="govern-steps">
+
+      <!-- STEP 19 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">19</span>
+          <div class="step-head"><h4>Save in the right format</h4><div class="step-sum">.potx is your production template — avoid legacy .ppt.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="clickpath"><span class="cp-label">Click path</span><span class="cp-chip">File</span><span class="cp-arrow">▸</span><span class="cp-chip">Save As</span><span class="cp-arrow">▸</span><span class="cp-chip">PowerPoint Template (.potx)</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Format</th><th>What it is</th><th>Use it for</th><th>Watch-outs</th></tr></thead>
+              <tbody>
+                <tr><td><strong>.potx</strong></td><td>Modern PowerPoint Template</td><td>Your production template — the default</td><td>Best for editable, modern authoring</td></tr>
+                <tr><td><strong>.thmx</strong></td><td>Office Theme</td><td>Sharing just the visual system across Office</td><td>Style only — not a full template</td></tr>
+                <tr><td><strong>.potm</strong></td><td>Macro-enabled template</td><td>Only if macros are genuinely required</td><td>Adds governance/security overhead</td></tr>
+                <tr><td><strong>.pptx</strong></td><td>A presentation (not a template)</td><td>A sample/validation deck or one-off</td><td>Not as robust as a versioned template</td></tr>
+                <tr><td><strong>.pot / .ppt</strong></td><td>Legacy 97–2003 binary</td><td>Only if a downstream tool requires it</td><td>Degrades modern features; can lose placeholder text</td></tr>
+                <tr><td><strong>.pdf</strong></td><td>Fixed output</td><td>Final distribution or QA print</td><td>Not a reusable template</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>PowerPoint stores it in Custom Office Templates; users reach it via <em>File → New → Custom Office Templates</em>. Embed brand fonts so they survive on machines that don't have them.</p>
+          <div class="callout callout-avoid">
+            <div class="callout-title">🔴 AVOID · Don't save to .ppt "just in case"</div>
+            <p>The legacy binary triggers Compatibility Mode and can turn shapes into images, make SmartArt non-editable, rasterize effects, and permanently lose custom placeholder text.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 20 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">20</span>
+          <div class="step-head"><h4>Test with real Copilot prompts &amp; score</h4><div class="step-sum">Don't ship until common prompts consistently score 4+ out of 5.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Test</th><th>Prompt / input</th><th>Check for</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1. Prompt-only deck</strong></td><td>"Create a 10-slide executive briefing about launching a new customer onboarding program…"</td><td>Sensible layouts; consistent titles; brand colors; logo/footer placement; no overlaps</td></tr>
+                <tr><td><strong>2. Word-to-PowerPoint</strong></td><td>Use a real Word brief.</td><td>Headings map to section slides; charts/tables land well; brand preserved</td></tr>
+                <tr><td><strong>3. Add-slide</strong></td><td>"Add a slide summarizing the top three implementation risks and mitigations."</td><td>Picks the risk layout; balanced content; no overflow</td></tr>
+                <tr><td><strong>4. Reformat</strong></td><td>"Reformat this slide as a three-column comparison with one icon per column."</td><td>A supporting layout exists; icons placed predictably; columns aligned</td></tr>
+                <tr><td><strong>5. Stress test</strong></td><td>Use intentionally messy source material.</td><td>Still produces usable slides; prevents brand violations</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 class="sub-title">20.2 · Scoring rubric (1–5 each)</h4>
+          <div class="grid grid-3">
+            <div class="card"><p><strong>Brand fidelity</strong> · unmistakably on-brand?</p></div>
+            <div class="card"><p><strong>Layout selection</strong> · sensible layouts?</p></div>
+            <div class="card"><p><strong>Placeholder behavior</strong> · right places?</p></div>
+            <div class="card"><p><strong>Visual polish</strong> · executive-ready?</p></div>
+            <div class="card"><p><strong>Readability</strong> · readable at distance?</p></div>
+            <div class="card"><p><strong>Density control</strong> · balanced, not crowded?</p></div>
+            <div class="card"><p><strong>Accessibility</strong> · titles, contrast, order?</p></div>
+            <div class="card"><p><strong>Data handling</strong> · charts/tables usable?</p></div>
+            <div class="card"><p><strong>Image handling</strong> · safe &amp; attractive?</p></div>
+            <div class="card"><p><strong>Editability</strong> · easy to refine?</p></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 21+22 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">21</span>
+          <div class="step-head"><h4>Deploy &amp; govern</h4><div class="step-sum">Publish to the OAL, name &amp; version like a product, keep one source of truth.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="grid grid-2">
+            <div class="card"><h4>🚀 Deploy via the OAL</h4><p>Publish the finished .potx to a Microsoft 365 Organization Asset Library so everyone starts from the same approved source. Templates must be <strong>.potx</strong>; users need read permissions. It can take up to <strong>24 hours</strong> to appear in desktop apps.</p></div>
+            <div class="card"><h4>🏷️ Naming</h4><p>Encode the axes that matter: <code>Org_PresentationTemplate_16x9_Light_v1.2.0.potx</code>. Layout names: semantic where it helps (<code>Org_HeroImage_Dark</code>).</p></div>
+            <div class="card"><h4>🔢 Versioning (semantic)</h4><p><strong>Major</strong> — rules change affecting existing slides. <strong>Minor</strong> — new layouts / safe additions. <strong>Patch</strong> — footer counts, guides, contrast tweaks.</p></div>
+            <div class="card"><h4>📁 Published file set</h4><p><code>/PowerPoint</code> (.potx + variants), <code>/Themes</code> (.thmx), <code>/Assets</code> (logos, icons, backgrounds), <code>/Documentation</code> (usage guide, layout inventory, prompt examples).</p></div>
+          </div>
+          <div class="callout callout-note">
+            <div class="callout-title">🔵 NOTE · One approved source of truth</div>
+            <p>Version visibly in file properties, file name, and admin docs. Keep a change log, a named owner, and a review cadence. Publish one approved source rather than emailed copies.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- STEP 24 -->
+      <details class="step">
+        <summary>
+          <span class="step-badge">24</span>
+          <div class="step-head"><h4>Common pitfalls &amp; quick fixes</h4><div class="step-sum">A symptom-cause-fix table for when something looks wrong.</div></div>
+          <svg class="step-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <hr class="step-divider">
+        <div class="step-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td>Colors don't update when theme changes</td><td>Objects colored with fixed/custom hex</td><td>Recolor from theme swatches; never hard-code RGB</td></tr>
+                <tr><td>Slides look inconsistent / drift</td><td>Design baked onto front slides</td><td>Move structure to master/layouts; use Home → Reset</td></tr>
+                <tr><td>Can't select/remove a logo or background</td><td>It lives on the master/layout (by design)</td><td>Edit it in Slide Master view, not Normal view</td></tr>
+                <tr><td>Footers/numbers don't appear</td><td>Placeholders turned off, or layout lacks them</td><td>Re-enable via Insert → Header &amp; Footer</td></tr>
+                <tr><td>File is huge</td><td>Embedded fonts + high-res images</td><td>Compress pictures; discard cropped data</td></tr>
+                <tr><td>Fonts substitute on other machines</td><td>Non-standard font, not embedded</td><td>Use system-safe fonts or embed/deploy the brand font</td></tr>
+                <tr><td>Placeholders/positions distorted</td><td>Slide size changed after building</td><td>Decide 16:9 first; rebuild rather than rescale</td></tr>
+                <tr><td>Copilot output is generic/off-brand</td><td>Too few sample slides; relying on master alone</td><td>Add 12+ complete sample slides; configure Brand Kit</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+    </div>
+
+    <h3 class="block-title fade-in" style="text-align:center;">23 · Final QA checklist (before you ship)</h3>
+    <p class="fade-in narrow" style="text-align:center;margin-left:auto;margin-right:auto;">Check items off as you verify them — your progress saves to this browser.</p>
+    <div class="progress-label fade-in"><span id="progress-count">0</span>/15 verified</div>
+    <div class="progress-track fade-in"><div class="progress-bar" id="progress-bar"></div></div>
+    <ul class="checklist fade-in">
+      <li data-key="colors"><span class="cb">✓</span><span class="ci"><strong>All 12 color slots set</strong> — every element uses theme swatches (not fixed hex).</span></li>
+      <li data-key="fontpair"><span class="cb">✓</span><span class="ci"><strong>Theme font pair applied</strong> — chart accents distinct.</span></li>
+      <li data-key="onemaster"><span class="cb">✓</span><span class="ci"><strong>One master</strong> — curated, semantically named layouts.</span></li>
+      <li data-key="masterelems"><span class="cb">✓</span><span class="ci"><strong>Logo/footer/date/number styled on the master</strong>; every layout has a Title.</span></li>
+      <li data-key="nodesign"><span class="cb">✓</span><span class="ci"><strong>No design baked on front slides.</strong></span></li>
+      <li data-key="margins"><span class="cb">✓</span><span class="ci"><strong>≥ 0.5″ edge margins</strong>; consistent gaps; aligned columns.</span></li>
+      <li data-key="nooverlap"><span class="cb">✓</span><span class="ci"><strong>No overlaps / overflow / footer collisions</strong>; background shapes theme-colored.</span></li>
+      <li data-key="contrast"><span class="cb">✓</span><span class="ci"><strong>Contrast meets 4.5:1 / 3:1</strong>; not relying on color alone.</span></li>
+      <li data-key="readorder"><span class="cb">✓</span><span class="ci"><strong>Logical reading order</strong>; simple tables; Accessibility Checker passes; language set.</span></li>
+      <li data-key="samples"><span class="cb">✓</span><span class="ci"><strong>12+ complete sample slides</strong> across light/medium/heavy density.</span></li>
+      <li data-key="nolibrary"><span class="cb">✓</span><span class="ci"><strong>No element-library dumps; no instructional pages</strong> inside the template.</span></li>
+      <li data-key="brandkit"><span class="cb">✓</span><span class="ci"><strong>Brand Kit configured</strong>; test decks generated and scored 4+; Brand Checker run.</span></li>
+      <li data-key="potx"><span class="cb">✓</span><span class="ci"><strong>Saved as .potx</strong>; fonts embedded; versioned.</span></li>
+      <li data-key="freshdeck"><span class="cb">✓</span><span class="ci"><strong>Tested by creating a fresh deck</strong> from the template.</span></li>
+      <li data-key="nohidden"><span class="cb">✓</span><span class="ci"><strong>Nothing depends on hidden author-only artifacts.</strong></span></li>
+    </ul>
+    <div class="congrats" id="congrats-msg">🎉 <strong>Ready to ship.</strong> Your template passes the full QA checklist — publish it as your single source of truth.</div>
+  </div>
+</section>
+<!-- ════════ GLOSSARY & RESOURCES ════════ -->
+<section id="glossary">
+  <div class="cgp-container">
+    <p class="section-kicker fade-in">Reference</p>
+    <h2 class="section-title fade-in">Glossary &amp; resources</h2>
+    <div class="grid grid-2 fade-in" style="align-items:start;">
+      <div class="card">
+        <h4>📖 Glossary</h4>
+        <dl class="glossary">
+          <dt>Theme</dt><dd>A coordinated set of colors, fonts, and effects (plus background). Portable as .thmx.</dd>
+          <dt>Slide Master</dt><dd>The top-level blueprint slide; parent of all layouts. Holds global elements.</dd>
+          <dt>Layout</dt><dd>A child blueprint for one slide type, defining its placeholder arrangement.</dd>
+          <dt>Placeholder</dt><dd>A pre-formatted content container added in Slide Master view.</dd>
+          <dt>Template (.potx)</dt><dd>The saved, reusable package of theme + master + layouts + sample slides.</dd>
+          <dt>Sample slide</dt><dd>A finished example slide saved in the template; Copilot's primary learning signal.</dd>
+          <dt>Brand Kit</dt><dd>The Copilot rule layer governing colors, fonts, voice, logos, and approved imagery.</dd>
+          <dt>Brand Checker</dt><dd>The Copilot tool that flags and fixes brand violations in generated decks (PowerPoint only).</dd>
+          <dt>OAL</dt><dd>Organization Asset Library — the SharePoint-based store that distributes templates.</dd>
+          <dt>Content density</dt><dd>How much content a slide holds — light, medium, or heavy.</dd>
+          <dt>WCAG AA</dt><dd>4.5:1 contrast for normal text, 3:1 for large text.</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h4>🔗 Sources &amp; further reading</h4>
+        <ul class="clean" style="margin-left:1rem;">
+          <li><a href="https://support.microsoft.com/en-us/office/create-and-save-a-powerpoint-template-ee4429ad-2a74-4100-82f7-50f8169c8aca" target="_blank" rel="noopener">Create and save a PowerPoint template ↗</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/customize-a-slide-master-036d317b-3251-4237-8ddc-22f9f9b05ed2" target="_blank" rel="noopener">Customize a slide master ↗</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/add-edit-or-remove-a-placeholder-on-a-slide-layout-2e5cd2b7-c0a8-4c1f-8d1d-d4c9c2c5c8e2" target="_blank" rel="noopener">Add, edit, or remove a placeholder ↗</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/add-color-and-design-to-your-slides-with-themes-7e2911a5-9067-4d9f-8e22-1bb14a4f9d0e" target="_blank" rel="noopener">Add color &amp; design with Themes ↗</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/change-the-size-of-your-slides-040a811c-be43-40b9-8d04-0de5ed79987e" target="_blank" rel="noopener">Change the size of your slides ↗</a></li>
+          <li><a href="https://support.microsoft.com/en-us/office/make-your-powerpoint-presentations-accessible-to-people-with-disabilities-6f7772b2-2f33-4bd2-8ca7-dae3b2b3ef25" target="_blank" rel="noopener">Make presentations accessible ↗</a></li>
+          <li><a href="https://learn.microsoft.com/en-us/microsoft-365/enterprise/organization-asset-library" target="_blank" rel="noopener">Manage organization assets (OAL) ↗</a></li>
+          <li><a href="https://www.w3.org/TR/WCAG21/#contrast-minimum" target="_blank" rel="noopener">WCAG 2.1 — Contrast (Minimum) ↗</a></li>
+        </ul>
+        <div class="callout callout-note" style="margin-top:1rem;">
+          <div class="callout-title">🔵 NOTE · About this guide</div>
+          <p style="font-size:0.85rem;">Synthesizes four internal source documents. Where sources disagreed — most notably on typography sizing — the recommendation was anchored to WCAG AA and Microsoft accessibility guidance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CLOSING ════════ -->
+<section class="closing" style="border-top:none;">
+  <div class="cgp-container narrow">
+    <h2 style="font-size:2rem;font-weight:600;margin-bottom:1rem;">Ship it with confidence</h2>
+    <p class="lede">A great template is invisible: people and Copilot both produce on-brand decks without thinking about it. Build the structure first, populate real sample slides, govern with a Brand Kit, and version it like a product.</p>
+    <div class="cgp-hero-ctas" style="margin-top:1.5rem;">
+      <a href="#govern" class="cgp-btn cgp-btn-primary">Review the QA checklist</a>
+      <a href="https://support.microsoft.com/en-us/office/create-and-save-a-powerpoint-template-ee4429ad-2a74-4100-82f7-50f8169c8aca" target="_blank" rel="noopener" class="cgp-btn cgp-btn-ghost">Microsoft Support: Create a template ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ DISCLAIMER ════════ -->
+<section style="padding: 0 0 3rem;">
+  <div class="cgp-container narrow">
+    <p style="color: var(--text-meta); font-size: 0.85rem; font-style: italic; text-align: center; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+      This is not an official Microsoft resource. The views and guidance here represent personal perspective from work in the field.
+    </p>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+
+
+<!-- ════════ LIGHTBOX ════════ -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content" id="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+    <div class="lightbox-body" id="lightbox-body"></div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<div class="toast" id="toast">Saved!</div>
+
+
+
+</div>
+
+<style>
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — Light Mode (default root)
+   ═══════════════════════════════════════════ */
+.cgp-root {
+  --bg-base: #F7F5F2;
+  --bg-surface: #FFFFFF;
+  --bg-raised: #F0EDE8;
+  --bg-hero-glow-1: rgba(217, 119, 6, 0.10);
+  --bg-hero-glow-2: rgba(37, 99, 235, 0.07);
+  --text-primary: #111008;
+  --text-secondary: #615E58;
+  --text-meta: #9A9690;
+  --accent: #C2410C;
+  --accent-hover: #9A3412;
+  --accent-subtle: rgba(194, 65, 12, 0.08);
+  --border: rgba(17, 16, 8, 0.08);
+  --border-strong: rgba(17, 16, 8, 0.14);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(194,65,12,0.12);
+  --nav-bg: rgba(247, 245, 242, 0.85);
+  --callout-key-bg: #FFFBEB;
+  --callout-key-border: #FCD34D;
+  --callout-tip-bg: #d4f0e0;
+  --callout-tip-border: #6EE7A0;
+  --callout-avoid-bg: #FEF2F2;
+  --callout-avoid-border: #FCA5A5;
+  --callout-note-bg: #EFF6FF;
+  --callout-note-border: #BFDBFE;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Commit Mono', 'Fira Code', monospace;
+}
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — Dark Mode
+   ═══════════════════════════════════════════ */
+[data-theme="dark"] .cgp-root {
+  --bg-base: #14110F;
+  --bg-surface: #1C1815;
+  --bg-raised: #251F1B;
+  --bg-hero-glow-1: rgba(251, 146, 60, 0.08);
+  --bg-hero-glow-2: rgba(96, 165, 250, 0.05);
+  --text-primary: #ECEBE7;
+  --text-secondary: #A29C93;
+  --text-meta: #6B655F;
+  --accent: #FB923C;
+  --accent-hover: #FDBA74;
+  --accent-subtle: rgba(251, 146, 60, 0.10);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(251, 146, 60, 0.15);
+  --nav-bg: rgba(20, 17, 15, 0.88);
+  --callout-key-bg: rgba(251, 191, 36, 0.07);
+  --callout-key-border: rgba(251, 191, 36, 0.28);
+  --callout-tip-bg: rgba(52, 211, 153, 0.06);
+  --callout-tip-border: rgba(52, 211, 153, 0.22);
+  --callout-avoid-bg: rgba(248, 113, 113, 0.06);
+  --callout-avoid-border: rgba(248, 113, 113, 0.24);
+  --callout-note-bg: rgba(96, 165, 250, 0.06);
+  --callout-note-border: rgba(96, 165, 250, 0.22);
+}
+
+/* ═══════════════════════════════════════════ RESET & BASE ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:global(html) { scroll-behavior: smooth; scroll-padding-top: 112px; }
+.cgp-root {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.68;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); line-height: 1.2; font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-hover); }
+img { max-width: 100%; display: block; }
+.cgp-container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+.narrow { max-width: 720px; margin: 0 auto; }
+p { margin-bottom: 1rem; color: var(--text-secondary); }
+strong { color: var(--text-primary); font-weight: 600; }
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--bg-raised); padding: 0.1em 0.4em; border-radius: 4px; color: var(--accent); }
+
+/* ═══════════════════════════════════════════ FADE-IN ═══════════════════════════════════════════ */
+.fade-in { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════ SCROLL PROGRESS ═══════════════════════════════════════════ */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: var(--accent); z-index: 200; transition: width 0.1s linear; }
+
+/* ═══════════════════════════════════════════ NAV ═══════════════════════════════════════════ */
+.nav { position: sticky; top: 0; z-index: 100; height: 56px; background: var(--nav-bg); backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%); border-bottom: 1px solid var(--border); display: flex; align-items: center; }
+.nav .cgp-container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.nav-brand { display: flex; align-items: center; gap: 0.55rem; font-family: var(--font-heading); font-weight: 600; font-size: 1.15rem; color: var(--text-primary); text-decoration: none; }
+.nav-logo { width: 28px; height: 28px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: -0.5px; }
+.nav-links { display: flex; align-items: center; gap: 0.15rem; list-style: none; }
+.nav-links a { display: block; padding: 0.35rem 0.7rem; font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); border-radius: 6px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); background: var(--accent-subtle); }
+.nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+.nav-btn { background: none; border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.55rem; cursor: pointer; color: var(--text-secondary); font-size: 0.82rem; font-family: var(--font-body); display: flex; align-items: center; gap: 0.35rem; transition: border-color 0.2s, color 0.2s; }
+.nav-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+.nav-btn svg { width: 16px; height: 16px; }
+@media (max-width: 860px) { .nav-links { display: none; } }
+
+/* ═══════════════════════════════════════════ HERO ═══════════════════════════════════════════ */
+.cgp-hero { position: relative; padding: 5.5rem 0 4rem; text-align: center; overflow: hidden; }
+.cgp-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, var(--bg-hero-glow-1), transparent 45%), radial-gradient(circle at 75% 60%, var(--bg-hero-glow-2), transparent 45%); pointer-events: none; }
+.cgp-hero .cgp-container { position: relative; }
+.cgp-hero-stamp { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+.cgp-hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+.cgp-hero h1 .accent { color: var(--accent); font-style: italic; }
+.cgp-hero-tagline { font-size: 1.3rem; color: var(--text-secondary); max-width: 640px; margin: 0.75rem auto 0; }
+.hero-sub { font-size: 0.95rem; color: var(--text-meta); margin-top: 1rem; }
+.cgp-hero-ctas { display: flex; gap: 0.75rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+.cgp-btn { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.7rem 1.4rem; border-radius: 10px; font-size: 0.92rem; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+.cgp-btn-primary { background: var(--accent); color: #fff; }
+.cgp-btn-primary:hover { background: var(--accent-hover); color: #fff; transform: translateY(-1px); }
+.cgp-btn-ghost { background: transparent; border-color: var(--border-strong); color: var(--text-primary); }
+.cgp-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.hero-meta { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-meta); font-family: var(--font-mono); }
+.hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+/* ═══════════════════════════════════════════ SECTIONS ═══════════════════════════════════════════ */
+section { padding: 4rem 0; border-top: 1px solid var(--border); }
+.section-kicker { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; text-align: center; }
+.section-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600; text-align: center; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+.section-intro { font-size: 1.1rem; color: var(--text-secondary); text-align: center; max-width: 720px; margin: 0 auto 2.5rem; }
+h3.block-title { font-size: 1.5rem; font-weight: 600; margin: 2.5rem 0 1rem; color: var(--text-primary); }
+h4.sub-title { font-size: 1.15rem; font-weight: 600; font-family: var(--font-body); margin: 1.75rem 0 0.75rem; color: var(--text-primary); }
+ul.clean, ol.clean { margin: 0 0 1.25rem 1.25rem; color: var(--text-secondary); }
+ul.clean li, ol.clean li { margin-bottom: 0.5rem; padding-left: 0.25rem; }
+
+/* ═══════════════════════════════════════════ CALLOUTS ═══════════════════════════════════════════ */
+.callout { border-radius: 12px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; border: 1px solid; font-size: 0.95rem; line-height: 1.6; }
+.callout p:last-child { margin-bottom: 0; }
+.callout-title { font-weight: 700; font-family: var(--font-body); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.45rem; color: var(--text-primary); font-size: 0.92rem; letter-spacing: 0.02em; }
+.callout-key { background: var(--callout-key-bg); border-color: var(--callout-key-border); }
+.callout-tip { background: var(--callout-tip-bg); border-color: var(--callout-tip-border); }
+.callout-avoid { background: var(--callout-avoid-bg); border-color: var(--callout-avoid-border); }
+.callout-note { background: var(--callout-note-bg); border-color: var(--callout-note-border); }
+
+/* ═══════════════════════════════════════════ CARDS / GRIDS ═══════════════════════════════════════════ */
+.grid { display: grid; gap: 1rem; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; box-shadow: var(--shadow-card); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
+.card h4 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem; }
+.card p { font-size: 0.9rem; margin-bottom: 0; }
+.card-num { width: 30px; height: 30px; flex-shrink: 0; border-radius: 8px; background: var(--accent-subtle); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; font-size: 0.9rem; }
+.card-icon { font-size: 1.3rem; }
+
+/* layer cards */
+.layer-stack { display: flex; flex-direction: column; gap: 0; max-width: 760px; margin: 1.5rem auto; }
+.layer { position: relative; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.3rem 1.1rem 3.4rem; margin-left: 0; box-shadow: var(--shadow-card); }
+.layer + .layer { margin-top: -0.4rem; }
+.layer:nth-child(1) { margin-left: 0; }
+.layer:nth-child(2) { margin-left: 1.5rem; }
+.layer:nth-child(3) { margin-left: 3rem; }
+.layer:nth-child(4) { margin-left: 4.5rem; }
+.layer-badge { position: absolute; left: 1rem; top: 1.15rem; font-size: 1.3rem; }
+.layer h4 { font-family: var(--font-body); font-size: 1.02rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--text-primary); }
+.layer p { font-size: 0.86rem; margin: 0; }
+.layer .file-tag { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); }
+
+/* ═══════════════════════════════════════════ TABLES ═══════════════════════════════════════════ */
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+thead th { background: var(--bg-raised); color: var(--text-primary); font-family: var(--font-body); font-weight: 600; text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border-strong); white-space: nowrap; }
+tbody td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: var(--accent-subtle); }
+td strong, td b { color: var(--text-primary); }
+
+/* ═══════════════════════════════════════════ ROADMAP / STEPPER ═══════════════════════════════════════════ */
+.roadmap { counter-reset: step; max-width: 820px; margin: 1.5rem auto; }
+.roadmap-step { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+.roadmap-step:last-child { border-bottom: none; }
+.roadmap-step::before { counter-increment: step; content: counter(step); flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; font-size: 0.9rem; }
+.roadmap-step div { padding-top: 0.15rem; }
+.roadmap-step strong { display: block; color: var(--text-primary); }
+.roadmap-step span { font-size: 0.88rem; color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════ SCREENSHOT PLACEHOLDER ═══════════════════════════════════════════ */
+figure.shot { margin: 1.5rem 0; }
+.screenshot-placeholder { background: var(--bg-raised); border: 2px dashed var(--border-strong); border-radius: 12px; padding: 2rem; text-align: center; color: var(--text-meta); font-size: 0.85rem; aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.55rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.screenshot-placeholder:hover { border-color: var(--accent); background: var(--accent-subtle); }
+.screenshot-placeholder .ss-icon { font-size: 1.9rem; }
+.screenshot-placeholder .ss-title { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+.screenshot-placeholder .ss-source { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); }
+figure.shot figcaption { font-size: 0.82rem; color: var(--text-meta); text-align: center; margin-top: 0.5rem; }
+.shot-img { width: 100%; border-radius: 12px; border: 1px solid var(--border-strong); box-shadow: var(--shadow-card); cursor: zoom-in; transition: box-shadow 0.2s, transform 0.2s; }
+.shot-img:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
+.shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 680px) { .shot-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════ WORKSHEET ═══════════════════════════════════════════ */
+.worksheet { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; box-shadow: var(--shadow-card); }
+.ws-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); align-items: center; }
+.ws-row:last-of-type { border-bottom: none; }
+.ws-label strong { display: block; color: var(--text-primary); font-size: 0.92rem; }
+.ws-label span { font-size: 0.78rem; color: var(--text-meta); }
+.ws-row input { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-base); color: var(--text-primary); font-family: var(--font-body); font-size: 0.88rem; }
+.ws-row input:focus { outline: none; border-color: var(--accent); }
+.ws-actions { display: flex; gap: 0.6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+@media (max-width: 600px) { .ws-row { grid-template-columns: 1fr; gap: 0.4rem; } }
+
+/* ═══════════════════════════════════════════ TABS ═══════════════════════════════════════════ */
+.tabs { display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.tab { padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid var(--border-strong); background: transparent; color: var(--text-secondary); font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadePanel 0.3s ease; }
+@keyframes fadePanel { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ═══════════════════════════════════════════ DO / DONT ═══════════════════════════════════════════ */
+.dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+@media (max-width: 760px) { .dd-grid { grid-template-columns: 1fr; } }
+.dd-col { border-radius: 14px; padding: 1.3rem; border: 1px solid; }
+.dd-do { background: var(--callout-tip-bg); border-color: var(--callout-tip-border); }
+.dd-dont { background: var(--callout-avoid-bg); border-color: var(--callout-avoid-border); }
+.dd-col h4 { font-family: var(--font-body); font-size: 1.05rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text-primary); }
+.dd-col ul { list-style: none; }
+.dd-col li { font-size: 0.88rem; color: var(--text-secondary); padding: 0.35rem 0 0.35rem 1.5rem; position: relative; }
+.dd-do li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+.dd-dont li::before { content: "✕"; position: absolute; left: 0; color: #DC2626; font-weight: 700; }
+
+/* ═══════════════════════════════════════════ CHECKLIST ═══════════════════════════════════════════ */
+.progress-label { text-align: center; font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+.progress-track { max-width: 760px; margin: 0 auto 1.5rem; height: 8px; background: var(--bg-raised); border-radius: 999px; overflow: hidden; }
+.progress-bar { height: 100%; width: 0%; background: var(--accent); border-radius: 999px; transition: width 0.4s ease; }
+.checklist { max-width: 820px; margin: 0 auto; list-style: none; }
+.checklist li { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.8rem 1rem; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.6rem; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.checklist li:hover { border-color: var(--accent); }
+.checklist li.checked { background: var(--callout-tip-bg); border-color: var(--callout-tip-border); }
+.checklist .cb { width: 22px; height: 22px; flex-shrink: 0; border: 2px solid var(--border-strong); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: transparent; transition: all 0.2s; margin-top: 1px; }
+.checklist li.checked .cb { background: #059669; border-color: #059669; color: #fff; }
+.checklist .ci { font-size: 0.92rem; color: var(--text-secondary); }
+.checklist li.checked .ci { color: var(--text-primary); }
+.checklist .ci strong { display: block; }
+.congrats { display: none; text-align: center; max-width: 600px; margin: 1.5rem auto 0; padding: 1.3rem; border-radius: 12px; background: var(--callout-tip-bg); border: 1px solid var(--callout-tip-border); color: var(--text-primary); }
+.congrats.show { display: block; animation: fadePanel 0.4s ease; }
+
+/* ═══════════════════════════════════════════ GLOSSARY ═══════════════════════════════════════════ */
+.glossary dt { font-weight: 700; color: var(--text-primary); font-family: var(--font-body); margin-top: 1rem; }
+.glossary dd { color: var(--text-secondary); font-size: 0.92rem; margin: 0.2rem 0 0; }
+
+/* ═══════════════════════════════════════════ LIGHTBOX ═══════════════════════════════════════════ */
+.lightbox-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 300; align-items: center; justify-content: center; padding: 2rem; }
+.lightbox-overlay.active { display: flex; }
+.lightbox-content { position: relative; display: flex; flex-direction: column; align-items: center; max-width: 92vw; max-height: 90vh; }
+.lightbox-close { position: absolute; top: -2.6rem; right: 0; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; }
+.lightbox-body { background: var(--bg-surface); border-radius: 12px; padding: 2.5rem; min-width: 280px; }
+.lb-shot { background: var(--bg-raised); border: 2px dashed var(--border-strong); border-radius: 10px; padding: 3rem 2rem; text-align: center; color: var(--text-meta); }
+.lb-shot .ss-icon { font-size: 2.4rem; display: block; margin-bottom: 0.6rem; }
+.lb-shot .ss-title { font-weight: 600; color: var(--text-primary); font-size: 1.05rem; margin-bottom: 0.4rem; }
+.lb-shot .ss-source { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-top: 0.6rem; }
+.lightbox-caption { color: #fff; text-align: center; margin: 1rem auto 0; font-size: 0.9rem; line-height: 1.5; max-width: min(720px, 86vw); }
+
+/* ═══════════════════════════════════════════ FOOTER & MISC ═══════════════════════════════════════════ */
+.closing { padding: 3.5rem 0; text-align: center; }
+.footer { padding: 2.5rem 0; border-top: 1px solid var(--border); text-align: center; }
+.footer-brand { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; color: var(--text-primary); }
+.footer-tagline { color: var(--text-secondary); font-size: 0.92rem; margin-top: 0.25rem; }
+.footer-disclaimer { color: var(--text-meta); font-size: 0.8rem; margin-top: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+.footer-bottom { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-meta); margin-top: 1rem; letter-spacing: 1px; }
+.back-to-top { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.2rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 90; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.back-to-top.show { opacity: 1; pointer-events: auto; }
+.toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--text-primary); color: var(--bg-base); padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.85rem; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 310; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--accent-subtle); color: var(--accent); letter-spacing: 0.5px; }
+.lede { font-size: 1.05rem; color: var(--text-secondary); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEW · FOLLOW-ALONG COMPONENTS (added in the redesign)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* --- "How to use this guide" banner --- */
+.howto { max-width: 860px; margin: 0 auto; display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 0.9rem; }
+.howto .hc { background: var(--bg-surface); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; box-shadow:var(--shadow-card); }
+.howto .hc h5 { font-family:var(--font-body); font-size:0.92rem; color:var(--text-primary); display:flex; gap:0.45rem; align-items:center; margin-bottom:0.3rem; }
+.howto .hc p { font-size:0.84rem; margin:0; }
+
+/* --- Step accordions (progressive disclosure) --- */
+.steps { max-width: 880px; margin: 1.75rem auto; }
+details.step { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 0.9rem; box-shadow: var(--shadow-card); overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+details.step:hover { border-color: var(--border-strong); }
+details.step[open] { border-color: var(--accent); box-shadow: var(--shadow-card-hover); }
+details.step > summary { list-style: none; cursor: pointer; display: flex; gap: 1rem; align-items: flex-start; padding: 1.1rem 1.3rem; }
+details.step > summary::-webkit-details-marker { display: none; }
+.step-badge { flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; background: var(--accent-subtle); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; font-size: 1rem; }
+details.step[open] .step-badge { background: var(--accent); color: #fff; }
+.step-head { flex: 1; min-width: 0; }
+.step-head h4 { font-family: var(--font-body); font-size: 1.08rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.15rem; }
+.step-head .step-sum { font-size: 0.88rem; color: var(--text-secondary); }
+.step-chevron { flex-shrink: 0; width: 22px; height: 22px; color: var(--text-meta); transition: transform 0.25s ease; margin-top: 0.5rem; }
+details.step[open] .step-chevron { transform: rotate(180deg); color: var(--accent); }
+.step-time { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-meta); border:1px solid var(--border); border-radius:999px; padding:0.1rem 0.5rem; margin-top:0.4rem; display:inline-block; white-space:nowrap; }
+.step-body { padding: 0 1.3rem 1.4rem; }
+.step-body > *:first-child { margin-top: 0.25rem; }
+.step-divider { border: none; border-top: 1px dashed var(--border-strong); margin: 0 1.3rem; }
+
+/* --- Click-path breadcrumb --- */
+.clickpath { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; background: var(--bg-raised); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; margin: 0.5rem 0 1.1rem; }
+.clickpath .cp-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-meta); margin-right: 0.3rem; }
+.clickpath .cp-chip { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; color: var(--text-primary); background: var(--bg-surface); border: 1px solid var(--border-strong); border-radius: 6px; padding: 0.18rem 0.5rem; }
+.clickpath .cp-arrow { color: var(--accent); font-weight: 700; }
+
+/* --- Numbered action list inside a step --- */
+ol.actions { list-style: none; counter-reset: act; margin: 0.5rem 0 1rem; }
+ol.actions > li { counter-increment: act; position: relative; padding: 0.35rem 0 0.35rem 2.1rem; font-size: 0.95rem; color: var(--text-secondary); }
+ol.actions > li::before { content: counter(act); position: absolute; left: 0; top: 0.35rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent-subtle); color: var(--accent); font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+ol.actions > li strong { color: var(--text-primary); }
+
+/* --- Annotated image-spec placeholder (what to capture) --- */
+.img-spec { border: 2px dashed var(--accent); border-radius: 14px; background: var(--accent-subtle); padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+.img-spec .spec-head { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.img-spec .spec-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+.img-spec h5 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+.img-spec p { font-size: 0.9rem; margin-bottom: 0.6rem; }
+.img-spec .spec-callouts { list-style: none; margin: 0.4rem 0 0.6rem; }
+.img-spec .spec-callouts li { font-size: 0.86rem; color: var(--text-secondary); padding: 0.2rem 0 0.2rem 1.9rem; position: relative; counter-increment: ca; }
+.img-spec .spec-callouts { counter-reset: ca; }
+.img-spec .spec-callouts li::before { content: counter(ca); position: absolute; left: 0; top: 0.2rem; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.img-spec .spec-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
+.img-spec .spec-meta span { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-meta); border: 1px solid var(--border-strong); border-radius: 999px; padding: 0.12rem 0.55rem; }
+.img-spec .spec-meta span b { color: var(--accent); font-weight: 600; }
+
+/* --- "At a glance" pill strip --- */
+.glance { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; max-width: 820px; margin: 0 auto 1.5rem; }
+.glance .g-pill { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--text-secondary); background: var(--bg-surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 0.85rem; box-shadow: var(--shadow-card); }
+.glance .g-pill b { color: var(--text-primary); }
+
+/* --- Expand/collapse all control --- */
+.steps-control { display:flex; justify-content:flex-end; max-width:880px; margin:0 auto 0.5rem; }
+.steps-control button { background:none; border:1px solid var(--border-strong); color:var(--text-secondary); font-family:var(--font-mono); font-size:0.72rem; padding:0.3rem 0.7rem; border-radius:8px; cursor:pointer; transition:all 0.2s; }
+.steps-control button:hover { border-color:var(--accent); color:var(--accent); }
+
+/* --- Mini key-takeaway strip inside steps --- */
+.takeaway { display:flex; gap:0.6rem; align-items:flex-start; background:var(--callout-key-bg); border:1px solid var(--callout-key-border); border-radius:10px; padding:0.7rem 0.9rem; margin:1rem 0 0; font-size:0.88rem; }
+.takeaway .tk-icon { font-size:1rem; line-height:1.4; }
+.takeaway strong { color:var(--text-primary); }
+
+/* ported: sit the guide sub-nav below the site header */
+.cgp-root .nav { top: 56px; z-index: 40; }
+
+</style>
+
+<script>
+(function () {
+const guideRoot = document.querySelector('.cgp-root');
+
+/* ─── Fade-in on scroll ─── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* ─── Scroll progress + back-to-top + active nav ─── */
+const progress = document.getElementById('scroll-progress');
+const backBtn = document.getElementById('back-to-top');
+const navLinks = guideRoot ? Array.from(guideRoot.querySelectorAll('.nav-links a[href^="#"]')) : [];
+const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+  progress.style.width = (scrolled * 100) + '%';
+  backBtn.classList.toggle('show', h.scrollTop > 600);
+  let current = '';
+  sections.forEach(s => { if (s.getBoundingClientRect().top <= 120) current = '#' + s.id; });
+  navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === current));
+});
+
+/* ─── Theme handled globally by the site header ─── */
+
+/* ─── Tabs ─── */
+function switchTab(group, id, btn) {
+  document.querySelectorAll('[data-tabgroup="' + group + '"] .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('[data-tabpanel="' + group + '"]').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+/* ─── Expand / collapse all steps in a group ─── */
+function toggleAllSteps(groupId) {
+  const group = document.getElementById(groupId);
+  if (!group) return;
+  const items = group.querySelectorAll('details.step');
+  const anyClosed = Array.from(items).some(d => !d.open);
+  items.forEach(d => d.open = anyClosed);
+}
+
+/* ─── Lightbox ─── */
+function openImg(src, caption) {
+  document.getElementById('lightbox-body').innerHTML =
+    '<img src="' + src + '" alt="' + (caption || '') + '" style="display:block;max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;">';
+  document.getElementById('lightbox-caption').textContent = caption || '';
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target.id === 'lightbox-content') return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ─── Toast ─── */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+/* ─── Brand Inputs worksheet (localStorage) ─── */
+function initWorksheet() {
+  const inputs = document.querySelectorAll('.worksheet input');
+  inputs.forEach(inp => {
+    const key = 'ws-' + inp.dataset.key;
+    const v = localStorage.getItem(key);
+    if (v) inp.value = v;
+    inp.addEventListener('input', () => localStorage.setItem(key, inp.value));
+  });
+}
+function saveWorksheet() { showToast('Brand inputs saved locally ✓'); }
+function clearWorksheet() {
+  document.querySelectorAll('.worksheet input').forEach(inp => { inp.value = ''; localStorage.removeItem('ws-' + inp.dataset.key); });
+  showToast('Worksheet cleared');
+}
+
+/* ─── QA Checklist (localStorage + progress) ─── */
+function initChecklist() {
+  const items = document.querySelectorAll('.checklist li');
+  items.forEach(li => {
+    const key = 'qa-' + li.dataset.key;
+    if (localStorage.getItem(key) === '1') li.classList.add('checked');
+    li.addEventListener('click', () => {
+      li.classList.toggle('checked');
+      localStorage.setItem(key, li.classList.contains('checked') ? '1' : '0');
+      updateChecklist();
+    });
+  });
+  updateChecklist();
+}
+function updateChecklist() {
+  const items = document.querySelectorAll('.checklist li');
+  const done = document.querySelectorAll('.checklist li.checked').length;
+  const total = items.length;
+  const bar = document.getElementById('progress-bar');
+  const count = document.getElementById('progress-count');
+  if (bar) bar.style.width = total ? (done / total * 100) + '%' : '0%';
+  if (count) count.textContent = done;
+  const congrats = document.getElementById('congrats-msg');
+  if (congrats) congrats.classList.toggle('show', done === total && total > 0);
+}
+
+/* Initialise worksheet + checklist immediately (Astro modules run after DOMContentLoaded). */
+initWorksheet(); initChecklist();
+
+  window.clearWorksheet = clearWorksheet;
+  window.closeLightbox = closeLightbox;
+  window.openImg = openImg;
+  window.saveWorksheet = saveWorksheet;
+  window.switchTab = switchTab;
+  window.toggleAllSteps = toggleAllSteps;
+})();
+</script>

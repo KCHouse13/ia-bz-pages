@@ -1,0 +1,29 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  topic: string;
+  readTime: string;
+  description: string;
+  noindex?: boolean;
+  minimalChrome?: boolean;
+}
+
+const { title, description, noindex = false, minimalChrome = false } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} noindex={noindex} minimalChrome={minimalChrome}>
+  <div class="guide-wide">
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  /* Wide guide layout: full-width canvas, no prose clamp.
+     The guide component supplies its own hero, sections, and spacing. */
+  .guide-wide {
+    width: 100%;
+  }
+</style>

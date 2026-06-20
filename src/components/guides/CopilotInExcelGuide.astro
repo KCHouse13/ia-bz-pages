@@ -1,0 +1,2116 @@
+---
+// Copilot in Excel - interactive guide ported into the site as a scoped Astro component.
+// The site shell (BaseLayout) owns the header, footer, search, fonts and theme;
+// this component ships only the guide body, its scoped styles and its behaviour.
+---
+<div class="cge-root">
+
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="cge-container">
+    <a href="#" class="nav-brand">
+      <div class="nav-logo" aria-hidden="true">XL</div>
+      Copilot in Excel
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#surfaces">3 Surfaces</a></li>
+      <li><a href="#modes">Modes &amp; Setup</a></li>
+      <li><a href="#function">=COPILOT()</a></li>
+      <li><a href="#prompting">Prompting</a></li>
+      <li><a href="#usecases">Use Cases</a></li>
+      <li><a href="#get-started">Get Started</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <div class="nav-actions">
+      
+      
+    </div>
+  </div>
+</nav>
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<header class="cge-hero">
+  <div class="cge-container cge-hero-content">
+    <p class="cge-hero-stamp fade-in">Interactive Guide · Microsoft 365 Copilot</p>
+    <h1 class="fade-in">Copilot in <span class="accent">Excel</span></h1>
+    <p class="cge-hero-tagline fade-in" style="font-size:1.4rem; max-width:640px; margin-bottom:1rem;">The Complete Field Guide for New Users</p>
+    <p class="cge-hero-tagline fade-in" style="margin-top:0;">Navigate the agentic Copilot pane, master Edit / Plan / Chat modes, the <code style="font-family:var(--font-mono);">=COPILOT()</code> function, Workbook Rules and Personalization — then apply 18 documented use cases across every function.</p>
+    <div class="cge-hero-ctas fade-in">
+      <a href="#overview" class="cge-btn-primary">Start the Guide →</a>
+      <a href="#usecases" class="cge-btn-ghost">Jump to use cases ↓</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     OVERVIEW
+     ═══════════════════════════════════════════ -->
+<section id="overview">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Overview</p>
+    <h2 class="section-title fade-in">AI built into the grid</h2>
+    <p class="section-intro fade-in">
+      Copilot in Excel is an AI assistant built directly into Excel. It understands plain-language requests, reads the data already in your workbook, and can analyze, explain, transform, build tables and formulas, generate charts and PivotTables, and act on multi-step instructions — while you stay in control. You preview a plan before anything changes, undo any action, and decide whether Copilot may edit your file or only talk to you about it.
+    </p>
+
+    <div class="callout callout-note fade-in" style="max-width:720px; margin-left:auto; margin-right:auto;">
+      <div class="callout-title">🛡️ Enterprise Data Protection</div>
+      The <strong>shield icon</strong> in the Copilot pane means your session is protected. With a Microsoft 365 Copilot license, your prompts and workbook data stay within Microsoft's compliance boundary and are <strong>not used to train</strong> the foundation models.
+    </div>
+
+    <h3 style="font-size:1.2rem; margin:2.5rem 0 1rem;" class="fade-in">Business outcomes you should expect</h3>
+    <div class="comparison-wrapper fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Outcome</th><th>What it looks like in practice</th></tr></thead>
+        <tbody>
+          <tr><td>Time saved</td><td>Tasks that took 30–90 minutes (cleaning data, building a summary, writing a month-end narrative) drop to minutes.</td></tr>
+          <tr><td>Higher quality</td><td>Consistent formatting, fewer formula errors, standardized structure across files and teams.</td></tr>
+          <tr><td>Lower skill barrier</td><td>People who don't know PivotTables, XLOOKUP, or Power Query still get the result by describing it.</td></tr>
+          <tr><td>Faster decisions</td><td>Insights, outliers, and trends surface in seconds — meetings start from answers, not raw data.</td></tr>
+          <tr><td>Repeatability</td><td>Workbook Rules and Personalization make Copilot produce work your way, every time, without re-explaining.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1.2rem; margin:2.5rem 0 1rem;" class="fade-in">Where to find Copilot in Excel</h3>
+    <div class="access-grid fade-in">
+      <div class="access-item"><span class="access-icon">🎀</span><span>Home tab → <strong>Copilot</strong> button</span><span class="access-action">Ribbon</span></div>
+      <div class="access-item"><span class="access-icon">✨</span><span>Floating sparkle on the grid</span><span class="access-action">In-canvas</span></div>
+      <div class="access-item"><span class="access-icon">🧮</span><span>Type <strong>=COPILOT(</strong> in any cell</span><span class="access-action">Function</span></div>
+      <div class="access-item"><span class="access-icon">🖱️</span><span>Right-click a selection</span><span class="access-action">Inline</span></div>
+      <div class="access-item"><span class="access-icon">🌐</span><span>Excel for the web &amp; desktop</span><span class="access-action">Both</span></div>
+      <div class="access-item"><span class="access-icon">🪪</span><span>"M365 Copilot (Premium)" in pane footer</span><span class="access-action">License</span></div>
+    </div>
+
+    <div class="callout callout-tip fade-in">
+      <div class="callout-title">💡 Tip — don't confuse the add-ins</div>
+      On the Home tab you may also see <strong>Excel Labs</strong> (a separate sandbox of experimental tools) and a third-party <strong>Finance</strong> add-in. Neither is Copilot. Copilot is the AI assistant button / floating sparkle.
+    </div>
+
+    <div class="screenshot-placeholder fade-in">
+      <span class="ss-icon">📸</span>
+      <span style="font-weight:600;color:var(--text-primary);font-size:0.95rem;">The Copilot pane — "Let's edit your workbook"</span>
+      <span>Annotated view of the docked pane: menu, shield, model selector, mode dropdown, prompt box, + menu, conversation starters, "M365 Copilot (Premium)" footer.</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your pane screenshot (full pane, docked)</span>
+    </div>
+
+    <div class="screenshot-placeholder fade-in">
+      <span class="ss-icon">📸</span>
+      <span style="font-weight:600;color:var(--text-primary);font-size:0.95rem;">The ribbon entry point</span>
+      <span>Home tab showing the Copilot button (and the Excel Labs / Finance add-ins beside it) plus the floating Copilot sparkle at lower-right of the grid.</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your ribbon screenshot</span>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox overlay (global) -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content" id="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+    <div id="lightbox-body"></div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     THREE SURFACES
+     ═══════════════════════════════════════════ -->
+<section id="surfaces">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Core Concept</p>
+    <h2 class="section-title fade-in">The three surfaces of Copilot in Excel</h2>
+    <p class="section-intro fade-in">New users get confused because Copilot shows up in three different places that behave differently. Learn the distinction once and everything else clicks.</p>
+
+    <div class="comparison-wrapper fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Surface</th><th>What it is</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>The Copilot pane</td><td>The agentic side panel ("Let's edit your workbook"). You chat in natural language; Copilot can plan and edit the whole workbook.</td><td>Multi-step work, analysis, building tables/charts, summaries, "do this for me" requests.</td></tr>
+          <tr><td>The =COPILOT() function</td><td>AI you type into a cell like a formula. It returns results into the grid and recalculates when its inputs change.</td><td>Row-by-row tasks at scale: classify, summarize, extract, draft, score — repeated down a column.</td></tr>
+          <tr><td>Inline cell / range actions</td><td>Right-click or the sparkle on a selection for quick suggestions (formulas, formatting, insights) in context.</td><td>Fast, in-the-moment help on a specific cell or range without composing a full prompt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-note fade-in">
+      <div class="callout-title">🧭 The mental model</div>
+      The <strong>pane</strong> is conversational and can change many things — use it to <em>build something once</em>. The <strong>=COPILOT() function</strong> lives in the grid and runs per-row — use it to <em>apply AI to every row</em> of a dataset.
+    </div>
+
+    <div class="screenshot-placeholder fade-in">
+      <span class="ss-icon">📸</span>
+      <span style="font-weight:600;color:var(--text-primary);font-size:0.95rem;">The =COPILOT() function in the formula bar</span>
+      <span>A cell showing <code style="font-family:var(--font-mono);">=COPILOT(</code> with the argument tooltip <code style="font-family:var(--font-mono);">COPILOT(prompt_part1, [context1], …)</code>.</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your =COPILOT() tooltip screenshot</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     MODES & SETUP
+     ═══════════════════════════════════════════ -->
+<section id="modes">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Controls</p>
+    <h2 class="section-title fade-in">Modes, models &amp; one-time setup</h2>
+    <p class="section-intro fade-in">Four controls decide how Copilot behaves: the working mode, the model, the + menu, and your standing preferences (Workbook Rules + Personalization). Learn these and you control trust, quality, and consistency.</p>
+
+    <h3 style="font-size:1.25rem; margin:1rem 0;" class="fade-in">Working modes — the most important control for trust</h3>
+    <div class="comparison-wrapper fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Mode</th><th>What the menu says</th><th>When to use it</th></tr></thead>
+        <tbody>
+          <tr><td>✏️ Allow editing</td><td>"Copilot can edit your document directly."</td><td>Trusted, well-understood transforms on a copy of your data. Fastest, most hands-off.</td></tr>
+          <tr><td>📋 Plan</td><td>"Come up with a plan before editing."</td><td>High-stakes or multi-step work. Review and approve the plan before anything changes. Maximum control.</td></tr>
+          <tr><td>💬 Chat only</td><td>"Copilot will respond in chat only."</td><td>Analysis, explanations, and learning with zero risk of changing the file. Safest for exploration.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-tip fade-in">
+      <div class="callout-title">💡 Tip</div>
+      Default to <strong>Plan</strong> mode while you build trust. Once you've seen Copilot handle a task type well a few times, switch that task to <strong>Allow editing</strong> for speed.
+    </div>
+    <div class="callout callout-warn fade-in">
+      <div class="callout-title">⚠️ Always</div>
+      Even in Allow editing mode, work on a <strong>copy</strong> of important data and verify results. <strong>Ctrl+Z</strong> undoes any Copilot change.
+    </div>
+
+    <div class="screenshot-placeholder fade-in">
+      <span class="ss-icon">📸</span>
+      <span style="font-weight:600;color:var(--text-primary);font-size:0.95rem;">The mode dropdown</span>
+      <span>Expanded "Allow editing ▾" menu showing the three options with their descriptions.</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your mode-dropdown screenshot</span>
+    </div>
+
+    <h3 style="font-size:1.25rem; margin:2.5rem 0 1rem;" class="fade-in">Choosing a model</h3>
+    <div class="comparison-wrapper fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Option</th><th>Guidance</th></tr></thead>
+        <tbody>
+          <tr><td>Auto <span style="color:var(--text-meta);font-size:0.8rem;">(default)</span></td><td>Copilot automatically selects the best model for your task. Leave it here unless you have a specific reason to change.</td></tr>
+          <tr><td>GPT-5.4 / GPT-5.5 <span style="color:var(--text-meta);font-size:0.8rem;">(OpenAI)</span></td><td>Strong general reasoning and broad capability; 5.5 is newer. Good all-rounders for analysis and drafting.</td></tr>
+          <tr><td>Claude Opus 4.7 / 4.8 <span style="color:var(--text-meta);font-size:0.8rem;">(Anthropic)</span></td><td>Excellent at careful, structured reasoning, long instructions, and nuanced writing; 4.8 is newest. Great for complex, rules-heavy, or narrative tasks.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-note fade-in">
+      <div class="callout-title">📝 Note</div>
+      Models change over time as new versions ship. If unsure, <strong>Auto</strong> is the safe choice. Model choice rarely fixes a bad prompt — a clear, specific request improves results far more.
+    </div>
+
+    <div class="screenshot-placeholder fade-in">
+      <span class="ss-icon">📸</span>
+      <span style="font-weight:600;color:var(--text-primary);font-size:0.95rem;">The model selector</span>
+      <span>Expanded "Auto ▾" menu showing Auto, GPT-5.4, GPT-5.5, Claude Opus 4.7, Claude Opus 4.8.</span>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your model-picker screenshot</span>
+    </div>
+
+    <h3 style="font-size:1.25rem; margin:2.5rem 0 1rem;" class="fade-in">The + menu &amp; one-time setup</h3>
+    <p style="color:var(--text-secondary); margin-bottom:1.25rem;" class="fade-in">Click any card to expand the details and steps.</p>
+    <div class="capabilities-grid">
+
+      <div class="capability-card fade-in">
+        <div class="capability-header" onclick="toggleCapability(this)">
+          <div class="capability-icon">➕</div>
+          <div class="capability-info"><h4>The + menu</h4><p class="capability-desc">Give Copilot more to work with: content, files, and rules</p></div>
+          <div class="expand-icon">+</div>
+        </div>
+        <div class="capability-detail"><div class="capability-detail-inner">
+          <ul style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;padding-left:1.1rem;margin:0.75rem 0;">
+            <li><strong style="color:var(--text-primary);">Add work content</strong> — let Copilot reference organizational content it can access, so answers reflect your real work.</li>
+            <li><strong style="color:var(--text-primary);">Upload images and files</strong> — attach a picture or file (e.g., a screenshot of a table) for Copilot to read and use.</li>
+            <li><strong style="color:var(--text-primary);">Create workbook rules</strong> — generate a Rules sheet to set standing instructions for this workbook.</li>
+          </ul>
+          <div class="callout callout-tip" style="margin-top:0.5rem;"><div class="callout-title">💡 Hidden gem</div>Paste a screenshot of a table from a PDF or email and ask Copilot to "recreate this as a clean Excel table."</div>
+          <div class="screenshot-placeholder" style="margin-top:0.75rem;"><span class="ss-icon">📸</span><span style="font-weight:600;color:var(--text-primary);font-size:0.9rem;">The + menu expanded</span><span>Add work content · Upload images and files · Create workbook rules</span><span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your + menu screenshot</span></div>
+        </div></div>
+      </div>
+
+      <div class="capability-card fade-in">
+        <div class="capability-header" onclick="toggleCapability(this)">
+          <div class="capability-icon">📐</div>
+          <div class="capability-info"><h4>Workbook Rules</h4><p class="capability-desc">Per-workbook standards Copilot follows automatically</p></div>
+          <div class="expand-icon">+</div>
+        </div>
+        <div class="capability-detail"><div class="capability-detail-inner">
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem;">Choosing "Create workbook rules" adds a sheet named <strong>Rules</strong> with the note: "Replace these examples with rules that tell Copilot how to format data and sheets in this workbook." Rules travel with the file, so everyone using Copilot in it gets consistent output.</p>
+          <p style="font-size:0.85rem;color:var(--text-primary);font-weight:600;margin-bottom:0.4rem;">Example rules (from the starter sheet):</p>
+          <ul style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;padding-left:1.1rem;margin-bottom:0.75rem;">
+            <li>Format currency as $#,##0.00</li>
+            <li>Use bold headers and alternating row colors for new tables</li>
+            <li>Prefer XLOOKUP over VLOOKUP</li>
+            <li>Our fiscal year starts in July</li>
+            <li>Name new sheets with the format "Report - YYYY-MM"</li>
+          </ul>
+          <div class="callout callout-note" style="margin-top:0.5rem;"><div class="callout-title">📝 Note</div>Workbook Rules are <strong>per-workbook</strong>. Personalization is <strong>about you</strong> and follows you across workbooks. Use both together.</div>
+          <div class="screenshot-placeholder" style="margin-top:0.75rem;"><span class="ss-icon">📸</span><span style="font-weight:600;color:var(--text-primary);font-size:0.9rem;">The Rules sheet</span><span>The generated "Rules" tab with the "Workbook Rules" header and example rules.</span><span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your Workbook Rules screenshot</span></div>
+        </div></div>
+      </div>
+
+      <div class="capability-card fade-in">
+        <div class="capability-header" onclick="toggleCapability(this)">
+          <div class="capability-icon">⚙️</div>
+          <div class="capability-info"><h4>Personalization</h4><p class="capability-desc">Teach Copilot how you like it to respond — everywhere</p></div>
+          <div class="expand-icon">+</div>
+        </div>
+        <div class="capability-detail"><div class="capability-detail-inner">
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.75rem;">Open the <strong>⋯ menu → Personalization</strong> to reach "Customize Copilot": <em>"Add details about how you'd like Copilot to tailor its responses and work in Excel."</em> Whatever you type becomes a standing preference across your workbooks. Microsoft's sample: <em>"Keep responses concise and add explanations for formulas you create."</em></p>
+          <p style="font-size:0.85rem;color:var(--text-primary);font-weight:600;margin-bottom:0.4rem;">Ideas worth adding:</p>
+          <ul style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;padding-left:1.1rem;margin-bottom:0.75rem;">
+            <li>"Explain the formulas you write in one short sentence so I can learn."</li>
+            <li>"Default to clean, presentation-ready tables with bold headers."</li>
+            <li>"When analyzing, lead with the 3 most important insights, then details."</li>
+            <li>"I work in [your industry]; use its common terms and KPIs."</li>
+          </ul>
+          <div class="callout callout-warn" style="margin-top:0.5rem;"><div class="callout-title">⚠️ Important</div>Don't put confidential data, credentials, or client-identifying details into Personalization or Workbook Rules. They are for format and style — not a place to store sensitive content.</div>
+          <div class="screenshot-placeholder" style="margin-top:0.75rem;"><span class="ss-icon">📸</span><span style="font-weight:600;color:var(--text-primary);font-size:0.9rem;">Customize Copilot panel</span><span>The Personalization dialog with the example prompt text.</span><span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent);">SUGGESTED SOURCE: your Personalization screenshot</span></div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     =COPILOT() FUNCTION
+     ═══════════════════════════════════════════ -->
+<section id="function">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Function</p>
+    <h2 class="section-title fade-in">The =COPILOT() function</h2>
+    <p class="section-intro fade-in">=COPILOT() brings AI into the formula bar. Type it like any function; it sends your instruction plus optional cell references to the model and returns the result into the grid — recalculating automatically when its inputs change. Ideal for applying AI to every row of a dataset.</p>
+
+    <div style="max-width:760px;margin:0 auto;">
+      <span class="prompt-label">Function signature</span>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);">=COPILOT(prompt_part1, [context1], prompt_part2, [context2], …)<span class="copy-hint">Click to copy</span></div>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin:1rem 0;">You alternate plain-language instruction with ranges of data. The text says <em>what to do</em>; the ranges say <em>what to do it to</em>. Results can be a single value or spill across cells.</p>
+
+      <h3 style="font-size:1.15rem;margin:1.5rem 0 0.75rem;" class="fade-in">Worked examples — click any to copy</h3>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);">=COPILOT("Classify this ticket as Billing, Technical, or Account: ", A2)<span class="copy-hint">Click to copy</span></div>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);margin-top:0.6rem;">=COPILOT("Summarize in 5 words or fewer: ", B2)<span class="copy-hint">Click to copy</span></div>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);margin-top:0.6rem;">=COPILOT("Return only the city name from this address: ", D2)<span class="copy-hint">Click to copy</span></div>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);margin-top:0.6rem;">=COPILOT("Label each row Positive, Neutral, or Negative: ", E2:E500)<span class="copy-hint">Click to copy</span></div>
+      <div class="prompt-text" onclick="copyPrompt(this)" style="font-family:var(--font-mono);margin-top:0.6rem;">=COPILOT("Write a one-sentence thank-you to this customer: ", F2, " about their order of ", G2)<span class="copy-hint">Click to copy</span></div>
+    </div>
+
+    <h3 style="font-size:1.15rem;margin:2rem 0 0.75rem;" class="fade-in">Function vs. pane — which to use</h3>
+    <div class="comparison-wrapper fade-in">
+      <table class="comparison-table">
+        <thead><tr><th>Use =COPILOT() when…</th><th>Use the pane when…</th></tr></thead>
+        <tbody>
+          <tr><td>You need the same AI task repeated down a column (classify, summarize, extract, score).</td><td>You're doing one-off, multi-step work (build a report, analyze, chart).</td></tr>
+          <tr><td>You want the result to live in the grid and recalc as data changes.</td><td>You want a conversation, explanation, or a plan you approve.</td></tr>
+          <tr><td>You're enriching a dataset for further analysis.</td><td>You're transforming or restructuring the workbook itself.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-warn fade-in">
+      <div class="callout-title">⚠️ Language tasks, not math</div>
+      =COPILOT() is for classify / summarize / extract / draft / reason-over-text — <strong>not</strong> precise math. For totals, rates, and lookups use real formulas (SUM, XLOOKUP). AI output is generated, so spot-check. On large ranges, sample ~10 rows first, confirm quality, then fill down.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PROMPTING
+     ═══════════════════════════════════════════ -->
+<section id="prompting">
+  <style>
+    .gcse-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding:2rem; background:var(--bg-surface); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow-card); margin-bottom:2rem; }
+    .gcse-item { text-align:center; cursor:help; transition:transform 0.2s; }
+    .gcse-item:hover { transform:translateY(-4px); }
+    .gcse-letter { font-family:var(--font-heading); font-size:2.5rem; font-weight:700; color:var(--accent); line-height:1.1; }
+    .gcse-word { font-weight:600; color:var(--text-primary); font-size:1rem; margin:0.25rem 0; }
+    .gcse-desc { color:var(--text-secondary); font-size:0.82rem; line-height:1.4; }
+    .highlight-goal { background:rgba(59,130,246,0.18); border-radius:3px; padding:1px 4px; }
+    .highlight-context { background:rgba(168,85,247,0.18); border-radius:3px; padding:1px 4px; }
+    .highlight-source { background:rgba(249,115,22,0.18); border-radius:3px; padding:1px 4px; }
+    .highlight-expectations { background:rgba(34,197,94,0.18); border-radius:3px; padding:1px 4px; }
+    [data-theme="dark"] .highlight-goal { background:rgba(96,165,250,0.20); color:#93bbfc; }
+    [data-theme="dark"] .highlight-context { background:rgba(192,132,252,0.20); color:#d4b5fd; }
+    [data-theme="dark"] .highlight-source { background:rgba(251,146,60,0.20); color:#fdba74; }
+    [data-theme="dark"] .highlight-expectations { background:rgba(74,222,128,0.20); color:#86efac; }
+    @media (max-width:680px){ .gcse-grid { grid-template-columns:repeat(2,1fr); } }
+  </style>
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Framework</p>
+    <h2 class="section-title fade-in">Prompt like a pro: G-C-O-F</h2>
+    <p class="section-intro fade-in">The quality of what you get back is mostly determined by how you ask. Use this four-part structure for strong prompts.</p>
+
+    <div class="gcse-grid fade-in">
+      <div class="gcse-item"><div class="gcse-letter">G</div><div class="gcse-word">Goal</div><div class="gcse-desc">The outcome you want</div></div>
+      <div class="gcse-item"><div class="gcse-letter">C</div><div class="gcse-word">Context</div><div class="gcse-desc">Which data / range / rules</div></div>
+      <div class="gcse-item"><div class="gcse-letter">O</div><div class="gcse-word">Output</div><div class="gcse-desc">The format you expect</div></div>
+      <div class="gcse-item"><div class="gcse-letter">F</div><div class="gcse-word">Format</div><div class="gcse-desc">Style, limits, must-dos</div></div>
+    </div>
+
+    <p style="color:var(--text-secondary);max-width:760px;margin:0 auto 1.5rem;text-align:center;" class="fade-in">A complete prompt reads like this:</p>
+    <div class="prompt-text fade-in" onclick="copyPrompt(this)" style="max-width:760px;margin:0 auto;">
+      <span class="highlight-goal">Build a monthly summary of sales by region</span> <span class="highlight-context">using the table on Sheet1 (columns A–F)</span> <span class="highlight-source">as a PivotTable with regions in rows and months in columns</span>, <span class="highlight-expectations">sorted by total descending, currency as $#,##0, with a totals row.</span><span class="copy-hint">Click to copy</span>
+    </div>
+
+    <h3 style="font-size:1.25rem;margin:2.5rem 0 1rem;" class="fade-in">Ten habits of effective Copilot users</h3>
+    <div class="accordion fade-in">
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span class="accordion-icon">🎯</span><span class="accordion-title">Be specific &amp; iterate<span class="accordion-subtitle">point at a range, refine the draft</span></span>
+          <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p>Point Copilot at a named table or exact cells, not "my data." Ask for one outcome at a time when learning; chain steps once you trust it. Treat the first answer as a draft: <em>"Good — now group by quarter and add % change."</em></p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span class="accordion-icon">🧱</span><span class="accordion-title">State the output format<span class="accordion-subtitle">table, chart, PivotTable, narrative</span></span>
+          <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p>Tell Copilot exactly what you expect: a PivotTable, a bar chart, a 3-bullet narrative, a new column. Give an example of the shape: <em>"Format like this: Acme | $1,200 | 2026-06."</em></p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span class="accordion-icon">🚧</span><span class="accordion-title">Set guardrails<span class="accordion-subtitle">tell it what NOT to do</span></span>
+          <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p>Constraints sharpen results: <em>"Don't change column A; don't add new sheets; keep existing formulas."</em> Use <strong>Plan</strong> mode for anything important so you can review before changes land.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span class="accordion-icon">🧰</span><span class="accordion-title">Set it up once<span class="accordion-subtitle">Workbook Rules + Personalization</span></span>
+          <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p>Stop repeating standing preferences. Put formats, fiscal year, and naming in <strong>Workbook Rules</strong>; put tone and style in <strong>Personalization</strong>. Ask Copilot to <em>explain its work</em> so you can verify and learn.</p>
+        </div></div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+          <span class="accordion-icon">✅</span><span class="accordion-title">Always verify<span class="accordion-subtitle">sanity-check before you share</span></span>
+          <svg class="accordion-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+        <div class="accordion-body"><div class="accordion-body-inner">
+          <p>Check the numbers against a known total before you forward, publish, or decide. If results disappoint: add the missing context, break a big ask into two, switch to Plan mode to see the divergence, or try the newest model for complex/narrative tasks.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.25rem;margin:2.5rem 0 1rem;" class="fade-in">Prepare your data first</h3>
+    <div class="callout callout-tip fade-in">
+      <div class="callout-title">💡 Two minutes of prep = far better results</div>
+      Convert your range to a <strong>Table (Ctrl+T)</strong> · use a <strong>single header row</strong> · keep one fact per cell · remove blank rows/columns inside the block · store numbers as numbers and dates as dates. Merged cells, stacked headers, and "numbers stored as text" are the top reasons Copilot gets it wrong.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     USE CASES
+     ═══════════════════════════════════════════ -->
+<section id="usecases">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Use Cases</p>
+    <h2 class="section-title fade-in">Documented use cases by function</h2>
+    <p class="section-intro fade-in">18 realistic scenarios across the enterprise. Each shows the role, the feature/mode, the scenario, and a copy-ready example prompt. Find your function and start with one.</p>
+
+    <div class="tabs-bar fade-in" role="tablist">
+      <button class="tab-btn active" onclick="switchTab(this, 'tab-finance')" role="tab" aria-selected="true">💰 Finance</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-sales')" role="tab" aria-selected="false">📈 Sales</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-hr')" role="tab" aria-selected="false">👥 HR</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-ops')" role="tab" aria-selected="false">🏭 Operations</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-mktg')" role="tab" aria-selected="false">📣 Marketing</button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-itexec')" role="tab" aria-selected="false">💻 IT &amp; Leadership</button>
+    </div>
+
+    <!-- Finance -->
+    <div id="tab-finance" class="tab-panel active" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">📊</span><div class="timeline-content">
+          <h4>Month-end variance narrative <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· FP&amp;A, controllers · Pane (Chat only / Plan)</span></h4>
+          <p>Actuals vs. budget by department; leadership needs a written explanation, not just numbers. <strong>Value:</strong> cuts an hour of digging to minutes, consistent every close.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Compare actuals to budget in this table and write a 5-bullet month-end narrative: highlight the 3 largest favorable and unfavorable variances, give likely drivers, and flag anything over 10% off budget.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🔁</span><div class="timeline-content">
+          <h4>Rolling forecast refresh <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· FP&amp;A · Pane (Plan) + Workbook Rules</span></h4>
+          <p>A 12-month rolling forecast must roll forward each month from latest actuals. <strong>Value:</strong> removes error-prone manual roll-forward; fiscal-year rule keeps periods labeled right.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Using the actuals table, extend the rolling forecast one month: replace the oldest forecast month with actuals, recompute the 3-month run-rate, and keep the existing seasonality factors. Show your plan first.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🧾</span><div class="timeline-content">
+          <h4>Reconciliation triage <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Accounting, AP/AR · =COPILOT()</span></h4>
+          <p>Hundreds of open items need categorizing from free-text notes. <strong>Value:</strong> auto-triages so staff focus only on true exceptions, accelerating close.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Classify this reconciliation note as Matched, Timing, or Investigate: ", D2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+
+    <!-- Sales -->
+    <div id="tab-sales" class="tab-panel" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">🧹</span><div class="timeline-content">
+          <h4>Pipeline hygiene check <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Sellers, sales ops · Pane (Plan)</span></h4>
+          <p>A pipeline export has stale close dates, missing next steps, and inconsistent stages before a forecast call. <strong>Value:</strong> surfaces exactly the deals to clean up, improving forecast accuracy.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Review this pipeline table and flag opportunities at risk of poor hygiene: close date in the past, no next step, or stuck in one stage over 60 days. Add a 'Hygiene Flag' column explaining each issue.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🎯</span><div class="timeline-content">
+          <h4>Lead scoring at scale <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Sales ops, demand gen · =COPILOT()</span></h4>
+          <p>Inbound leads need a quick priority score from firmographic and behavioral notes. <strong>Value:</strong> a ranked call list in seconds, lifting conversion on hot leads.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Score this lead High, Medium, or Low priority based on company size and stated intent, and give a 5-word reason: ", B2, C2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">📋</span><div class="timeline-content">
+          <h4>QBR / account summary builder <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· AEs, CSMs · Pane (Allow editing)</span></h4>
+          <p>QBR prep needs a tidy one-page account summary from a messy activity and revenue table. <strong>Value:</strong> presentation-ready output, standardizing QBRs across the team.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Build a clean QBR summary table for each account: total revenue, QoQ change, open opportunities, last activity date, and a one-line health note. Sort by revenue descending and format currency as $#,##0.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+
+    <!-- HR -->
+    <div id="tab-hr" class="tab-panel" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">📉</span><div class="timeline-content">
+          <h4>Attrition pattern analysis <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· HR analysts · Pane (Chat → Allow editing)</span></h4>
+          <p>HR wants to know which teams, tenures, or roles show elevated turnover. <strong>Value:</strong> reveals retention hot-spots fast, no data analyst required.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Analyze this attrition table: show turnover rate by department and tenure band, identify the 3 highest-risk segments, and summarize patterns in 4 bullets. Then build a PivotTable of exits by department and quarter.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">💬</span><div class="timeline-content">
+          <h4>Survey theme extraction <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Employee experience · =COPILOT()</span></h4>
+          <p>Thousands of open-ended comments need grouping into themes and sentiment. <strong>Value:</strong> converts unstructured feedback into analyzable categories in minutes.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Assign one theme (Career, Pay, Management, Workload, Culture) and a sentiment (Positive/Neutral/Negative) to this comment: ", C2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">⚖️</span><div class="timeline-content">
+          <h4>Compensation benchmarking <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Comp &amp; benefits, HRBPs · Pane (Plan)</span></h4>
+          <p>Comp review needs salaries vs. band midpoints with compa-ratio and outliers flagged. <strong>Value:</strong> standardizes analysis and catches equity risks early, with auditable steps.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">For each employee in this table, compute compa-ratio (salary ÷ band midpoint), flag anyone below 0.85 or above 1.15, and summarize how many are out of range by department. Show the plan first.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+
+    <!-- Operations -->
+    <div id="tab-ops" class="tab-panel" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">📦</span><div class="timeline-content">
+          <h4>Inventory reorder analysis <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Supply planners · Pane (Allow editing)</span></h4>
+          <p>Which SKUs to reorder based on on-hand, lead time, and demand. <strong>Value:</strong> prevents stockouts and over-ordering with a clear action list.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">From this inventory table, calculate weeks-of-cover (on-hand ÷ avg weekly demand) and add a 'Reorder?' column = Yes when weeks-of-cover is below the lead time in weeks. Sort Yes items to the top.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🚚</span><div class="timeline-content">
+          <h4>SLA / on-time performance <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Logistics, service ops · Pane (Chat + chart)</span></h4>
+          <p>On-time-delivery rate by carrier and lane, worst performers identified. <strong>Value:</strong> a fast, visual read to drive carrier conversations.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Summarize on-time delivery rate by carrier and lane from this table, list the 5 worst-performing lanes, and create a bar chart of OTD% by carrier.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🔧</span><div class="timeline-content">
+          <h4>Defect categorization <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Quality, mfg ops · =COPILOT()</span></h4>
+          <p>A defect log with free-text needs consistent root-cause categories for Pareto. <strong>Value:</strong> enables trend analysis on previously unstructured logs.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Categorize this defect note into one of: Material, Machine, Method, Measurement, Human: ", B2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+
+    <!-- Marketing -->
+    <div id="tab-mktg" class="tab-panel" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">💸</span><div class="timeline-content">
+          <h4>Campaign ROI roll-up <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Marketing ops · Pane (Allow editing)</span></h4>
+          <p>Per-channel spend and results need a consolidated ROI and cost-per-lead view. <strong>Value:</strong> a board-ready scorecard that exposes underperforming channels.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Build a campaign performance summary by channel: total spend, leads, cost-per-lead, pipeline influenced, and ROI %. Highlight channels with ROI below 100% in red and sort by ROI descending.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">⭐</span><div class="timeline-content">
+          <h4>Review / social sentiment <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Brand, product mktg · =COPILOT()</span></h4>
+          <p>A column of customer reviews needs sentiment and a key-topic tag. <strong>Value:</strong> quantifies voice-of-customer at scale to feed messaging decisions.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Give sentiment (Positive/Neutral/Negative) and the single biggest topic mentioned: ", A2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+
+    <!-- IT & Leadership -->
+    <div id="tab-itexec" class="tab-panel" role="tabpanel">
+      <ul class="timeline">
+        <li class="timeline-item fade-in"><span class="timeline-icon">🎫</span><div class="timeline-content">
+          <h4>Service desk ticket triage <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· IT service desk · =COPILOT()</span></h4>
+          <p>A backlog needs category and priority suggestions from the description. <strong>Value:</strong> speeds routing and SLA compliance, reducing manual triage.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;font-family:var(--font-mono);">=COPILOT("Suggest a category (Access, Hardware, Software, Network, Other) and priority (P1–P4) from this ticket: ", C2)<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🧼</span><div class="timeline-content">
+          <h4>Data cleanup &amp; standardization <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Data analysts, IT · Pane (Plan)</span></h4>
+          <p>A raw export has inconsistent casing, mixed date formats, and trailing spaces. <strong>Value:</strong> a reviewable, repeatable process — fewer errors downstream.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Clean this table: standardize names to Title Case, convert all dates to YYYY-MM-DD, trim whitespace, and split 'City, State' into two columns. Show the plan before changing anything.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">📈</span><div class="timeline-content">
+          <h4>Executive KPI summary <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· Execs, chiefs of staff · Pane (Chat only)</span></h4>
+          <p>A KPI workbook of many tabs; the exec needs the story, not the spreadsheet. <strong>Value:</strong> a decision-ready briefing so leadership time goes to decisions.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Read the KPI tables in this workbook and give me a board-level summary: the 3 most important movements this period, what's driving each, and 2 risks to watch — in plain business English.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+        <li class="timeline-item fade-in"><span class="timeline-icon">🗂️</span><div class="timeline-content">
+          <h4>Project status (RAID) roll-up <span style="color:var(--text-meta);font-weight:400;font-size:0.82rem;">· PMs, program mgrs · Pane (Allow editing)</span></h4>
+          <p>A project tracker needs a clean steering-committee status view. <strong>Value:</strong> a consistent, steering-ready status pack in minutes.</p>
+          <div class="prompt-text" onclick="copyPrompt(this)" style="margin-top:0.6rem;">Build a status summary from this task table: % complete by workstream, count of tasks overdue, top 5 risks/issues from the notes column, and a 3-bullet executive summary. Name the new sheet 'Report - 2026-06'.<span class="copy-hint">Click to copy</span></div>
+        </div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GOVERNANCE (callouts)
+     ═══════════════════════════════════════════ -->
+<section id="governance" style="padding-top:0;">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">Trust &amp; Governance</p>
+    <h2 class="section-title fade-in">Use it safely</h2>
+    <p class="section-intro fade-in">You are accountable for every number and statement you share, even when Copilot produced it. Always verify before you forward, publish, or decide.</p>
+    <div style="max-width:820px;margin:0 auto;">
+      <div class="callout callout-note fade-in"><div class="callout-title">🛡️ Enterprise data protection</div>With a Microsoft 365 Copilot license, your prompts and data are handled under your organization's commercial data-protection terms and are not used to train the foundation models. The shield icon reflects this.</div>
+      <div class="callout callout-note fade-in"><div class="callout-title">🔐 Respect access boundaries</div>Copilot only sees content you already have permission to access. Don't paste data you wouldn't normally be allowed to handle. Honor sensitivity labels and keep regulated data in approved workbooks.</div>
+      <div class="callout callout-warn fade-in"><div class="callout-title">⚠️ Verify AI output</div>Treat classifications, summaries, and especially AI-produced numbers as drafts. Spot-check against known totals and source documents. Work on copies; AutoSave + version history let you roll back.</div>
+      <div class="callout callout-tip fade-in"><div class="callout-title">💡 Regulated roles</div>If your work is regulated (finance reporting, HR comp, healthcare), confirm your team's specific policy for using AI on that data before adopting these workflows broadly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GET STARTED CHECKLIST (10 items — required by script)
+     ═══════════════════════════════════════════ -->
+<section id="get-started">
+  <div class="cge-container">
+    <div style="max-width:960px;margin:0 auto;">
+      <p class="cge-section-label fade-in">Getting Started</p>
+      <h2 class="section-title fade-in">Your first-week checklist</h2>
+      <p class="section-intro fade-in" style="max-width:100%;">Complete these milestones to build confidence with Copilot in Excel. Your progress is saved automatically.</p>
+
+      <div class="progress-label fade-in"><span id="progress-count">0</span>/10 complete</div>
+      <div class="progress-bar-wrapper fade-in"><div class="progress-bar" id="progress-bar"></div></div>
+
+      <ul class="checklist" id="checklist">
+        <li class="checklist-item fade-in" data-check="0"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Open the Copilot pane</div><div class="checklist-desc">Click Copilot on the Home tab (or the floating sparkle) and confirm "M365 Copilot (Premium)" in the footer</div></div></li>
+        <li class="checklist-item fade-in" data-check="1"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Make a Table (Ctrl+T)</div><div class="checklist-desc">Convert a range to an Excel Table so Copilot reads it cleanly</div></div></li>
+        <li class="checklist-item fade-in" data-check="2"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Try a conversation starter</div><div class="checklist-desc">Use "Build me a clean, professional looking table" or "Teach me something about Excel"</div></div></li>
+        <li class="checklist-item fade-in" data-check="3"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Use Plan mode</div><div class="checklist-desc">Switch to Plan, ask for a summary, and review the plan before approving</div></div></li>
+        <li class="checklist-item fade-in" data-check="4"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Run an analysis in Chat only</div><div class="checklist-desc">Ask "What trends and outliers do you see?" without changing the file</div></div></li>
+        <li class="checklist-item fade-in" data-check="5"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Write your first =COPILOT()</div><div class="checklist-desc">Classify or summarize one column on a 10-row sample, then fill down</div></div></li>
+        <li class="checklist-item fade-in" data-check="6"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Create Workbook Rules</div><div class="checklist-desc">Use the + menu to add a Rules sheet and set your formats and fiscal year</div></div></li>
+        <li class="checklist-item fade-in" data-check="7"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Set Personalization</div><div class="checklist-desc">Open ⋯ → Personalization and add how you like Copilot to respond</div></div></li>
+        <li class="checklist-item fade-in" data-check="8"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Upload an image of a table</div><div class="checklist-desc">From the + menu, upload a screenshot and ask Copilot to recreate it as a Table</div></div></li>
+        <li class="checklist-item fade-in" data-check="9"><div class="checklist-checkbox" onclick="toggleCheck(this)" role="checkbox" aria-checked="false" tabindex="0"></div><div class="checklist-text"><div class="checklist-title">Verify &amp; undo</div><div class="checklist-desc">Sanity-check a Copilot result against a known total, then practice Ctrl+Z</div></div></li>
+      </ul>
+
+      <div class="congrats-msg" id="congrats-msg"><span class="congrats-emoji">🎉</span><strong>Congratulations!</strong> You've completed all 10 milestones — you're now a confident Copilot in Excel user!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     RESOURCES
+     ═══════════════════════════════════════════ -->
+<section id="resources">
+  <div class="cge-container">
+    <p class="cge-section-label fade-in">The Resources</p>
+    <h2 class="section-title fade-in">Resources &amp; next steps</h2>
+    <p class="section-intro fade-in">Go deeper with official Microsoft resources and training paths.</p>
+    <div class="resources-grid">
+      <a href="https://support.microsoft.com/copilot-excel" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">📘</div><h4>Copilot in Excel — Support</h4><p>Official getting-started and how-to articles</p></a>
+      <a href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">🎯</div><h4>Copilot Prompt Gallery</h4><p>Ready-to-use prompts for every scenario</p></a>
+      <a href="https://adoption.microsoft.com/copilot/skilling-center/" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">🎓</div><h4>Copilot Skilling Center</h4><p>Events, videos, and role-based training paths</p></a>
+      <a href="https://support.microsoft.com/excel" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">🧮</div><h4>Excel Help &amp; Learning</h4><p>Tables, PivotTables, XLOOKUP and more fundamentals</p></a>
+      <a href="https://learn.microsoft.com/en-us/training/paths/get-started-with-microsoft-365-copilot/" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">📚</div><h4>MS Learn: Getting Started</h4><p>Beginner-friendly learning path for M365 Copilot</p></a>
+      <a href="https://adoption.microsoft.com/scenario-library" target="_blank" rel="noopener" class="resource-card fade-in"><span class="ext-icon">↗</span><div class="resource-icon">🗺️</div><h4>Scenario Library</h4><p>Day-in-the-Life guides and common workflows</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CLOSING
+     ═══════════════════════════════════════════ -->
+<section class="closing" style="padding: 3rem 0; text-align: center;">
+  <div class="cge-container">
+    <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 500; margin-bottom: 1rem;">You're ready to go</h2>
+    <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto 1.5rem; font-size: 1rem;">You know the three surfaces, the modes, the function, and 18 ways to apply it. Open a workbook and start with one use case from your function.</p>
+    <a href="#usecases" class="cge-btn-primary" style="font-size: 1rem; padding: 0.85rem 2rem;">Pick a use case →</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     DISCLAIMER
+     ═══════════════════════════════════════════ -->
+<section class="cge-disclaimer" style="padding: 0 0 3rem;">
+  <div class="cge-container narrow">
+    <p style="color: var(--text-meta); font-size: 0.85rem; font-style: italic; text-align: center; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+      This is not an official Microsoft resource. The views and guidance here represent personal perspective from work in the field.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════ -->
+
+
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<div class="toast" id="toast">Copied!</div>
+
+
+
+</div>
+
+<style>
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — Light Mode (default root)
+   ═══════════════════════════════════════════ */
+.cge-root {
+  --bg-base: #F7F5F2;
+  --bg-surface: #FFFFFF;
+  --bg-raised: #F0EDE8;
+  --bg-hero-glow-1: rgba(4, 120, 87, 0.10);
+  --bg-hero-glow-2: rgba(5, 150, 105, 0.06);
+  --text-primary: #111008;
+  --text-secondary: #615E58;
+  --text-meta: #9A9690;
+  --accent: #047857;
+  --accent-hover: #065F46;
+  --accent-subtle: rgba(4, 120, 87, 0.08);
+  --border: rgba(17, 16, 8, 0.08);
+  --border-strong: rgba(17, 16, 8, 0.14);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(4,120,87,0.12);
+  --nav-bg: rgba(247, 245, 242, 0.85);
+  --callout-tip-bg: #d4f0e0;
+  --callout-tip-border: #6EE7A0;
+  --callout-note-bg: #EFF6FF;
+  --callout-note-border: #BFDBFE;
+  --callout-warn-bg: #FFFBEB;
+  --callout-warn-border: #FDE68A;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'Commit Mono', 'Fira Code', monospace;
+}
+
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — Dark Mode
+   ═══════════════════════════════════════════ */
+[data-theme="dark"] .cge-root {
+  --bg-base: #12100F;
+  --bg-surface: #1A1816;
+  --bg-raised: #221F1C;
+  --bg-hero-glow-1: rgba(52, 211, 153, 0.07);
+  --bg-hero-glow-2: rgba(52, 211, 153, 0.05);
+  --text-primary: #ECEBE7;
+  --text-secondary: #9B9790;
+  --text-meta: #645F5B;
+  --accent: #34D399;
+  --accent-hover: #6EE7B7;
+  --accent-subtle: rgba(52, 211, 153, 0.08);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(52, 211, 153, 0.15);
+  --nav-bg: rgba(18, 16, 15, 0.88);
+  --callout-tip-bg: rgba(52, 211, 153, 0.06);
+  --callout-tip-border: rgba(52, 211, 153, 0.2);
+  --callout-note-bg: rgba(96, 165, 250, 0.06);
+  --callout-note-border: rgba(96, 165, 250, 0.2);
+  --callout-warn-bg: rgba(251, 191, 36, 0.06);
+  --callout-warn-border: rgba(251, 191, 36, 0.2);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:global(html) { scroll-behavior: smooth; scroll-padding-top: 112px; }
+.cge-root {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.68;
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); line-height: 1.2; font-weight: 600; }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-hover); }
+img { max-width: 100%; display: block; }
+
+.cge-container { max-width: 1060px; margin: 0 auto; padding: 0 2rem; }
+.narrow { max-width: 680px; margin: 0 auto; }
+
+/* ═══════════════════════════════════════════
+   FADE-IN ANIMATION
+   ═══════════════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 56px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.nav .cge-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.nav-logo {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+.nav-links a {
+  display: block;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  background: var(--accent-subtle);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+.nav-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+.nav-btn svg { width: 16px; height: 16px; }
+.theme-toggle { cursor: pointer; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .search-btn { display: none; }
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
+.cge-hero {
+  position: relative;
+  padding: 4rem 0 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+.cge-hero::before,
+.cge-hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.cge-hero::before {
+  width: 600px; height: 600px;
+  top: -200px; left: 50%;
+  transform: translateX(-70%);
+  background: radial-gradient(circle, var(--bg-hero-glow-1) 0%, transparent 70%);
+}
+.cge-hero::after {
+  width: 500px; height: 500px;
+  top: -100px; left: 50%;
+  transform: translateX(20%);
+  background: radial-gradient(circle, var(--bg-hero-glow-2) 0%, transparent 70%);
+}
+.cge-hero-content { position: relative; z-index: 1; }
+.cge-hero-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  margin-bottom: 1.5rem;
+}
+.cge-hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+.cge-hero h1 .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+.cge-hero-tagline {
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+.cge-hero-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cge-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+.cge-btn-primary:hover { background: var(--accent-hover); color: #fff; transform: translateY(-1px); }
+.cge-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.cge-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ═══════════════════════════════════════════
+   SECTIONS
+   ═══════════════════════════════════════════ */
+section { padding: 3rem 0; }
+.cge-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.section-intro {
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════════
+   CALLOUTS
+   ═══════════════════════════════════════════ */
+.callout {
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border-left: 4px solid;
+}
+.callout-note {
+  background: var(--callout-note-bg);
+  border-color: var(--callout-note-border);
+}
+.callout-tip {
+  background: var(--callout-tip-bg);
+  border-color: var(--callout-tip-border);
+}
+.callout-warn {
+  background: var(--callout-warn-bg);
+  border-color: var(--callout-warn-border);
+}
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+/* ═══════════════════════════════════════════
+   ACCESS GRID
+   ═══════════════════════════════════════════ */
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.access-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.access-item:hover {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+.access-item .access-action {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.access-item:hover .access-action { opacity: 1; }
+.access-item::after {
+  content: '›';
+  font-size: 1.2rem;
+  color: var(--text-meta);
+  margin-left: auto;
+  transition: transform 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.access-item:hover::after {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+.access-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+/* Lightbox overlay for access images */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  background: var(--bg-surface);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  transform: scale(0.92);
+  transition: transform 0.25s ease;
+}
+.lightbox-overlay.active .lightbox-content {
+  transform: scale(1);
+}
+.lightbox-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+.lightbox-caption {
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+.lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 10;
+}
+.lightbox-close:hover { background: rgba(0,0,0,0.7); }
+
+/* Lightbox QR code centering */
+.lightbox-content img.qr-image {
+  max-width: 320px;
+  max-height: 320px;
+  margin: 2rem auto;
+  display: block;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+}
+
+/* Multi-image lightbox (Teams before/after) */
+.lightbox-multi {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.lightbox-multi-item {
+  flex: 1;
+  min-width: 280px;
+  max-width: 48%;
+  text-align: center;
+}
+.lightbox-multi-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.lightbox-multi-label {
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Desktop app image - constrained for clarity */
+.lightbox-content img.desktop-image {
+  padding: 2rem 1.5rem;
+  background: var(--bg-raised);
+  max-width: 80vw;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Guide hero image */
+.guide-hero-image {
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.guide-hero-image:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-card-hover);
+}
+.guide-hero-image::after {
+  content: '🔍 Click to enlarge';
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.guide-hero-image:hover::after { opacity: 1; }
+.guide-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .access-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   SCREENSHOT PLACEHOLDER
+   ═══════════════════════════════════════════ */
+.screenshot-placeholder {
+  background: var(--bg-raised);
+  border: 2px dashed var(--border-strong);
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-meta);
+  font-size: 0.85rem;
+  margin: 1.5rem 0;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.screenshot-placeholder .ss-icon { font-size: 1.6rem; }
+
+/* ═══════════════════════════════════════════
+   CAPABILITY CARDS
+   ═══════════════════════════════════════════ */
+.capability-category { margin-bottom: 1.5rem; }
+.capability-category h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.capability-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.capability-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-strong);
+}
+.capability-card.open {
+  border-left: 3px solid var(--accent);
+}
+.capabilities-grid.two-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+.capability-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+.capability-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.capability-info { flex: 1; min-width: 0; }
+.capability-info h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.capability-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.expand-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  font-weight: 300;
+}
+.capability-card.open .expand-icon {
+  transform: rotate(45deg);
+}
+.capability-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.capability-detail-inner {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.collapse-btn {
+  display: none;
+  width: 100%;
+  padding: 0.55rem;
+  margin-top: 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.collapse-btn:hover { border-color: var(--accent); color: var(--accent); }
+.capability-card.open .collapse-btn { display: block; }
+.prompt-example { margin-top: 0.75rem; }
+.prompt-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.prompt-text {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.55;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.prompt-text:hover {
+  border-color: var(--accent);
+}
+.copy-hint {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.copy-hint::before {
+  content: '📋 ';
+}
+.prompt-text:hover .copy-hint {
+  color: var(--accent);
+}
+.capability-detail .screenshot-placeholder {
+  aspect-ratio: 16 / 9;
+  padding: 2rem;
+  margin-top: 0.75rem;
+}
+
+/* Inline multi-image grid for capability cards */
+.capability-images {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+.capability-images .cap-img-item {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  cursor: pointer;
+}
+.capability-images .cap-img-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.capability-images .cap-img-item:hover img {
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(37,99,235,0.15);
+}
+.capability-images .cap-img-label {
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .capabilities-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   COMPARISON TABLE
+   ═══════════════════════════════════════════ */
+.comparison-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.comparison-table thead th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.comparison-table thead th:first-child { min-width: 200px; }
+.comparison-table tbody td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.comparison-table tbody tr:last-child td { border-bottom: none; }
+.comparison-table tbody tr:hover { background: var(--accent-subtle); }
+.comparison-table td:first-child { font-weight: 500; }
+
+/* ═══════════════════════════════════════════
+   ACCORDION (Prompting Section)
+   ═══════════════════════════════════════════ */
+.accordion { margin-top: 2rem; }
+.accordion-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+.accordion-header:hover { background: var(--accent-subtle); }
+.accordion-icon { font-size: 1.3rem; flex-shrink: 0; }
+.accordion-title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.accordion-subtitle {
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-left: 0.5rem;
+}
+.accordion-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--text-meta);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.accordion-item.open .accordion-chevron {
+  transform: rotate(180deg);
+}
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.accordion-body-inner {
+  padding: 0 1.25rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.accordion-body-inner p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin: 0.75rem 0;
+}
+.accordion-body-inner .prompt-text {
+  margin-bottom: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   TABS (Scenarios Section)
+   ═══════════════════════════════════════════ */
+.tabs-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+.tab-btn {
+  flex-shrink: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.timeline { padding: 0; list-style: none; }
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.25rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.timeline-item:hover {
+  background: var(--bg-raised);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.timeline-content { flex: 1; }
+.timeline-content h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.timeline-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.timeline-content .prompt-text {
+  margin-top: 0.6rem;
+}
+
+/* ═══════════════════════════════════════════
+   CHECKLIST
+   ═══════════════════════════════════════════ */
+.progress-bar-wrapper {
+  background: var(--bg-raised);
+  border-radius: 100px;
+  height: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.progress-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-meta);
+  margin-bottom: 0.5rem;
+}
+.checklist { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.25s, background 0.2s;
+  cursor: pointer;
+}
+.checklist-item:hover { border-color: var(--border-strong); box-shadow: var(--shadow-card-hover); }
+.checklist-item.completed {
+  opacity: 0.7;
+}
+.checklist-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-strong);
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  background: transparent;
+}
+.checklist-checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.checklist-checkbox.checked::after {
+  content: '✓';
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.checklist-text { flex: 1; }
+.checklist-title {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.15rem;
+}
+.checklist-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.congrats-msg {
+  display: none;
+  text-align: center;
+  padding: 2rem;
+  background: var(--callout-tip-bg);
+  border: 1px solid var(--callout-tip-border);
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+.congrats-msg.visible { display: block; }
+.congrats-msg .congrats-emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+
+/* ═══════════════════════════════════════════
+   RESOURCES GRID
+   ═══════════════════════════════════════════ */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.resource-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.resource-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.resource-card:hover::before {
+  transform: scaleX(1);
+}
+.resource-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  color: inherit;
+}
+.resource-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.resource-card h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+.resource-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.resource-card .ext-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .resources-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .resources-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2rem;
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+.footer-tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+.footer-disclaimer {
+  font-size: 0.78rem;
+  color: var(--text-meta);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+.footer-bottom {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-meta);
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════ */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-surface);
+  border: 1px solid var(--accent);
+  color: var(--text-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL PROGRESS & BACK TO TOP
+   ═══════════════════════════════════════════ */
+.scroll-progress {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 99;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 150;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-to-top.visible { opacity: 1; pointer-events: all; }
+.back-to-top:hover { transform: translateY(-2px); }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .cge-root { font-size: 16px; }
+  .cge-container { padding: 0 1.25rem; }
+  section { padding: 2.5rem 0; }
+  .cge-hero { padding: 4rem 0 3rem; }
+  .access-grid { grid-template-columns: repeat(2, 1fr); }
+  .checklist { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .cge-hero-ctas { flex-direction: column; align-items: center; }
+  .access-grid { grid-template-columns: 1fr; }
+}
+
+/* ported: sit the guide sub-nav below the site header */
+.cge-root .nav { top: 56px; z-index: 40; }
+
+</style>
+
+<script>
+(function () {
+  const guideRoot = document.querySelector('.cge-root');
+
+(function() {
+  'use strict';
+
+  /* ─── Sample File Downloads ─── */
+  window.downloadSample = function(filename, content, mimeType) {
+    var blob = new Blob([content], {type: mimeType || 'text/plain'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  };
+
+  /* ─── Lightbox for Access Images ─── */
+  window.openLightbox = function(src, caption, type) {
+    var overlay = document.getElementById('lightbox');
+    var body = document.getElementById('lightbox-body');
+    var cap = document.getElementById('lightbox-caption');
+    var cls = type === 'desktop' ? 'desktop-image' : '';
+    body.innerHTML = '<img src="' + src + '" alt="' + caption + '" class="' + cls + '" style="display:block;max-width:90vw;max-height:80vh;object-fit:contain;">';
+    cap.textContent = caption;
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLightbox = function(e) {
+    var content = document.getElementById('lightbox-content');
+    if (e.target === content || content.contains(e.target)) {
+      if (e.target.classList.contains('lightbox-close') || e.target.closest('.lightbox-close')) {
+        // allow close button
+      } else {
+        return;
+      }
+    }
+    var overlay = document.getElementById('lightbox');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var overlay = document.getElementById('lightbox');
+      if (overlay && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  /* ─── Theme handled globally by the site header ─── */
+
+  /* ─── Practice Reveal Toggle ─── */
+  window.toggleReveal = function(btn) {
+    var actions = btn.closest('.practice-actions') || btn.parentElement;
+    var reveal = actions.querySelector('.practice-reveal');
+    var isOpen = reveal.style.display !== 'none' && reveal.style.display !== '';
+    reveal.style.display = isOpen ? 'none' : 'block';
+    btn.textContent = isOpen ? 'See our suggestion ▼' : 'Hide suggestion ▲';
+  };
+
+  /* ─── Evolve Stepper ─── */
+  window.switchEvolve = function(level) {
+    document.querySelectorAll('.evolve-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.evolve-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelector('.evolve-tab[data-level="' + level + '"]').classList.add('active');
+    document.getElementById('evolve-' + level).classList.add('active');
+  };
+
+  /* ─── Capability Card Expand/Collapse ─── */
+  window.toggleCapability = function(header) {
+    const card = header.closest('.capability-card');
+    const detail = card.querySelector('.capability-detail');
+    const inner = detail.querySelector('.capability-detail-inner');
+    const wasOpen = card.classList.contains('open');
+    card.classList.toggle('open');
+    if (!wasOpen) {
+      detail.style.maxHeight = inner.scrollHeight + 'px';
+    } else {
+      detail.style.maxHeight = '0';
+      // Scroll back to card if it's above the viewport
+      const rect = card.getBoundingClientRect();
+      if (rect.top < 0) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
+  // Inject collapse buttons into all capability-detail-inner elements
+  document.querySelectorAll('.capability-detail-inner').forEach(function(inner) {
+    var btn = document.createElement('button');
+    btn.className = 'collapse-btn';
+    btn.textContent = '▲ Collapse';
+    btn.addEventListener('click', function() {
+      var card = inner.closest('.capability-card');
+      var header = card.querySelector('.capability-header');
+      toggleCapability(header);
+    });
+    inner.appendChild(btn);
+  });
+
+  /* ─── Accordion ─── */
+  window.toggleAccordion = function(header) {
+    const item = header.closest('.accordion-item');
+    const body = item.querySelector('.accordion-body');
+    const inner = body.querySelector('.accordion-body-inner');
+    item.classList.toggle('open');
+    header.setAttribute('aria-expanded', item.classList.contains('open'));
+    if (item.classList.contains('open')) {
+      body.style.maxHeight = inner.scrollHeight + 'px';
+    } else {
+      body.style.maxHeight = '0';
+    }
+  };
+
+  /* ─── Tabs ─── */
+  window.switchTab = function(btn, panelId) {
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById(panelId);
+    panel.classList.add('active');
+    // Re-observe fade-in elements inside newly visible panel
+    panel.querySelectorAll('.fade-in:not(.visible)').forEach(el => fadeObserver.observe(el));
+  };
+
+  /* ─── Copy Prompt ─── */
+  window.copyPrompt = function(el) {
+    const hint = el.querySelector('.copy-hint');
+    const text = el.innerText.replace(/📋\s*Click to copy$/i, '').replace(/📋\s*Copied ✓$/i, '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('Copied!');
+      if (hint) { hint.textContent = 'Copied ✓'; setTimeout(() => { hint.textContent = 'Click to copy'; }, 1500); }
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('Copied!');
+      if (hint) { hint.textContent = 'Copied ✓'; setTimeout(() => { hint.textContent = 'Click to copy'; }, 1500); }
+    });
+  };
+
+  /* ─── Toast ─── */
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  /* ─── Checklist ─── */
+  const STORAGE_KEY = 'copilot-excel-checklist';
+  let checks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  if (!Array.isArray(checks) || checks.length !== 10) checks = new Array(10).fill(false);
+
+  function renderChecklist() {
+    const items = document.querySelectorAll('.checklist-item');
+    let done = 0;
+    items.forEach((item, i) => {
+      const cb = item.querySelector('.checklist-checkbox');
+      if (checks[i]) {
+        cb.classList.add('checked');
+        cb.setAttribute('aria-checked', 'true');
+        item.classList.add('completed');
+        done++;
+      } else {
+        cb.classList.remove('checked');
+        cb.setAttribute('aria-checked', 'false');
+        item.classList.remove('completed');
+      }
+    });
+    document.getElementById('progress-count').textContent = done;
+    document.getElementById('progress-bar').style.width = (done / 10 * 100) + '%';
+    document.getElementById('congrats-msg').classList.toggle('visible', done === 10);
+  }
+
+  window.toggleCheck = function(cb) {
+    const item = cb.closest('.checklist-item');
+    const idx = parseInt(item.getAttribute('data-check'), 10);
+    checks[idx] = !checks[idx];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+    cb.style.transform = 'scale(1.2)';
+    setTimeout(() => { cb.style.transform = ''; }, 200);
+    renderChecklist();
+  };
+
+  renderChecklist();
+
+  /* ─── Fade-in on Scroll ─── */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(document.querySelectorAll('.fade-in:not(.visible)')).indexOf(entry.target);
+        const delay = Math.max(0, idx) * 60;
+        setTimeout(() => entry.target.classList.add('visible'), Math.min(delay, 300));
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  /* ─── Active Nav Link ─── */
+  const sections = guideRoot ? guideRoot.querySelectorAll('section[id]') : [];
+  const navLinks = guideRoot ? guideRoot.querySelectorAll('.nav-links a[href^="#"]') : [];
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-80px 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(s => navObserver.observe(s));
+
+  /* ─── Scroll Progress & Back to Top ─── */
+  const progressBar = document.getElementById('scroll-progress');
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = scrollPercent + '%';
+    if (backToTop) backToTop.classList.toggle('visible', scrollTop > 400);
+  }, { passive: true });
+
+  /* ─── Detect OS for Keyboard Shortcut ─── */
+  const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform) || (navigator.userAgentData && navigator.userAgentData.platform === 'macOS');
+  const kbdEl = document.querySelector('.search-btn span');
+  if (kbdEl && !isMac) kbdEl.textContent = 'Ctrl+K';
+
+})();
+
+})();
+</script>

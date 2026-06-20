@@ -1,0 +1,82 @@
+---
+interface Props {
+  /** When true, hide the About / GitHub / Contact links for customer-facing pages. */
+  minimal?: boolean;
+}
+const { minimal = false } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <p class="footer-tagline">Intelligence, amplified</p>
+      <p class="footer-disclaimer">Not an official Microsoft resource. Screenshots are illustrative and may differ from the current product experience.</p>
+      {!minimal && (
+        <div class="footer-links">
+          <a href="/about/">About</a>
+          <a href="https://github.com/KCHouse13/ia-field-notes">GitHub</a>
+          <a href="mailto:hello@intelligenceamplified.work">Contact</a>
+        </div>
+      )}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 1.75rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    max-width: 520px;
+    text-align: center;
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.35rem;
+  }
+
+  .footer-disclaimer {
+    font-size: 0.78rem;
+    color: var(--text-meta);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.12s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .footer-brand { max-width: 100%; }
+  }
+</style>

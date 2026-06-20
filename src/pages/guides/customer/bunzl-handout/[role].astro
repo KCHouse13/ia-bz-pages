@@ -1,0 +1,43 @@
+---
+// Standalone, print-optimized handout route for the Bunzl Copilot Chat (Basic) guide.
+// One page per role (plus an "all" variant). Renders the BunzlHandout component in a
+// minimal, chrome-free, light-themed document built for browser "Save as PDF".
+// Unlisted: noindex + excluded from Pagefind search and the sitemap (/guides/customer/).
+import BunzlHandout from '../../../../components/guides/customer/BunzlHandout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { role: 'executive' }, props: { label: 'Executive' } },
+    { params: { role: 'manager' }, props: { label: 'Manager' } },
+    { params: { role: 'ic' }, props: { label: 'Individual Contributor' } },
+    { params: { role: 'frontline' }, props: { label: 'Frontline & Warehouse' } },
+    { params: { role: 'all' }, props: { label: 'All roles' } },
+  ];
+}
+
+const { role } = Astro.params;
+const { label } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Copilot Chat (Basic) Handout — {label} · Prepared for Bunzl Distribution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html, body { margin: 0; padding: 0; }
+      body { background: #F7F5F2; }
+    </style>
+  </head>
+  <body data-pagefind-ignore="all">
+    <BunzlHandout role={role} />
+  </body>
+</html>

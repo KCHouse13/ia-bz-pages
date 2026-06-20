@@ -1,0 +1,1114 @@
+---
+// Copilot in Word - interactive guide ported into the site as a scoped Astro component.
+// The site shell (BaseLayout) owns the header, footer, search, fonts and theme;
+// this component ships only the guide body, its scoped styles and its behaviour.
+---
+<div class="cgw-root">
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<nav class="nav" aria-label="Primary navigation">
+  <div class="cgw-container">
+    <a class="nav-brand" href="#top" aria-label="Copilot in Word guide home">
+      <span class="nav-logo">W</span>
+      <span>Copilot in Word</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#visuals">Visuals</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#usecases">Use cases</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+    </ul>
+    <div class="nav-actions">
+      
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <section class="cgw-hero">
+    <div class="cgw-container cgw-hero-content">
+      <div class="cgw-hero-stamp fade-in">Enterprise training guide · Microsoft 365 Copilot</div>
+      <h1 class="fade-in">Use Copilot in Word to <span class="accent">draft, edit, analyze, and improve documents</span></h1>
+      <p class="cgw-hero-tagline fade-in">A practical training guide for business users learning how to navigate Copilot in Word, choose edit vs chat-only mode, ground prompts in files, use agents, work with voice input, and apply AI to real enterprise document workflows.</p>
+      <div class="cgw-hero-ctas fade-in">
+        <a href="#workflow" class="cgw-btn-primary">Start the workflow →</a>
+        <a href="#visuals" class="cgw-btn-ghost">View screenshot placeholders</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="outcomes">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Why this matters</p>
+      <h2 class="section-title fade-in">Word is where Copilot becomes usable business output</h2>
+      <p class="section-intro fade-in">Copilot can help accelerate the most common document jobs: getting past the blank page, improving rough drafts, summarizing source material, converting notes into structured content, and turning role-specific expertise into repeatable templates.</p>
+      <div class="grid-3">
+        <article class="card fade-in">
+          <div class="card-icon">✍️</div>
+          <h3>Create faster first drafts</h3>
+          <p>Start with outlines, memos, briefs, SOPs, FAQs, reports, policies, or executive summaries grounded in selected sources.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🛠️</div>
+          <h3>Improve existing writing</h3>
+          <p>Rewrite selected content for clarity, brevity, tone, structure, audience fit, and table-based readability.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🔎</div>
+          <h3>Analyze before editing</h3>
+          <p>Use chat-only mode to identify gaps, risks, unsupported claims, decisions needed, and assumptions before changing the file.</p>
+        </article>
+      </div>
+      <div class="callout warning fade-in">
+        <strong>Responsible use:</strong> Copilot output is a draft. Users remain accountable for final facts, numbers, legal meaning, policy interpretation, customer commitments, and approval workflows.
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Navigation</p>
+      <h2 class="section-title fade-in">Know the Copilot surfaces in Word</h2>
+      <p class="section-intro fade-in">The current Word experience includes an in-canvas prompt bar, a Copilot side pane, contextual rewrite tools, attachment options, agents, model selection, and voice input. Feature availability can vary by license, tenant policy, app version, and service capacity.</p>
+      <div class="grid-3">
+        <article class="card fade-in">
+          <div class="card-icon">📄</div>
+          <h3>Draft with Copilot</h3>
+          <p>Appears on a blank page or new line. Use it for first drafts, outlines, reports, memos, procedures, and section starters.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">💬</div>
+          <h3>Copilot side pane</h3>
+          <p>Use the side pane to ask questions, edit the document, attach content, select agents, choose models, and continue conversations.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🧩</div>
+          <h3>Selected-text tools</h3>
+          <p>Highlight text to rewrite, refine, shorten, expand, adjust tone, or transform notes into a table.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">📎</div>
+          <h3>Grounding and files</h3>
+          <p>Add work content, upload files, or attach cloud files so Copilot can use the right source material.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🤖</div>
+          <h3>Agents</h3>
+          <p>Use approved agents like Researcher, Analyst, Legal Agent, or domain-specific assistants for specialized work.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🎙️</div>
+          <h3>Voice input</h3>
+          <p>Use Dictate to add raw text to the document, or use the microphone in Copilot to speak an instruction.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="visuals">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Screenshot plan</p>
+      <h2 class="section-title fade-in">Visual placeholders to add before publishing</h2>
+      <p class="section-intro fade-in">These are the places where screenshots will help visual learners. Replace each placeholder block with an image or keep the caption as an instructor note.</p>
+      <div class="placeholder-grid">
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 01</div>
+                <h3>Blank document prompt bar</h3>
+              </div>
+              <span class="placeholder-badge">High value</span>
+            </div>
+            <p>Show the in-canvas prompt: "Describe what you'd like to draft with Copilot." This anchors where new users start.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · prompt bar</div>
+        </article>
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 02</div>
+                <h3>Copilot side pane</h3>
+              </div>
+              <span class="placeholder-badge">High value</span>
+            </div>
+            <p>Show the side pane with prompt suggestions and the document visible so learners understand pane vs canvas.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · side pane</div>
+        </article>
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 03</div>
+                <h3>Allow editing vs Chat only</h3>
+              </div>
+              <span class="placeholder-badge">Critical</span>
+            </div>
+            <p>Capture the mode dropdown. This is one of the most important concepts for safe document workflows.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · mode dropdown</div>
+        </article>
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 04</div>
+                <h3>Attach files and agents menu</h3>
+              </div>
+              <span class="placeholder-badge">High value</span>
+            </div>
+            <p>Show Add work content, upload files, attach cloud files, Researcher, Analyst, and any approved domain agents.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · plus menu</div>
+        </article>
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 05</div>
+                <h3>Model selection menu</h3>
+              </div>
+              <span class="placeholder-badge">Optional</span>
+            </div>
+            <p>Show Auto, GPT, Claude, or other available model options if your tenant exposes them.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · model menu</div>
+        </article>
+        <article class="placeholder fade-in">
+          <div>
+            <div class="placeholder-top">
+              <div>
+                <div class="placeholder-kicker">Screenshot 06</div>
+                <h3>Selected-text rewrite</h3>
+              </div>
+              <span class="placeholder-badge">High value</span>
+            </div>
+            <p>Show text selected in the document with Copilot rewrite or transform options visible.</p>
+          </div>
+          <div class="placeholder-visual">PLACEHOLDER · selected text</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Safe control</p>
+      <h2 class="section-title fade-in">Choose the right mode before you prompt</h2>
+      <p class="section-intro fade-in">Mode selection is the difference between asking Copilot for advice and letting it make changes. Teach this early.</p>
+      <div class="mode-grid">
+        <article class="mode-card fade-in">
+          <h3>Allow editing</h3>
+          <p>Use when you want Copilot to directly insert, rewrite, reorganize, or transform document content.</p>
+          <ul class="mode-list">
+            <li>Best for early drafts and active editing.</li>
+            <li>Use for section creation, restructuring, and rewriting.</li>
+            <li>Review every change before sharing externally.</li>
+          </ul>
+        </article>
+        <article class="mode-card fade-in">
+          <h3>Chat only</h3>
+          <p>Use when you want Copilot to respond in the pane without changing the document.</p>
+          <ul class="mode-list">
+            <li>Best for critique, Q&A, summarization, and planning.</li>
+            <li>Use for sensitive, near-final, or reviewed documents.</li>
+            <li>Copy or apply only the changes you approve.</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout fade-in">
+        <strong>Rule of thumb:</strong> Chat only first for important documents. Allow editing after you know exactly what change you want.
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Workflow</p>
+      <h2 class="section-title fade-in">A repeatable way to work with Copilot in Word</h2>
+      <p class="section-intro fade-in">Use this sequence for most business documents. It keeps Copilot useful while preserving human control.</p>
+      <div class="workflow">
+        <ol class="timeline fade-in">
+          <li class="timeline-item">
+            <span class="timeline-num">1</span>
+            <div class="timeline-content"><h4>Choose the task</h4><p>Draft, edit, summarize, critique, transform, or prepare a role-specific deliverable.</p></div>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-num">2</span>
+            <div class="timeline-content"><h4>Choose the mode</h4><p>Use Allow editing for changes, Chat only for analysis or advice.</p></div>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-num">3</span>
+            <div class="timeline-content"><h4>Ground the prompt</h4><p>Attach the right file, cloud source, work content, or approved agent.</p></div>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-num">4</span>
+            <div class="timeline-content"><h4>Ask for structure</h4><p>Start with an outline, table, checklist, or section plan before a long draft.</p></div>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-num">5</span>
+            <div class="timeline-content"><h4>Iterate</h4><p>Regenerate, shorten, clarify, change tone, add missing sections, or ask for alternatives.</p></div>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-num">6</span>
+            <div class="timeline-content"><h4>Verify and finalize</h4><p>Check facts, numbers, citations, policy language, legal meaning, and customer commitments.</p></div>
+          </li>
+        </ol>
+        <div class="prompt-builder fade-in">
+          <h3>Prompt builder: GCSE</h3>
+          <div class="prompt-row">
+            <div class="prompt-label">Goal</div>
+            <p>What do you want Copilot to create, edit, summarize, or analyze?</p>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-label">Context</div>
+            <p>Who is the audience? What business situation should shape the answer?</p>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-label">Source</div>
+            <p>What document, file, selected text, or approved agent should Copilot use?</p>
+          </div>
+          <div class="prompt-row">
+            <div class="prompt-label">Expect</div>
+            <p>What format, tone, length, sections, and guardrails should the output follow?</p>
+          </div>
+          <div class="prompt-output" onclick="copyPrompt(this)">
+            <p>Using the attached source document, draft a one-page executive briefing for senior business leaders. Include context, key findings, decision needed, risks, recommendation, and open questions. Use concise business language, preserve all numbers exactly, and flag any assumptions or missing evidence.</p>
+            <span class="copy-hint">Click to copy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advanced">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Advanced features</p>
+      <h2 class="section-title fade-in">Use agents, files, voice, and models intentionally</h2>
+      <p class="section-intro fade-in">These capabilities make Copilot more powerful, but they also require clearer user judgment and governance awareness.</p>
+      <div class="accordion">
+        <div class="accordion-item fade-in">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>Grounding with files and work content</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body"><div class="accordion-body-inner">
+            Add work content, upload files, or attach cloud files when Copilot needs specific source material. Tell Copilot which source is authoritative and what it should not invent.
+            <ul>
+              <li>Use selected files for drafts and summaries.</li>
+              <li>Use the current document for document Q&A and review.</li>
+              <li>Use source constraints: "Only use the attached file and flag missing evidence."</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="accordion-item fade-in">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>Agents: Researcher, Analyst, Legal Agent, and domain assistants</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body"><div class="accordion-body-inner">
+            Agents extend Copilot with specialized instructions, knowledge, and sometimes actions. Use them when the task needs more than basic rewriting.
+            <ul>
+              <li>Researcher: source-backed briefs, market scans, backgrounders.</li>
+              <li>Analyst: data interpretation, drivers, risks, recommendations.</li>
+              <li>Domain agents: legal, HR, IT, sales, or process-specific guidance.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="accordion-item fade-in">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>Model selection: Auto, GPT, Claude, and reasoning options</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body"><div class="accordion-body-inner">
+            Use Auto for most tasks. Choose a specific model only when your tenant exposes options and you have a reason, such as long-form synthesis, complex reasoning, or a preferred writing style.
+            <ul>
+              <li>Auto is the best default for general business users.</li>
+              <li>Advanced reasoning can help with tradeoffs and complex analysis.</li>
+              <li>Availability varies by license, policy, and service capacity.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="accordion-item fade-in">
+          <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+            <span>Voice input vs Word Dictate</span><span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body"><div class="accordion-body-inner">
+            Word Dictate turns speech into document text. The microphone in the Copilot box sends a spoken instruction to Copilot.
+            <ul>
+              <li>Use Dictate to capture raw ideas.</li>
+              <li>Use Copilot voice input to ask Copilot to perform a task.</li>
+              <li>Verify names, numbers, acronyms, and sensitive details before submitting.</li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="usecases">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Enterprise value</p>
+      <h2 class="section-title fade-in">Use cases by role and functional area</h2>
+      <p class="section-intro fade-in">These examples go beyond "write me a paragraph" and show how business users can apply Copilot in Word to meaningful workflows.</p>
+      <div class="tabs fade-in">
+        <div class="tab-list" role="tablist" aria-label="Use case categories">
+          <button class="tab-btn active" onclick="switchTab(this, 'tab-leadership')" role="tab">Leadership</button>
+          <button class="tab-btn" onclick="switchTab(this, 'tab-revenue')" role="tab">Sales & Marketing</button>
+          <button class="tab-btn" onclick="switchTab(this, 'tab-functions')" role="tab">HR, Finance & Legal</button>
+          <button class="tab-btn" onclick="switchTab(this, 'tab-ops')" role="tab">Ops, IT & Service</button>
+        </div>
+        <div id="tab-leadership" class="tab-panel active" role="tabpanel">
+          <div class="usecase-grid">
+            <article class="usecase-card">
+              <span class="usecase-meta">Executives</span>
+              <h3>Decision memo from scattered inputs</h3>
+              <p>Use Chat only to identify the decision, options, evidence gaps, risks, and dependencies. Then allow editing to draft the memo once the structure is approved.</p>
+              <ul><li>Output: one-page memo</li><li>Value: faster briefing prep</li><li>Guardrail: label assumptions</li></ul>
+            </article>
+            <article class="usecase-card">
+              <span class="usecase-meta">Program leaders</span>
+              <h3>Status report and decision log</h3>
+              <p>Convert meeting notes and task exports into a sponsor-ready status report with decisions, blockers, owners, and next actions.</p>
+              <ul><li>Output: project status report</li><li>Value: clearer accountability</li><li>Guardrail: validate owners and dates</li></ul>
+            </article>
+          </div>
+        </div>
+        <div id="tab-revenue" class="tab-panel" role="tabpanel">
+          <div class="usecase-grid">
+            <article class="usecase-card">
+              <span class="usecase-meta">Sales</span>
+              <h3>Customer meeting brief</h3>
+              <p>Ground Copilot in account notes, prior meeting summaries, and product materials to create a customer context brief, agenda, discovery questions, and follow-up plan.</p>
+              <ul><li>Output: meeting brief</li><li>Value: better prep</li><li>Guardrail: separate facts from assumptions</li></ul>
+            </article>
+            <article class="usecase-card">
+              <span class="usecase-meta">Marketing</span>
+              <h3>Campaign brief and message variants</h3>
+              <p>Use approved messaging and audience context to draft a campaign brief, channel copy, FAQ, and executive summary with consistent positioning.</p>
+              <ul><li>Output: campaign brief</li><li>Value: faster content cycles</li><li>Guardrail: validate claims</li></ul>
+            </article>
+          </div>
+        </div>
+        <div id="tab-functions" class="tab-panel" role="tabpanel">
+          <div class="usecase-grid">
+            <article class="usecase-card">
+              <span class="usecase-meta">HR</span>
+              <h3>Manager guide from policy</h3>
+              <p>Translate approved policy into plain-language manager guidance, FAQs, escalation triggers, and conversation tips without changing policy meaning.</p>
+              <ul><li>Output: manager guide</li><li>Value: fewer repeat questions</li><li>Guardrail: HR/legal review</li></ul>
+            </article>
+            <article class="usecase-card">
+              <span class="usecase-meta">Finance & Legal</span>
+              <h3>Variance narrative or issue memo</h3>
+              <p>Finance can draft variance commentary from approved analysis. Legal can produce internal issue memos from playbooks and contract notes.</p>
+              <ul><li>Output: narrative or memo</li><li>Value: standardized review</li><li>Guardrail: source systems remain authoritative</li></ul>
+            </article>
+          </div>
+        </div>
+        <div id="tab-ops" class="tab-panel" role="tabpanel">
+          <div class="usecase-grid">
+            <article class="usecase-card">
+              <span class="usecase-meta">Operations</span>
+              <h3>SOP from process notes</h3>
+              <p>Turn tribal knowledge into a repeatable SOP with roles, prerequisites, steps, exceptions, controls, and escalation paths.</p>
+              <ul><li>Output: SOP</li><li>Value: consistent execution</li><li>Guardrail: process owner validation</li></ul>
+            </article>
+            <article class="usecase-card">
+              <span class="usecase-meta">IT & Service</span>
+              <h3>Change communication and escalation summary</h3>
+              <p>Create user-facing announcements, help desk knowledge articles, case summaries, and customer updates from approved notes.</p>
+              <ul><li>Output: communication package</li><li>Value: reduced support burden</li><li>Guardrail: no sensitive internals in broad messages</li></ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Practice</p>
+      <h2 class="section-title fade-in">Try these exercises with approved sample content</h2>
+      <p class="section-intro fade-in">Each exercise is designed to help learners build muscle memory without using sensitive live data.</p>
+      <div class="grid-3">
+        <article class="card fade-in">
+          <div class="card-icon">🧱</div>
+          <h3>Turn notes into a draft</h3>
+          <p>Paste approved sample notes and ask for a one-page brief with context, findings, recommendations, risks, and next steps.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">✂️</div>
+          <h3>Improve a dense paragraph</h3>
+          <p>Select a paragraph and ask Copilot to make it clearer, shorter, and executive-ready while preserving meaning and facts.</p>
+        </article>
+        <article class="card fade-in">
+          <div class="card-icon">🧪</div>
+          <h3>Critique before editing</h3>
+          <p>Switch to Chat only and ask for gaps, unsupported claims, unclear owners, missing evidence, and audience mismatch.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Readiness</p>
+      <h2 class="section-title fade-in">Success checklist</h2>
+      <p class="section-intro fade-in">Use this as a completion gate before learners consider a Copilot-assisted document ready to share.</p>
+      <div class="checklist-panel fade-in">
+        <div class="progress-label"><span id="progress-count">0</span> of 10 complete</div>
+        <div class="progress-bar-wrapper"><div class="progress-bar" id="progress-bar"></div></div>
+        <ul class="checklist">
+          <li class="checklist-item" data-check="0" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Goal is clear</span><span class="checklist-desc">The user knows what output Copilot should produce.</span></span></li>
+          <li class="checklist-item" data-check="1" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Right mode selected</span><span class="checklist-desc">Allow editing or Chat only was chosen intentionally.</span></span></li>
+          <li class="checklist-item" data-check="2" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Sources are appropriate</span><span class="checklist-desc">Files and work content are approved for the task.</span></span></li>
+          <li class="checklist-item" data-check="3" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Prompt has context</span><span class="checklist-desc">Audience, situation, tone, and format are defined.</span></span></li>
+          <li class="checklist-item" data-check="4" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Assumptions are labeled</span><span class="checklist-desc">Unsupported claims are flagged, not hidden.</span></span></li>
+          <li class="checklist-item" data-check="5" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Facts are verified</span><span class="checklist-desc">Names, numbers, citations, and dates were checked.</span></span></li>
+          <li class="checklist-item" data-check="6" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Sensitive data reviewed</span><span class="checklist-desc">No over-sharing or unapproved sensitive content.</span></span></li>
+          <li class="checklist-item" data-check="7" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Human owner approves</span><span class="checklist-desc">The accountable person reviewed the output.</span></span></li>
+          <li class="checklist-item" data-check="8" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Audience fit confirmed</span><span class="checklist-desc">Tone, detail, and structure match the recipient.</span></span></li>
+          <li class="checklist-item" data-check="9" onclick="toggleCheck(this)"><span class="checklist-checkbox" role="checkbox" aria-checked="false"></span><span><span class="checklist-title">Next steps are clear</span><span class="checklist-desc">Owners, actions, and open questions are visible.</span></span></li>
+        </ul>
+        <div class="congrats" id="congrats">Ready to share after any required business approval.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources">
+    <div class="cgw-container">
+      <p class="cgw-section-label fade-in">Support</p>
+      <h2 class="section-title fade-in">Helpful resources to link from your site</h2>
+      <p class="section-intro fade-in">Use these cards as placeholders for your organization’s official links, internal policy pages, and approved agents.</p>
+      <div class="resource-grid">
+        <a class="resource-card fade-in" href="https://support.microsoft.com/office/welcome-to-copilot-in-word-2135e85f-a467-463b-b2f0-c51a46d625d1" target="_blank" rel="noopener">
+          <h4>Microsoft Support: Copilot in Word</h4>
+          <p>Official feature overview for Draft, Rewrite, Visualize as table, and Chat.</p>
+        </a>
+        <a class="resource-card fade-in" href="https://m365.cloud.microsoft/copilot-prompts" target="_blank" rel="noopener">
+          <h4>Copilot Prompt Gallery</h4>
+          <p>Ready-to-run prompt examples for common Microsoft 365 workflows.</p>
+        </a>
+        <a class="resource-card fade-in" href="https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-privacy" target="_blank" rel="noopener">
+          <h4>Data, privacy, and security</h4>
+          <p>Microsoft documentation on permissions, privacy, grounding, and compliance.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section style="padding: 0 0 3rem;">
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 2rem;">
+    <p style="color: var(--cp-text-soft); font-size: 0.85rem; font-style: italic; text-align: center; border-top: 1px solid var(--cp-border); padding-top: 1.5rem;">
+      This is not an official Microsoft resource. The views and guidance here represent personal perspective from work in the field.
+    </p>
+  </div>
+</section>
+
+<button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<div class="toast" id="toast">Copied!</div>
+
+
+
+</div>
+
+<style>
+
+.cgw-root {
+  color-scheme: light;
+  --cp-bg: var(--bg-base);
+  --cp-bg-elevated: var(--bg-raised);
+  --cp-surface: var(--bg-surface);
+  --cp-surface-soft: var(--bg-raised);
+  --cp-border: var(--border);
+  --cp-border-strong: var(--border-strong);
+  --cp-text: var(--text-primary);
+  --cp-text-muted: var(--text-secondary);
+  --cp-text-soft: var(--text-meta);
+  --cp-accent: var(--accent);
+  --cp-accent-hover: var(--accent-hover);
+  --cp-accent-soft: var(--accent-subtle);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: var(--accent);
+  --cp-shadow: var(--shadow-card);
+  --cp-overlay: rgba(8, 8, 8, 0.55);
+  --cp-panel: var(--bg-surface);
+  --cp-panel-strong: var(--nav-bg);
+  --cp-sheen: var(--bg-raised);
+  --cp-highlight: var(--accent-subtle);
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Commit Mono', 'Fira Code', Consolas, monospace;
+}
+[data-theme="dark"] .cgw-root {
+  color-scheme: dark;
+  --cp-accent-fg: #0b1220;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:global(html) { scroll-behavior: smooth; scroll-padding-top: 112px; }
+.cgw-root {
+  background: var(--cp-bg);
+  color: var(--cp-text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.cgw-root :is(h1, h2, h3, h4, h5, h6) { font-family: var(--font-heading); }
+a { color: var(--cp-link); text-decoration: none; }
+a:hover { color: var(--cp-accent-hover); }
+button, input, textarea { font: inherit; }
+.cgw-container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+.narrow { max-width: 760px; margin: 0 auto; }
+.fade-in { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 56px;
+  background: var(--cp-panel-strong);
+  border-bottom: 1px solid var(--cp-border);
+  display: flex;
+  align-items: center;
+}
+.nav .cgw-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 1rem; }
+.nav-brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; color: var(--cp-text); }
+.nav-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 0.625rem;
+  display: grid;
+  place-items: center;
+  background: var(--cp-accent);
+  color: var(--cp-accent-fg);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+}
+.nav-links { list-style: none; display: flex; gap: .25rem; align-items: center; }
+.nav-links a {
+  display: block;
+  padding: .35rem .7rem;
+  border-radius: 0.625rem;
+  color: var(--cp-text-muted);
+  font-size: .84rem;
+  font-weight: 600;
+}
+.nav-links a:hover, .nav-links a.active { background: var(--cp-accent-soft); color: var(--cp-accent); }
+.nav-actions { display: flex; gap: .5rem; align-items: center; }
+.nav-btn {
+  border: 1px solid var(--cp-border);
+  border-radius: 0.625rem;
+  background: var(--cp-surface);
+  color: var(--cp-text-muted);
+  padding: .35rem .65rem;
+  cursor: pointer;
+  font-size: .84rem;
+}
+.nav-btn:hover { border-color: var(--cp-border-strong); color: var(--cp-text); }
+.scroll-progress { position: fixed; top: 56px; left: 0; height: 3px; background: var(--cp-accent); z-index: 101; width: 0; }
+
+.cgw-hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cgw-hero::before {
+  content: "";
+  position: absolute;
+  inset: 1.5rem 12%;
+  border-radius: 24px;
+  background: var(--cp-accent-soft);
+  pointer-events: none;
+}
+.cgw-hero-content { position: relative; z-index: 1; }
+.cgw-hero-stamp {
+  font-family: Consolas, "Courier New", Courier, monospace;
+  color: var(--cp-text-soft);
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 1.25rem;
+}
+.cgw-hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  line-height: 1.05;
+  font-weight: 720;
+  letter-spacing: -.045em;
+  max-width: 920px;
+  margin: 0 auto 1.25rem;
+}
+.cgw-hero h1 .accent { color: var(--cp-accent); font-style: italic; }
+.cgw-hero-tagline {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  color: var(--cp-text-muted);
+  font-size: 1.05rem;
+}
+.cgw-hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cgw-btn-primary, .cgw-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border-radius: 0.625rem;
+  padding: .78rem 1.35rem;
+  font-size: .92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cgw-btn-primary {
+  border: 1px solid var(--cp-accent);
+  background: var(--cp-accent);
+  color: var(--cp-accent-fg);
+}
+.cgw-btn-primary:hover { background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+.cgw-btn-ghost {
+  border: 1px solid var(--cp-border-strong);
+  background: var(--cp-surface);
+  color: var(--cp-text);
+}
+.cgw-btn-ghost:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
+
+section { padding: 3.25rem 0; }
+.cgw-section-label {
+  font-family: Consolas, "Courier New", Courier, monospace;
+  color: var(--cp-accent);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .72rem;
+  font-weight: 700;
+  margin-bottom: .75rem;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  margin-bottom: .85rem;
+}
+.section-intro {
+  text-align: center;
+  max-width: 740px;
+  color: var(--cp-text-muted);
+  margin: 0 auto 2.25rem;
+}
+
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.card, .resource-card, .placeholder, .mode-card, .usecase-card, .timeline, .prompt-builder, .checklist-panel {
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+  box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+}
+.card { padding: 1.25rem; }
+.card:hover, .resource-card:hover, .usecase-card:hover { border-color: var(--cp-border-strong); }
+.card-icon { font-size: 1.8rem; margin-bottom: .55rem; }
+.card h3, .card h4, .resource-card h4, .mode-card h3, .usecase-card h3 { font-size: 1.02rem; line-height: 1.3; margin-bottom: .35rem; }
+.card p, .resource-card p, .mode-card p, .usecase-card p { color: var(--cp-text-muted); font-size: .9rem; line-height: 1.55; }
+
+.callout {
+  border-left: 4px solid var(--cp-accent);
+  background: var(--cp-accent-soft);
+  border-radius: 0 0.625rem 0.625rem 0;
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  font-size: .9rem;
+}
+.callout strong { color: var(--cp-text); }
+.callout.warning { border-left-color: var(--cp-warning); }
+.callout.success { border-left-color: var(--cp-success); }
+
+.placeholder-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.placeholder {
+  min-height: 210px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cp-surface-soft);
+  border-style: dashed;
+}
+.placeholder-top { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.placeholder-kicker {
+  font-family: Consolas, "Courier New", Courier, monospace;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cp-accent);
+  font-weight: 700;
+}
+.placeholder h3 { margin: .3rem 0 .4rem; font-size: 1.02rem; }
+.placeholder p { color: var(--cp-text-muted); font-size: .86rem; line-height: 1.5; }
+.placeholder-badge {
+  border: 1px solid var(--cp-border);
+  border-radius: 999px;
+  padding: .15rem .55rem;
+  color: var(--cp-text-soft);
+  font-size: .72rem;
+  white-space: nowrap;
+}
+.placeholder-visual {
+  height: 72px;
+  border: 1px solid var(--cp-border);
+  border-radius: 0.625rem;
+  margin-top: 1rem;
+  display: grid;
+  place-items: center;
+  color: var(--cp-text-soft);
+  font-family: Consolas, "Courier New", Courier, monospace;
+  font-size: .78rem;
+  background: var(--cp-surface);
+}
+
+.mode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.mode-card { padding: 1.35rem; position: relative; overflow: hidden; }
+.mode-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--cp-accent);
+}
+.mode-list { list-style: none; margin-top: .85rem; display: grid; gap: .55rem; }
+.mode-list li { color: var(--cp-text-muted); font-size: .88rem; padding-left: 1.2rem; position: relative; }
+.mode-list li::before { content: "→"; position: absolute; left: 0; color: var(--cp-accent); }
+
+.workflow { display: grid; grid-template-columns: .9fr 1.1fr; gap: 1.25rem; align-items: start; }
+.timeline { list-style: none; padding: .5rem; }
+.timeline-item { display: flex; gap: .85rem; padding: 1rem; border-bottom: 1px solid var(--cp-border); }
+.timeline-item:last-child { border-bottom: 0; }
+.timeline-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--cp-accent);
+  color: var(--cp-accent-fg);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  font-weight: 800;
+  font-size: .85rem;
+}
+.timeline-content h4 { font-size: .96rem; margin-bottom: .2rem; }
+.timeline-content p { color: var(--cp-text-muted); font-size: .88rem; line-height: 1.5; }
+
+.prompt-builder { padding: 1.25rem; }
+.prompt-row { display: grid; grid-template-columns: 120px 1fr; gap: .8rem; align-items: start; padding: .7rem 0; border-bottom: 1px solid var(--cp-border); }
+.prompt-row:last-of-type { border-bottom: 0; }
+.prompt-label {
+  font-family: Consolas, "Courier New", Courier, monospace;
+  color: var(--cp-accent);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .72rem;
+  font-weight: 800;
+}
+.prompt-row p { color: var(--cp-text-muted); font-size: .88rem; }
+.prompt-output {
+  margin-top: 1rem;
+  background: var(--cp-bg-elevated);
+  border: 1px solid var(--cp-border);
+  border-left: 3px solid var(--cp-accent);
+  border-radius: 0 0.625rem 0.625rem 0;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+.prompt-output p { color: var(--cp-text); font-size: .88rem; }
+.copy-hint {
+  display: inline-block;
+  margin-top: .55rem;
+  color: var(--cp-accent);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.tabs { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; overflow: hidden; }
+.tab-list { display: flex; border-bottom: 1px solid var(--cp-border); overflow-x: auto; }
+.tab-btn {
+  border: 0;
+  border-right: 1px solid var(--cp-border);
+  background: var(--cp-surface-soft);
+  color: var(--cp-text-muted);
+  padding: .85rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  min-width: max-content;
+}
+.tab-btn.active { background: var(--cp-surface); color: var(--cp-accent); }
+.tab-panel { display: none; padding: 1.25rem; }
+.tab-panel.active { display: block; }
+.usecase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.usecase-card { padding: 1.15rem; }
+.usecase-meta {
+  display: inline-block;
+  font-family: Consolas, "Courier New", Courier, monospace;
+  color: var(--cp-accent);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: .5rem;
+}
+.usecase-card ul { margin: .8rem 0 0 1rem; color: var(--cp-text-muted); font-size: .86rem; }
+.usecase-card li { margin-bottom: .35rem; }
+
+.accordion { display: grid; gap: .7rem; }
+.accordion-item { border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-surface); overflow: hidden; }
+.accordion-header {
+  width: 100%;
+  border: 0;
+  background: var(--cp-surface);
+  color: var(--cp-text);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.15rem;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 750;
+}
+.accordion-header:hover { background: var(--cp-surface-soft); }
+.accordion-icon { color: var(--cp-accent); font-weight: 800; }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+.accordion-body-inner { padding: 0 1.15rem 1.15rem; color: var(--cp-text-muted); font-size: .9rem; }
+.accordion-body-inner ul { margin: .75rem 0 0 1.1rem; }
+.accordion-body-inner li { margin-bottom: .35rem; }
+
+.resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.resource-card { padding: 1.15rem; display: block; color: var(--cp-text); position: relative; overflow: hidden; }
+.resource-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--cp-accent); }
+.resource-card h4 { padding-left: .4rem; }
+.resource-card p { padding-left: .4rem; }
+
+.checklist-panel { padding: 1.25rem; }
+.progress-label { font-family: Consolas, "Courier New", Courier, monospace; color: var(--cp-text-soft); font-size: .75rem; margin-bottom: .5rem; }
+.progress-bar-wrapper { height: 9px; background: var(--cp-surface-soft); border-radius: 999px; overflow: hidden; margin-bottom: 1.25rem; }
+.progress-bar { height: 100%; background: var(--cp-accent); width: 0; transition: width .3s ease; }
+.checklist { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: .55rem; }
+.checklist-item {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  padding: .8rem;
+  border: 1px solid var(--cp-border);
+  border-radius: 0.625rem;
+  background: var(--cp-surface-soft);
+  cursor: pointer;
+}
+.checklist-item.completed { opacity: .72; }
+.checklist-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--cp-border-strong);
+  border-radius: .4rem;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--cp-accent-fg);
+}
+.checklist-checkbox.checked { background: var(--cp-accent); border-color: var(--cp-accent); }
+.checklist-checkbox.checked::after { content: "✓"; font-size: .78rem; font-weight: 900; }
+.checklist-title { font-weight: 700; font-size: .88rem; }
+.checklist-desc { color: var(--cp-text-muted); font-size: .8rem; line-height: 1.4; }
+.congrats { display: none; margin-top: 1rem; padding: 1rem; border-radius: 0.625rem; border: 1px solid var(--cp-border); background: var(--cp-accent-soft); text-align: center; }
+.congrats.visible { display: block; }
+
+.footer { border-top: 1px solid var(--cp-border); padding: 3rem 0 2rem; text-align: center; }
+.footer-brand { font-weight: 800; margin-bottom: .25rem; }
+.footer-tagline { color: var(--cp-text-muted); margin-bottom: .75rem; }
+.footer-disclaimer { color: var(--cp-text-soft); max-width: 640px; margin: 0 auto 1rem; font-size: .8rem; }
+.footer-bottom { font-family: Consolas, "Courier New", Courier, monospace; color: var(--cp-text-soft); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-accent);
+  color: var(--cp-text);
+  padding: .6rem 1rem;
+  border-radius: 0.625rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 200;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--cp-accent);
+  background: var(--cp-accent);
+  color: var(--cp-accent-fg);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+.back-to-top.visible { opacity: 1; pointer-events: all; }
+
+@media (max-width: 920px) {
+  .nav-links { display: none; }
+  .grid-3, .resource-grid { grid-template-columns: repeat(2, 1fr); }
+  .workflow { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .cgw-container { padding: 0 1rem; }
+  .grid-3, .grid-2, .mode-grid, .placeholder-grid, .usecase-grid, .checklist { grid-template-columns: 1fr; }
+  .cgw-hero { padding-top: 3rem; }
+  .prompt-row { grid-template-columns: 1fr; gap: .25rem; }
+}
+
+/* ported: sit the guide sub-nav below the site header */
+.cgw-root .nav { top: 56px; z-index: 40; }
+
+</style>
+
+<script>
+(function () {
+  const guideRoot = document.querySelector('.cgw-root');
+
+(function() {
+  "use strict";
+
+  /* Theme handled globally by the site header */
+
+  window.copyPrompt = function(el) {
+    const text = el.querySelector("p") ? el.querySelector("p").innerText.trim() : el.innerText.trim();
+    navigator.clipboard.writeText(text).then(function() {
+      showToast("Prompt copied");
+    }).catch(function() {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showToast("Prompt copied");
+    });
+  };
+
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(function() {
+      toast.classList.remove("show");
+    }, 1800);
+  }
+
+  window.switchTab = function(btn, panelId) {
+    document.querySelectorAll(".tab-btn").forEach(function(tab) {
+      tab.classList.remove("active");
+    });
+    document.querySelectorAll(".tab-panel").forEach(function(panel) {
+      panel.classList.remove("active");
+    });
+    btn.classList.add("active");
+    document.getElementById(panelId).classList.add("active");
+  };
+
+  window.toggleAccordion = function(header) {
+    const item = header.closest(".accordion-item");
+    const body = item.querySelector(".accordion-body");
+    const inner = body.querySelector(".accordion-body-inner");
+    const icon = header.querySelector(".accordion-icon");
+    const open = item.classList.toggle("open");
+    header.setAttribute("aria-expanded", String(open));
+    body.style.maxHeight = open ? inner.scrollHeight + "px" : "0";
+    icon.textContent = open ? "−" : "+";
+  };
+
+  const STORAGE_KEY = "copilot-word-guide-checklist";
+  let checks = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  if (!Array.isArray(checks) || checks.length !== 10) checks = new Array(10).fill(false);
+
+  function renderChecklist() {
+    const items = document.querySelectorAll(".checklist-item");
+    let done = 0;
+    items.forEach(function(item, idx) {
+      const cb = item.querySelector(".checklist-checkbox");
+      if (checks[idx]) {
+        done += 1;
+        item.classList.add("completed");
+        cb.classList.add("checked");
+        cb.setAttribute("aria-checked", "true");
+      } else {
+        item.classList.remove("completed");
+        cb.classList.remove("checked");
+        cb.setAttribute("aria-checked", "false");
+      }
+    });
+    document.getElementById("progress-count").textContent = String(done);
+    document.getElementById("progress-bar").style.width = (done / 10 * 100) + "%";
+    document.getElementById("congrats").classList.toggle("visible", done === 10);
+  }
+
+  window.toggleCheck = function(item) {
+    const idx = Number(item.getAttribute("data-check"));
+    checks[idx] = !checks[idx];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+    renderChecklist();
+  };
+  renderChecklist();
+
+  const fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll(".fade-in").forEach(function(el) { fadeObserver.observe(el); });
+
+  const progressBar = document.getElementById("scroll-progress");
+  const backToTop = document.getElementById("back-to-top");
+  window.addEventListener("scroll", function() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    progressBar.style.width = (docHeight > 0 ? scrollTop / docHeight * 100 : 0) + "%";
+    backToTop.classList.toggle("visible", scrollTop > 420);
+  }, { passive: true });
+
+  const sections = guideRoot ? guideRoot.querySelectorAll("section[id]") : [];
+  const navLinks = guideRoot ? guideRoot.querySelectorAll('.nav-links a[href^="#"]') : [];
+  const navObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach(function(link) {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+        });
+      }
+    });
+  }, { rootMargin: "-80px 0px -55% 0px" });
+  sections.forEach(function(section) { navObserver.observe(section); });
+})();
+
+})();
+</script>

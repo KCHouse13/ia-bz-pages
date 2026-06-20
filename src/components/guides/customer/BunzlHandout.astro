@@ -1,0 +1,676 @@
+---
+// Printable, role-based companion handout for the Bunzl "Copilot Chat (Basic)" guide.
+// Renders a Core section (5 print pages) + one role add-on (2 print pages).
+// Designed for browser "Save as PDF / Print" (window.print()). Forces light theme,
+// US Letter portrait, scannable hierarchy, break-inside:avoid on blocks.
+// All classes namespaced `bh-` so it is fully self-contained (no global.css needed).
+
+interface Props {
+  role?: string;
+}
+const { role = 'executive' } = Astro.props;
+
+const IMG = '/images/guides/copilot-chat-basic';
+const GUIDE_URL = 'https://intelligenceamplified.work/guides/customer/bunzl/';
+
+// ── Role content (curated verbatim from the guide so the handout stays in sync) ──
+type Moment = { time: string; icon: string; title: string; desc: string; prompt: string };
+type Role = {
+  label: string;
+  icon: string;
+  tagline: string;
+  moments: Moment[];
+};
+
+const ROLES: Record<string, Role> = {
+  executive: {
+    label: 'Executive',
+    icon: '👔',
+    tagline: 'Briefings, board prep, company comms, and strategic thinking.',
+    moments: [
+      {
+        time: '8:00 AM', icon: '☀️', title: 'Morning Briefing',
+        desc: 'Paste overnight news and get an instant, decision-ready briefing.',
+        prompt: "Summarize the top 5 news stories from today related to the foodservice packaging and distribution industry, grocery and convenience-store retail trends, and supply-chain or commodity cost shifts (resin, paper, freight). Focus on anything involving major North American distributors or our customers, single-use plastics regulation, or sustainability mandates. Format as a numbered list with one sentence per story and a brief 'why it matters for Bunzl' note for each."
+      },
+      {
+        time: '10:30 AM', icon: '📊', title: 'Meeting Prep',
+        desc: 'Turn metrics into board-ready talking points.',
+        prompt: "I'm the VP/GM of a Bunzl distribution division preparing for our quarterly executive leadership meeting. Our key metrics this quarter: [e.g., $320M revenue, 9% YoY growth, 97.5% fill rate, 22 new accounts won]. Create 5 talking points that address: year-over-year revenue growth by customer segment (grocery, food processor, c-store, retail), gross-margin and true case-cost trends, fill rate and on-time delivery vs. SLA, new-account wins and at-risk renewals, and our warehouse capacity and automation plan for H2. Keep the tone confident and data-driven. Format as a bulleted list with bold headers."
+      },
+      {
+        time: '1:00 PM', icon: '✉️', title: 'Communication',
+        desc: 'Draft a clear, energizing company-wide announcement.',
+        prompt: "Draft an email to our field sales organization announcing the launch of a new vendor-managed inventory (VMI) program for convenience-store accounts in the Southeast region. The audience is account managers, regional sales managers, and our customer service team. Strike a tone that's energizing but clear — explain why we're rolling out VMI, what it means for their accounts, and what support and training they'll receive. Keep it under 300 words with a clear call-to-action to attend a kickoff webinar."
+      },
+      {
+        time: '4:00 PM', icon: '🧠', title: 'Strategic Thinking',
+        desc: 'Switch to Think Deeper for second-order competitive analysis.',
+        prompt: "Think deeper: Sustainability mandates and single-use plastics regulations are accelerating across the states our customers operate in, and more customers are asking for compostable and recycled-content alternatives. Analyze what this trend means for Bunzl's distribution business over the next 12 months. Consider product assortment and sourcing implications, true case-cost and margin trade-offs, our advantage as a material-agnostic distributor, customer-retention leverage, and where we should invest to lead on sustainable alternatives. Format as a structured analysis with headers for each area."
+      },
+    ],
+  },
+  manager: {
+    label: 'Manager',
+    icon: '📋',
+    tagline: 'Standups, documentation, coaching, and reporting.',
+    moments: [
+      {
+        time: '8:30 AM', icon: '☀️', title: 'Team Standup Prep',
+        desc: 'Generate a reusable huddle agenda in seconds.',
+        prompt: "Create an agenda for a 15-minute Monday morning huddle with my team of 8 account managers covering grocery and convenience-store customers. Include sections for: last week's wins (new accounts won or cost-savings delivered), this week's priorities (customer business reviews, site visits, or VMI rollouts), and any blockers needing escalation (backorders, pricing issues, service complaints). Format as a reusable template. Keep each section to 2-3 bullet points max."
+      },
+      {
+        time: '11:00 AM', icon: '📝', title: 'Documentation',
+        desc: 'Turn raw meeting notes into structured action items.',
+        prompt: "I just finished a 45-minute joint business planning session with the [e.g., Kroger] procurement lead about their packaging and janitorial supply program. Here are my notes from the meeting: [paste your meeting notes here]. Transform these into a professional meeting summary with three sections: Key Decisions Made (table format), Action Items (table with Owner, Task, Due Date columns), and Open Questions for the Next Review (bulleted list)."
+      },
+      {
+        time: '2:00 PM', icon: '👥', title: 'People Management',
+        desc: 'Build a fair, growth-oriented feedback template.',
+        prompt: "I'm a regional sales manager preparing for quarterly performance reviews with my team of [e.g., 8] account managers covering [e.g., grocery and convenience-store] customers. Create a structured feedback template tailored to distribution sales that includes: Sales Performance & Impact (3 bullets covering revenue/quota attainment, new accounts won, and cost savings delivered to customers), Growth Opportunities (2 bullets with specific development actions like customer business-review skills or category/VMI knowledge), Goals for Next Quarter (3 measurable goals tied to revenue, account retention, and customer satisfaction), and a Coaching Notes section. Use a supportive and growth-oriented tone."
+      },
+      {
+        time: '4:30 PM', icon: '📊', title: 'Reporting',
+        desc: 'Synthesize raw numbers into an executive summary.',
+        prompt: "Create a Q2 territory performance summary for my VP of Sales. Our team of [e.g., 8] account managers covers [e.g., 1,200] grocery and convenience-store customers across the [e.g., Midwest] region. Here are our key numbers: [paste your quarterly metrics or upload your performance spreadsheet]. Include sections for: Key Metrics (format as a table with Metric, Target, Actual, % to Goal columns — include metrics for revenue, fill rate, new accounts won, and cost savings delivered), Top Achievements (3-4 bullets highlighting specific account wins), Challenges & Mitigations (2-3 bullets about competitive threats or service gaps), and Priorities for Q3 (numbered list). Keep the tone professional and results-focused."
+      },
+    ],
+  },
+  ic: {
+    label: 'Individual Contributor',
+    icon: '💼',
+    tagline: 'Email triage, research, content creation, and document review.',
+    moments: [
+      {
+        time: '8:00 AM', icon: '☀️', title: 'Email Triage',
+        desc: 'Sort a heavy inbox into priority tiers fast.',
+        prompt: "I have [e.g., 40+] unread emails from the past 3 days related to my customer accounts, supplier communications, and internal updates. Here are the subject lines and senders: [paste your email subject lines and senders here]. Categorize them into three priority tiers: 🔴 Respond Today (customer order issues, backorder alerts, pricing requests), 🟡 Respond This Week (business-review scheduling, new item setup requests, supplier check-ins), and 🟢 FYI Only (corporate newsletters, HR updates, training announcements). Format as a table with columns for Priority, Subject, Sender, and Suggested Action."
+      },
+      {
+        time: '10:00 AM', icon: '🔬', title: 'Research',
+        desc: 'Run fast, public-info competitive analysis.',
+        prompt: "I'm preparing for an account review with the procurement lead at [e.g., FreshMart Grocery]. Using publicly available information, compare how Bunzl and our top 2 distribution competitors — [e.g., Veritiv and Imperial Dade] — position our offerings in foodservice packaging and janitorial supply. Create a comparison framework with columns for Company, Market Focus, Service Model, Sustainability Positioning, and Potential Weakness. End with 3 talking points on why consolidating more spend with Bunzl would lower their true case cost."
+      },
+      {
+        time: '1:30 PM', icon: '✍️', title: 'Content Creation',
+        desc: 'Draft long-form content with a precise audience.',
+        prompt: "Write a compelling one-page sales story for my top prospect — [e.g., a 50-store regional grocery chain] that currently uses several different suppliers. Target audience: the VP of Procurement who values cost savings and supply reliability. Include sections for: Why Bunzl (3 bullets on single-source consolidation, our 60,000+ item assortment, and our nationwide distribution footprint), Customer Impact (2 bullets on lowering true case cost and freeing up working capital), and Service & Support (3 bullets on vendor-managed inventory, fill-rate performance, and sustainable product alternatives). Use a professional, consultative tone. Keep it under 400 words."
+      },
+      {
+        time: '3:30 PM', icon: '📄', title: 'Document Review',
+        desc: 'Get structured feedback on a proposal or report.',
+        prompt: "Review the attached supply proposal for our Q3 [e.g., Kroger] program and provide structured feedback. Identify: 3 strengths of the proposal, any gaps in the cost-savings projections (missing line items, unrealistic assumptions, or incomplete service-level detail), suggestions to strengthen the executive summary for the customer, and any risks around implementation timing or inventory readiness that aren't addressed. Format your feedback as a table with columns for Section, Finding, and Recommendation."
+      },
+    ],
+  },
+  frontline: {
+    label: 'Frontline / Warehouse',
+    icon: '🏭',
+    tagline: 'Shift prep, quick reference, incident reports, and training.',
+    moments: [
+      {
+        time: '6:00 AM', icon: '☀️', title: 'Shift Prep',
+        desc: 'Generate an opening checklist for your DC.',
+        prompt: "Create a comprehensive shift-opening checklist for a warehouse supervisor at a distribution center. Include sections for: Safety & Compliance (4 items — check forklift inspections, verify clear aisles and dock areas, confirm PPE availability, review any open incident reports), Inbound & Putaway (4 items — verify overnight receipts, check for damaged pallets, confirm putaway locations, flag temperature-sensitive items), Outbound & Pick N Pack (3 items — review today's order volume, confirm staffing by zone, check for backorders or substitutions), and Communication (3 items — brief the team on priorities, note any equipment issues, log the shift handoff). Format each item as a checkbox-style line. Keep the language simple and action-oriented."
+      },
+      {
+        time: '9:00 AM', icon: '📋', title: 'Quick Reference',
+        desc: 'Get a plain-language explanation of a policy.',
+        prompt: "Draft a simple, customer-friendly explanation of a standard product return and credit policy for distribution customers. Cover these scenarios: damaged product found on delivery, product past its expiration date, product recalled by the manufacturer, and overstock or discontinued items. Format as a quick-reference card with each scenario as a separate section including What to Do and Who to Contact. Use a helpful, professional tone I can reference while talking to a customer — and if I paste our actual policy, tailor it to match."
+      },
+      {
+        time: '12:30 PM', icon: '📝', title: 'Incident Reporting',
+        desc: 'Draft a structured incident report on the floor.',
+        prompt: "Help me write a warehouse incident report. Details: At [e.g., Distribution Center #12] today, [describe what happened, e.g., a loaded pallet shifted off a forklift in the outbound staging area]. [describe any injury or damage, e.g., no injuries, but two cases were damaged and an aisle was blocked for about 20 minutes]. I spoke with [who was involved, e.g., the forklift operator and the shift lead] about what happened. Format the report with sections for: Incident Summary, Location/Date/Time, What Happened, People Involved, Injuries or Damage, Immediate Actions Taken, Photos Needed (leave blank), and Recommended Follow-Up to prevent recurrence."
+      },
+      {
+        time: '3:00 PM', icon: '📚', title: 'Training',
+        desc: 'Create an on-the-go training guide for a new process.',
+        prompt: "I'm writing a training guide for our warehouse team on a new handheld scanning and pick-verification process. Create a clear step-by-step guide a team member can follow on the floor. Include: equipment and login requirements, how to start a pick assignment, how to scan and verify items against the order, how to flag a short-pick or substitution, how to report a damaged item with a photo, and how to close out and confirm an order for shipping. Use numbered steps with brief descriptions. Keep each step to 1-2 sentences max."
+      },
+    ],
+  },
+};
+
+const ALL_ROLE_KEYS = ['executive', 'manager', 'ic', 'frontline'];
+const isAll = role === 'all';
+const selectedKeys = isAll ? ALL_ROLE_KEYS : [ROLES[role] ? role : 'executive'];
+const titleRole = isAll ? 'All roles' : ROLES[selectedKeys[0]].label;
+
+const gcse = [
+  { letter: 'G', word: 'Goal', def: 'What you want Copilot to do.', cls: 'goal' },
+  { letter: 'C', word: 'Context', def: 'Background, audience, or situation.', cls: 'context' },
+  { letter: 'S', word: 'Source', def: 'Files, data, or references to use.', cls: 'source' },
+  { letter: 'E', word: 'Expectations', def: 'Format, tone, length, and structure.', cls: 'expectations' },
+];
+
+// Good / Better / Best prompts, split into GCSE-coded segments so the
+// same colors used in the framework boxes highlight the matching parts.
+const gbb = [
+  {
+    tier: 'Good', cls: 'good',
+    segments: [
+      { hl: 'goal', text: 'Help me prepare talking points for a customer account review.' },
+    ],
+  },
+  {
+    tier: 'Better', cls: 'better',
+    segments: [
+      { hl: 'context', text: "I'm a Bunzl account manager meeting with the procurement lead at a regional grocery chain to discuss consolidating more of their packaging, can liner, and janitorial supply spend with us for Q3." },
+      { hl: 'goal', text: 'Create 5 talking points covering true case-cost savings, our 60,000+ item single-source assortment, our fill-rate and on-time delivery performance, and the working-capital benefits of our vendor-managed inventory program.' },
+      { hl: 'expectations', text: 'Use a consultative, partnership-focused tone that positions Bunzl as a supply-chain partner, not just a vendor.' },
+    ],
+  },
+  {
+    tier: 'Best', cls: 'best',
+    segments: [
+      { hl: 'context', text: "I'm a Bunzl account manager preparing for a quarterly business review with the procurement director at FreshMart Grocery, a 200-store regional chain. Bunzl is their primary distributor for foodservice disposables, can liners, and janitorial supplies, and we've been consolidating more of their nonfood spend over the past year." },
+      { hl: 'source', text: 'Review /FreshMart-Q2-Account-Review.xlsx for the latest case volume, fill-rate, and cost-savings data' },
+      { hl: 'goal', text: "and create 5 talking points covering: documented true case-cost savings we've delivered this quarter, our fill rate and on-time delivery vs. SLA, two SKU-consolidation or sustainable-swap opportunities for Q3, and one supply-risk area we can help them de-risk." },
+      { hl: 'expectations', text: 'Format as a numbered list with a one-sentence executive summary at the top. Keep the tone confident but collaborative — this customer values data and brevity.' },
+    ],
+  },
+];
+
+const rules = [
+  { t: 'Let it interview you', d: 'For complex or context-heavy prompts, ask Copilot to pose 5 clarifying questions before it answers — then it builds on your goal instead of guessing.' },
+  { t: 'Break it down', d: 'Multi-step prompts beat one complex prompt. Review and refine between steps.' },
+  { t: 'Assign a persona', d: "Tell Copilot who to 'be' for more specialized, targeted answers." },
+  { t: 'Ask what it needs', d: 'When stuck, ask Copilot what context would help most.' },
+  { t: 'Think end-to-end', d: "Don't just ask for a table of action items — ask for the whole follow-up email that includes it." },
+  { t: 'Experiment', d: 'Try different structures, tones, and follow-ups. Curiosity reveals new capability.' },
+  { t: 'Iterate always', d: 'Your first result is a draft, not a final answer. Refine, adjust, repeat.' },
+];
+
+const techniques = [
+  { t: 'Keep the conversation going', d: "Build on what Copilot gave you with follow-ups — don't start over." },
+  { t: 'Give specific instructions', d: 'Tell Copilot what to include AND what to leave out.' },
+  { t: 'Break it into steps', d: 'Stage complex tasks instead of cramming everything into one prompt.' },
+  { t: 'Assign a persona', d: "Tell Copilot who to 'be' for specialized, targeted answers." },
+  { t: 'Use templates of good', d: 'Give Copilot an example document to follow for structure and tone.' },
+  { t: 'Ask Copilot what it needs', d: "When you're stuck, let Copilot help you write the prompt." },
+];
+
+const legend = [
+  { name: 'New chat', desc: 'Start a fresh conversation with no prior context.' },
+  { name: 'Search', desc: 'Find past chats, prompts, and content across Copilot.' },
+  { name: 'Library', desc: 'Your saved prompts and reusable pages in one place.' },
+  { name: 'Agents', desc: 'Specialized assistants for specific apps and tasks.' },
+  { name: 'Chat history', desc: 'Revisit and continue earlier conversations.' },
+  { name: 'Prompt box', desc: 'Where you type your request to Copilot.' },
+  { name: 'File upload', desc: 'Attach a document or image for Copilot to use.' },
+  { name: 'Voice', desc: 'Speak your prompt instead of typing it.' },
+  { name: 'Prompt starters', desc: 'Suggested prompts to spark ideas fast.' },
+  { name: 'Saved prompts', desc: "Reusable prompts you've pinned for quick access." },
+  { name: 'Enterprise protection shield', desc: 'Confirms your data stays in the secure M365 boundary.' },
+  { name: 'New chat button', desc: 'Clear the screen and begin again in one click.' },
+  { name: 'Model selector', desc: 'Switch between fast answers and deeper reasoning.' },
+  { name: 'App launcher', desc: 'Jump to your other Microsoft 365 apps.' },
+];
+
+const access = [
+  { icon: '🌐', name: 'm365copilot.com', sub: 'primary web' },
+  { icon: '🔲', name: 'Microsoft Edge', sub: 'sidebar' },
+  { icon: '📧', name: 'Outlook', sub: 'side pane' },
+  { icon: '💬', name: 'Teams', sub: 'left nav' },
+  { icon: '📱', name: 'Mobile app', sub: 'iOS & Android' },
+  { icon: '🖥️', name: 'M365 Copilot', sub: 'desktop app' },
+];
+
+const saveList = 'the customers and channels you cover, your role and division, the product categories you distribute, your preferred communication style, and recurring meeting cadences';
+---
+
+<div class="bh-root">
+  <!-- Screen-only toolbar (hidden when printing) -->
+  <div class="bh-toolbar no-print" data-pagefind-ignore>
+    <div class="bh-toolbar-inner">
+      <a href={GUIDE_URL} class="bh-tb-back">← Back to the guide</a>
+      <div class="bh-tb-meta">Copilot Chat (Basic) · Handout — {titleRole}</div>
+      <button type="button" class="bh-tb-print" onclick="window.print()">⤓ Save as PDF / Print</button>
+    </div>
+  </div>
+
+  <div class="bh-pages">
+
+    <!-- ═══ CORE · PAGE 1 — Cover + where to access ═══ -->
+    <section class="bh-sheet bh-cover">
+      <p class="bh-eyebrow">Prepared for Bunzl Distribution</p>
+      <div class="bh-cover-mark"><span class="bh-cc">CC</span></div>
+      <h1 class="bh-cover-title">Copilot Chat <span class="bh-badge">basic</span></h1>
+      <p class="bh-cover-sub">Your pocket companion — a quick-reference and practice guide for the secure AI workspace included with Microsoft 365. No extra license required.</p>
+
+      <div class="bh-edp">
+        <span class="bh-edp-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2.2 4.5 5.1v6.1c0 4.6 3.2 8.9 7.5 10.6 4.3-1.7 7.5-6 7.5-10.6V5.1L12 2.2Z" fill="#107c41"/><path d="m8.6 12.1 2.3 2.3 4.5-4.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div><strong>Enterprise Data Protection.</strong> When you see the green shield, your prompts and responses stay inside the Microsoft 365 service boundary and are never used to train foundation models.</div>
+      </div>
+
+      <h2 class="bh-h2">Where to access Copilot Chat</h2>
+      <div class="bh-access">
+        {access.map((a) => (
+          <div class="bh-access-item">
+            <span class="bh-access-icon">{a.icon}</span>
+            <span class="bh-access-name">{a.name}</span>
+            <span class="bh-access-sub">{a.sub}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="bh-cover-foot">
+        <span>Full interactive guide:</span>
+        <strong>intelligenceamplified.work/guides/customer/bunzl</strong>
+      </div>
+    </section>
+
+    <!-- ═══ CORE · PAGE 2 — Annotated interface ═══ -->
+    <section class="bh-sheet">
+      <p class="bh-kicker">The interface</p>
+      <h2 class="bh-sheet-title">Know your way around</h2>
+      <p class="bh-lead">Fourteen things worth finding the first time you open Copilot Chat.</p>
+      <img class="bh-shot" src={`${IMG}/copilot-chat-annotated.png`} alt="Annotated Copilot Chat interface with 14 numbered features" />
+      <ol class="bh-legend">
+        {legend.map((l) => (
+          <li>
+            <span class="bh-legend-num"></span>
+            <div class="bh-legend-body"><strong>{l.name}</strong><span>{l.desc}</span></div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- ═══ CORE · PAGE 3 — Personalize ═══ -->
+    <section class="bh-sheet">
+      <p class="bh-kicker">Make it yours</p>
+      <h2 class="bh-sheet-title">Personalize Copilot once, benefit every time</h2>
+
+      <div class="bh-card">
+        <h3 class="bh-card-title">Custom Instructions</h3>
+        <p class="bh-card-desc">Set persistent preferences that apply to every conversation — like training Copilot on your working style. Set it once; every response reflects it.</p>
+        <p class="bh-mini-label">How to set it up</p>
+        <ol class="bh-steps">
+          <li>Open the <strong>⋯ menu</strong> (top right) → <strong>Settings</strong></li>
+          <li>Go to <strong>Personalization</strong></li>
+          <li>Toggle on <strong>Custom instructions</strong> → <strong>Edit instructions</strong></li>
+          <li>Type your preferences (or click a suggested chip)</li>
+          <li>Click <strong>Save instructions</strong></li>
+        </ol>
+        <div class="bh-example">
+          <span class="bh-example-tag">Bunzl example</span>
+          I'm a Bunzl account manager. Keep responses concise and action-oriented. Focus on distributor–customer conversations, true case cost, and supply continuity.
+        </div>
+      </div>
+
+      <div class="bh-card">
+        <h3 class="bh-card-title">Saved Memories</h3>
+        <p class="bh-card-desc">Copilot learns context about you over time — your accounts, role, and goals — so it gives more relevant answers without you repeating yourself.</p>
+        <p class="bh-mini-label">How to manage</p>
+        <p class="bh-card-desc">In any chat, say <em>"Add the following to memory: …"</em>. Review or remove entries under <strong>⋯ → Settings → Personalization → Manage saved memories</strong>.</p>
+        <div class="bh-tip"><strong>Great things to save:</strong> {saveList}. The more Copilot knows about your work, the less prompting you need.</div>
+      </div>
+    </section>
+
+    <!-- ═══ CORE · PAGE 4 — GCSE ═══ -->
+    <section class="bh-sheet">
+      <p class="bh-kicker">The framework</p>
+      <h2 class="bh-sheet-title">GCSE — the anatomy of a great prompt</h2>
+      <div class="bh-gcse">
+        {gcse.map((g) => (
+          <div class={`bh-gcse-item bh-gc-${g.cls}`}>
+            <span class={`bh-gcse-letter bh-gl-${g.cls}`}>{g.letter}</span>
+            <div><strong>{g.word}</strong><span>{g.def}</span></div>
+          </div>
+        ))}
+      </div>
+
+      <p class="bh-mini-label" style="margin-top:1.4rem;">Watch a prompt get better</p>
+      <div class="bh-gbb">
+        {gbb.map((p) => (
+          <div class={`bh-gbb-row bh-${p.cls}`}>
+            <span class="bh-gbb-tier">{p.tier}</span>
+            <p class="bh-gbb-text">{p.segments.map((s, i) => (
+              <>{i > 0 ? ' ' : ''}<span class={`bh-hl bh-hl-${s.hl}`}>{s.text}</span></>
+            ))}</p>
+          </div>
+        ))}
+      </div>
+      <div class="bh-tip">Notice how each step adds <strong>Goal → Context → Source → Expectations</strong>. You rarely nail it on the first try — that's normal. Iterate.</div>
+    </section>
+
+    <!-- ═══ CORE · PAGE 5 — Cheat sheet ═══ -->
+    <section class="bh-sheet">
+      <p class="bh-kicker">Quick reference</p>
+      <h2 class="bh-sheet-title">The cheat sheet</h2>
+      <div class="bh-two-col">
+        <div>
+          <p class="bh-mini-label">7 rules for better prompts</p>
+          <ul class="bh-rules">
+            {rules.map((r, i) => (
+              <li><span class="bh-rule-num">{i + 1}</span><div><strong>{r.t}</strong><span>{r.d}</span></div></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="bh-mini-label">6 power techniques</p>
+          <ul class="bh-rules bh-rules-tech">
+            {techniques.map((tn) => (
+              <li><span class="bh-rule-dot">▸</span><div><strong>{tn.t}</strong><span>{tn.d}</span></div></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="bh-cta-foot">
+        <div>
+          <span class="bh-cta-foot-label">Open Copilot Chat</span>
+          <strong>m365copilot.com</strong>
+        </div>
+        <div class="bh-cta-foot-url">Full guide · intelligenceamplified.work/guides/customer/bunzl</div>
+      </div>
+    </section>
+
+    <!-- ═══ ROLE ADD-ONS ═══ -->
+    {selectedKeys.map((key) => {
+      const r = ROLES[key];
+      return (
+        <section class="bh-sheet bh-role-start">
+          <div class="bh-role-head">
+            <span class="bh-role-icon">{r.icon}</span>
+            <div>
+              <p class="bh-kicker bh-kicker-role">Role add-on</p>
+              <h2 class="bh-sheet-title">{r.label} · a day in the life</h2>
+              <p class="bh-lead">{r.tagline}</p>
+            </div>
+          </div>
+          <div class="bh-timeline">
+            {r.moments.map((m) => (
+              <div class="bh-moment">
+                <div class="bh-moment-rail">
+                  <span class="bh-moment-time">{m.time}</span>
+                </div>
+                <div class="bh-moment-body">
+                  <h3 class="bh-moment-title"><span class="bh-moment-emoji">{m.icon}</span>{m.title}</h3>
+                  <p class="bh-moment-desc">{m.desc}</p>
+                  <div class="bh-prompt"><span class="bh-prompt-tag">Prompt</span>{m.prompt}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+  </div>
+</div>
+
+<style is:global>
+  @page { size: letter portrait; margin: 0.55in; }
+
+  .bh-root {
+    --bg: #F7F5F2;
+    --surface: #FFFFFF;
+    --ink: #111008;
+    --ink-2: #615E58;
+    --accent: #2563EB;
+    --accent-soft: rgba(37, 99, 235, 0.08);
+    --border: rgba(17, 16, 8, 0.10);
+    --border-strong: rgba(17, 16, 8, 0.16);
+    --green: #107c41;
+    --font-head: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Commit Mono', ui-monospace, 'SF Mono', monospace;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .bh-root * { box-sizing: border-box; }
+
+  /* ── Toolbar ── */
+  .bh-toolbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bh-toolbar-inner {
+    max-width: 8.5in; margin: 0 auto; padding: 0.7rem 1rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .bh-tb-back { color: var(--ink-2); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+  .bh-tb-back:hover { color: var(--accent); }
+  .bh-tb-meta { font-size: 0.78rem; color: var(--ink-2); flex: 1; text-align: center; }
+  .bh-tb-print {
+    background: var(--accent); color: #fff; border: none; cursor: pointer;
+    padding: 0.55rem 1.1rem; border-radius: 8px; font-family: var(--font-body);
+    font-size: 0.85rem; font-weight: 600;
+  }
+  .bh-tb-print:hover { background: #1D4ED8; }
+
+  /* ── Page sheets ── */
+  .bh-pages { max-width: 8.5in; margin: 1.5rem auto; padding: 0 1rem; }
+  .bh-sheet {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(17,16,8,0.06);
+    padding: 0.7in;
+    margin-bottom: 1.5rem;
+  }
+  .bh-sheet > *:first-child { margin-top: 0; }
+
+  @media print {
+    .no-print { display: none !important; }
+    .bh-root { background: #fff; }
+    .bh-pages { max-width: none; margin: 0; padding: 0; }
+    .bh-sheet {
+      border: none; border-radius: 0; box-shadow: none; padding: 0; margin: 0;
+      page-break-after: always; break-after: page;
+    }
+    .bh-sheet:last-child { page-break-after: auto; break-after: auto; }
+    .bh-role-start { page-break-before: always; break-before: page; }
+  }
+
+  /* avoid splitting key blocks across pages */
+  .bh-card, .bh-gbb-row, .bh-moment, .bh-prompt,
+  .bh-edp, .bh-rules li, .bh-gcse-item, .bh-access-item { break-inside: avoid; }
+
+  /* ── Headings & shared type ── */
+  .bh-kicker {
+    font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 0.4rem;
+  }
+  .bh-kicker-role { color: var(--ink-2); }
+  .bh-sheet-title {
+    font-family: var(--font-head); font-size: 1.9rem; font-weight: 600;
+    line-height: 1.1; margin: 0 0 0.5rem; letter-spacing: -0.01em;
+  }
+  .bh-h2 { font-family: var(--font-head); font-size: 1.35rem; font-weight: 600; margin: 1.4rem 0 0.7rem; }
+  .bh-lead { color: var(--ink-2); font-size: 0.95rem; margin: 0 0 1.2rem; line-height: 1.55; }
+  .bh-mini-label {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2); margin: 0 0 0.6rem;
+  }
+
+  /* ── Cover ── */
+  .bh-cover { text-align: center; }
+  .bh-eyebrow {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2); margin: 0 0 1.2rem;
+  }
+  .bh-cover-mark { margin: 0.5rem 0 1rem; }
+  .bh-cc {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border-radius: 14px; background: var(--accent);
+    color: #fff; font-family: var(--font-mono); font-weight: 600; font-size: 1.1rem;
+  }
+  .bh-cover-title { font-family: var(--font-head); font-size: 3rem; font-weight: 600; margin: 0 0 0.6rem; line-height: 1; }
+  .bh-badge {
+    font-size: 0.32em; vertical-align: middle; background: var(--accent-soft);
+    border: 1px solid var(--accent); color: var(--accent); border-radius: 999px;
+    padding: 0.15em 0.7em; font-style: italic; font-family: var(--font-body);
+  }
+  .bh-cover-sub { color: var(--ink-2); max-width: 30rem; margin: 0 auto 1.6rem; font-size: 1rem; line-height: 1.6; }
+  .bh-edp {
+    display: flex; gap: 0.8rem; text-align: left; align-items: flex-start;
+    max-width: 32rem; margin: 0 auto 0.5rem; padding: 0.9rem 1.1rem;
+    background: rgba(16,124,65,0.06); border: 1px solid rgba(16,124,65,0.2);
+    border-radius: 10px; font-size: 0.86rem; line-height: 1.5; color: var(--ink);
+  }
+  .bh-edp-shield { flex-shrink: 0; line-height: 0; }
+  .bh-access { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-top: 0.5rem; }
+  .bh-access-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+    padding: 0.8rem 0.5rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+  }
+  .bh-access-icon { font-size: 1.4rem; }
+  .bh-access-name { font-weight: 600; font-size: 0.85rem; }
+  .bh-access-sub { font-size: 0.72rem; color: var(--ink-2); }
+  .bh-cover-foot {
+    margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--ink-2); display: flex; flex-direction: column; gap: 0.15rem;
+  }
+  .bh-cover-foot strong { color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; }
+
+  /* ── Interface page ── */
+  .bh-shot {
+    width: 100%; border: 1px solid var(--border); border-radius: 10px;
+    margin: 0.5rem 0 1.2rem; display: block;
+  }
+  .bh-legend {
+    list-style: none; padding: 0; margin: 0; counter-reset: legend;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem 1.4rem;
+  }
+  .bh-legend li {
+    counter-increment: legend; display: flex; align-items: flex-start; gap: 0.55rem;
+    font-size: 0.85rem; color: var(--ink);
+  }
+  .bh-legend-body { display: flex; flex-direction: column; gap: 0.04rem; }
+  .bh-legend-body strong { font-size: 0.82rem; line-height: 1.25; }
+  .bh-legend-body span { font-size: 0.72rem; color: var(--ink-2); line-height: 1.3; }
+  .bh-legend-num {
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 6px; background: var(--accent);
+    color: #fff; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; margin-top: 1px;
+  }
+  .bh-legend-num::before { content: counter(legend); }
+
+  /* ── Cards (personalize) ── */
+  .bh-card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem;
+    margin-bottom: 1rem; background: var(--bg);
+  }
+  .bh-card-title { font-family: var(--font-head); font-size: 1.25rem; font-weight: 600; margin: 0 0 0.4rem; }
+  .bh-card-desc { font-size: 0.88rem; color: var(--ink-2); line-height: 1.55; margin: 0 0 0.7rem; }
+  .bh-card-desc em { color: var(--ink); font-style: italic; }
+  .bh-steps { margin: 0 0 0.8rem; padding-left: 1.1rem; font-size: 0.85rem; line-height: 1.7; color: var(--ink); }
+  .bh-example, .bh-tip {
+    font-size: 0.83rem; line-height: 1.5; border-radius: 8px; padding: 0.7rem 0.9rem;
+  }
+  .bh-example {
+    background: var(--accent-soft); border: 1px dashed var(--accent); color: var(--ink);
+    font-style: italic;
+  }
+  .bh-example-tag, .bh-prompt-tag, .bh-model-tag {
+    display: block; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); font-style: normal; margin-bottom: 0.3rem;
+  }
+  .bh-tip { background: var(--bg); border: 1px solid var(--border); color: var(--ink-2); margin-top: 1rem; }
+  .bh-tip strong { color: var(--ink); }
+
+  /* ── GCSE ── */
+  .bh-gcse { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .bh-gcse-item {
+    display: flex; gap: 0.7rem; align-items: flex-start; padding: 0.8rem 0.9rem;
+    border: 1px solid var(--border); border-radius: 10px; background: var(--bg);
+  }
+  .bh-gcse-letter {
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 34px; height: 34px; border-radius: 8px; background: var(--accent);
+    font-family: var(--font-head); font-weight: 700; font-size: 1.1rem;
+  }
+  .bh-gcse-item .bh-gcse-letter { color: #fff; }
+  .bh-gl-goal { background: #2563EB; }
+  .bh-gl-context { background: #7C3AED; }
+  .bh-gl-source { background: #EA580C; }
+  .bh-gl-expectations { background: #16A34A; }
+  .bh-gc-goal { border-color: rgba(37, 99, 235, 0.35); }
+  .bh-gc-context { border-color: rgba(124, 58, 237, 0.35); }
+  .bh-gc-source { border-color: rgba(234, 88, 12, 0.35); }
+  .bh-gc-expectations { border-color: rgba(22, 163, 74, 0.35); }
+  .bh-gcse-item strong { display: block; font-size: 0.92rem; }
+  .bh-gcse-item span { font-size: 0.82rem; color: var(--ink-2); line-height: 1.4; }
+  .bh-gbb { display: flex; flex-direction: column; gap: 0.6rem; }
+  .bh-gbb-row {
+    border: 1px solid var(--border); border-left-width: 4px; border-radius: 8px;
+    padding: 0.7rem 0.9rem; background: var(--surface);
+  }
+  .bh-gbb-row.bh-good { border-left-color: #C2410C; }
+  .bh-gbb-row.bh-better { border-left-color: #B45309; }
+  .bh-gbb-row.bh-best { border-left-color: var(--green); }
+  .bh-gbb-tier {
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2); display: block; margin-bottom: 0.25rem;
+  }
+  .bh-good .bh-gbb-tier { color: #C2410C; }
+  .bh-better .bh-gbb-tier { color: #B45309; }
+  .bh-best .bh-gbb-tier { color: var(--green); }
+  .bh-gbb-text { margin: 0; font-size: 0.82rem; line-height: 1.6; color: var(--ink); }
+  .bh-hl {
+    border-radius: 3px; padding: 0.5px 3px;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+  .bh-hl-goal { background: rgba(59, 130, 246, 0.20); }
+  .bh-hl-context { background: rgba(168, 85, 247, 0.20); }
+  .bh-hl-source { background: rgba(249, 115, 22, 0.20); }
+  .bh-hl-expectations { background: rgba(34, 197, 94, 0.20); }
+
+  /* ── Cheat sheet ── */
+  .bh-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  .bh-rules { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .bh-rules li { display: flex; gap: 0.6rem; align-items: flex-start; }
+  .bh-rules strong { display: block; font-size: 0.86rem; }
+  .bh-rules span { font-size: 0.78rem; color: var(--ink-2); line-height: 1.4; }
+  .bh-rule-num,
+  .bh-rules .bh-rule-num {
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff;
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; margin-top: 1px;
+  }
+  .bh-rule-dot { color: var(--accent); font-weight: 700; margin-top: 1px; }
+  .bh-cta-foot {
+    margin-top: 1.6rem; padding-top: 1.1rem; border-top: 2px solid var(--accent);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .bh-cta-foot-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); display: block; }
+  .bh-cta-foot strong { font-size: 1.15rem; color: var(--accent); }
+  .bh-cta-foot-url { font-size: 0.74rem; color: var(--ink-2); }
+
+  /* ── Role timeline ── */
+  .bh-role-head { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.4rem; }
+  .bh-role-icon {
+    font-size: 2rem; flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px;
+    background: var(--accent-soft); display: inline-flex; align-items: center; justify-content: center;
+  }
+  .bh-role-head .bh-sheet-title { margin-bottom: 0.2rem; }
+  .bh-role-head .bh-lead { margin-bottom: 0; }
+  .bh-timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .bh-moment { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0.8rem; }
+  .bh-moment-rail { display: flex; flex-direction: column; align-items: flex-end; padding-top: 0.1rem; }
+  .bh-moment-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; }
+  .bh-moment-body { border-left: 2px solid var(--border); padding-left: 1rem; }
+  .bh-moment-title { font-family: var(--font-head); font-size: 1.2rem; font-weight: 600; margin: 0 0 0.2rem; display: flex; align-items: center; gap: 0.45rem; }
+  .bh-moment-emoji { font-size: 1rem; }
+  .bh-moment-desc { font-size: 0.83rem; color: var(--ink-2); margin: 0 0 0.6rem; line-height: 1.45; }
+  .bh-prompt {
+    font-size: 0.8rem; line-height: 1.5; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.7rem 0.9rem; color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .bh-access, .bh-gcse, .bh-two-col, .bh-legend { grid-template-columns: 1fr; }
+    .bh-toolbar-inner { flex-wrap: wrap; }
+    .bh-tb-meta { order: 3; flex-basis: 100%; text-align: left; }
+  }
+</style>
